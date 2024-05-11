@@ -19,5 +19,6 @@ return [
     'verification_sent'      => "تم إرسال رابط التحقق بنجاح",
     'verification_success'   => "تم التحقق من البريد الإلكتروني بنجاح",
     'password_reset_success' => 'تم إعادة تعيين كلمة المرور بنجاح',
-    'attributes'             => [],
+    'attributes'             => [
+    ],
 ];

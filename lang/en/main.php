@@ -20,5 +20,8 @@ return [
     'verification_success'   => "Email has been verified successfuly",
     'password_reset_success' => 'Password reset successfully',
 
-    'attributes' => [],
+    'attributes' => [
+        'full_time_job' => 'Full time job',
+        'by_order_job'  => 'By order job',
+    ],
 ];

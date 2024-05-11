@@ -15,19 +15,14 @@ return new class extends Migration
     {
         Schema::create('mechanical_available_times', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('week_day_id')->nullable()->constrained('week_days','id')->nullOnDelete();
-            $table->foreignId('mechanical_id')->constrained('mechanicals','user_id')->cascadeOnDelete();
+            $table->foreignId('mechanical_id')->constrained('mechanicals','user_id')->onDelete('cascade');
+            $table->foreignId('week_day_id')->nullable()->constrained('week_days')->nullOnDelete();
             $table->time('start_at');
             $table->time('end_at');
             $table->timestamps();
         });
     }
 
-      /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down(): void
     {
         Schema::dropIfExists('mechanical_available_times');

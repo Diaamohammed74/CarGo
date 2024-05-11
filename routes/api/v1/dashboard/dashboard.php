@@ -38,6 +38,29 @@ Route::prefix('/dashboard')
 
         Route::apiResource('/specializations', \App\Http\Controllers\Api\V1\Dashboard\Specialization\SpecializationController::class);
 
+
+        Route::apiResource('/product-categories', \App\Http\Controllers\Api\V1\Dashboard\ProductCategory\ProductCategoryController::class);
+
+
+        Route::apiResource('/products', \App\Http\Controllers\Api\V1\Dashboard\Product\ProductController::class);
+
+        Route::apiResource('/service-categories', \App\Http\Controllers\Api\V1\Dashboard\ServiceCategory\ServiceCategoryController::class);
+
+
+        Route::apiResource('/services', \App\Http\Controllers\Api\V1\Dashboard\Service\ServiceController::class);
+
+        Route::apiResource('/video-categories', \App\Http\Controllers\Api\V1\Dashboard\VideoCategory\VideoCategoryController::class);
+
+        Route::apiResource('/videos', \App\Http\Controllers\Api\V1\Dashboard\Video\VideoController::class);
+        
+        Route::apiResource('/tags', \App\Http\Controllers\Api\V1\Dashboard\Tag\TagController::class);
+
     });
 
 
+/*===========================
+=           tags           =
+=============================*/
+
+
+/*=====  End of tags   ======*/

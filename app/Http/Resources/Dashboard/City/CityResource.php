@@ -9,10 +9,9 @@ class CityResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id' => $this->id,
-            
-            'created_at' => dateTimeFormat($this->created_at),
-            'updated_at' => dateTimeFormat($this->updated_at),
+            'id'           => $this->id,
+            'city_name_ar' => $this->city_name_ar,
+            'city_name_en' => $this->city_name_en,
         ];
     }
 }

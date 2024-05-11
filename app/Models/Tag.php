@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-
+use App\Filters\Tag\TagFilters;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class MechanicalByOrder extends Model
+class Tag extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
 
-    
+    protected string $default_filters = TagFilters::class;
 
     /**
      * Mass-assignable attributes.
@@ -19,7 +20,7 @@ class MechanicalByOrder extends Model
      * @var array
      */
     protected $fillable = [
-        
+        'title',
     ];
 
 

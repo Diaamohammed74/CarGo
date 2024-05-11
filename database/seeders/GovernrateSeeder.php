@@ -7,13 +7,16 @@ use Illuminate\Database\Seeder;
 
 class GovernrateSeeder extends Seeder
 {
-    /**
+      /**
      * Run the database seeds.
      *
      * @return void
      */
     public function run(): void
     {
-        Governrate::factory(10)->create();
+        Governrate::create([
+            'governorate_name_ar' => 'القاهرة',
+            'governorate_name_en' => 'Cairo',
+        ]);
     }
 }

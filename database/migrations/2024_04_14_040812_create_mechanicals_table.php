@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+      /**
      * Run the migrations.
      *
      * @return void
@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mechanicals', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users','id')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->date('join_date');
             $table->date('birth_date');
             $table->integer('job_type');
@@ -24,7 +24,7 @@ return new class extends Migration
         });
     }
 
-    /**
+      /**
      * Reverse the migrations.
      *
      * @return void

@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mechanical_by_orders', function (Blueprint $table) {
-            $table->foreignId('mechanical_id')->constrained('mechanicals','user_id')->cascadeOnDelete();
-            $table->foreignId('city_id')->nullable()->constrained('cities','id')->nullOnDelete();
+        Schema::create('mechanicals_by_order', function (Blueprint $table) {
+            $table->foreignId('mechanical_id')->constrained('mechanicals','user_id')->onDelete('cascade');
             $table->primary(['mechanical_id']);
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mechanical_by_orders');
+        Schema::dropIfExists('mechanicals_by_orders');
     }
 };

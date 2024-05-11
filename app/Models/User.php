@@ -68,5 +68,16 @@ class User extends Authenticatable
     return $this->hasOne(Mechanical::class, 'user_id');
 }
 
-    
+public function services()
+{
+    return $this->hasManyThrough(
+        Service::class,
+        Mechanical::class,
+        'user_id', // Foreign key on Mechanical
+        'id', // Foreign key on Service
+        'id', // Local key on User
+        'specialization_id' // Local key on Mechanical
+    );
+}
+
 }
