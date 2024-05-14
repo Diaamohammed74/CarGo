@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\front\Auth;
 
+use App\Enums\StatusEnum;
 use App\Enums\UsersTypes;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -21,14 +22,15 @@ class RegisterRequest extends FormRequest
             'phone'       => ['required', 'string', 'unique:users,phone'],
             'national_id' => ['required', 'numeric', 'unique:customers,national_id'],
             'gender'      => ['required', 'string', Rule::in(['male', 'female'])],
-            'password'    => ['required', 'string', 'min:8', 'confirmed'],
+            'password'    => ['required', 'string','confirmed'],
         ];
     }
     public function validated($key = null, $default = null)
     {
         $validatedData = parent::validated();
         if ($key === null) {
-            $validatedData['type'] = UsersTypes::CUSTOMER->value;
+            $validatedData['type']   = UsersTypes::CUSTOMER->value;
+            $validatedData['status'] = StatusEnum::Active->value;
             return $validatedData;
         }
         return $validatedData[$key] ?? $default;

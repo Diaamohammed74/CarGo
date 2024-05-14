@@ -7,8 +7,8 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\front\Auth\RegisterRequest;
+use App\Models\Customer;
 
 class RegisteredUserController extends Controller
 {
@@ -18,13 +18,13 @@ class RegisteredUserController extends Controller
         return view('front.auth.register');
     }
 
-    public function store(RegisterRequest $request): RedirectResponse
+    public function store(RegisterRequest $request)
     {
-        $data=$request->validated();
-        dd($data);
-        $data['password']=Hash::make($data['password']);
-        $user = User::create($data);
+        $data            = $request->validated();
+        $user            = User::create($data);
+        $data['user_id'] = $user->id;
+        Customer::create($data);
         Auth::login($user);
-        return to_route('/front.index');
+        return to_route('auth.login');
     }
 }

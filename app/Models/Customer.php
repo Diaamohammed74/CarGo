@@ -14,13 +14,13 @@ class Customer extends Model
 
     protected string $default_filters = CustomerFilters::class;
 
-    /**
+      /**
      * Mass-assignable attributes.
      *
      * @var array
      */
     protected $fillable = [
-        
+        'national_id','user_id'
     ];
 
 
