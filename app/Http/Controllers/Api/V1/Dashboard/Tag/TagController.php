@@ -26,7 +26,6 @@ class TagController extends Controller
     public function store(CreateTagRequest $request): JsonResponse
     {
         $tag = Tag::create($request->validated());
-
         return $this->apiResponseStored(new TagResource($tag));
     }
 

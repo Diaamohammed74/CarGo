@@ -1,21 +1,22 @@
-<?php 
-namespace App\Http\Controllers\Api\V1\Authentication\Front;
+<?php
 
-use App\Models\User;
+namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
-use App\Http\Requests\Authentication\CustomVerifyEmailRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
-class EmailVerificationPromptController extends Controller{
-    public function verification(CustomVerifyEmailRequest $request)
+class EmailVerificationPromptController extends Controller
+{
+    /**
+     * Display the email verification prompt.
+     */
+    public function __invoke(Request $request): RedirectResponse|View
     {
-        $user = User::where('email', $request->validated()['email'])->first();
-        if ($user->hasVerifiedEmail()) {
-            return $this->apiResponse([], __('main.mail_verified'), 200);
-        }
-        if ($user->markEmailAsVerified()) {
-            event(new Verified($user));
-        }
-        return $this->apiResponse([], __('main.verification_success'), 200);
+        return $request->user()->hasVerifiedEmail()
+                    ? redirect()->intended(RouteServiceProvider::HOME)
+                    : view('auth.verify-email');
     }
 }

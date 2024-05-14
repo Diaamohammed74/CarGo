@@ -1,0 +1,560 @@
+/* css/style-home.css */
+/* start style to Constants of all page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+    background-color: rgba(235, 242, 250, 1) !important;
+}
+
+header {
+    background-image: url(../images/Rectangle\ 1.png);
+    width: 50%;
+}
+
+section {
+    margin-top: 70px;
+}
+
+h4.text-6 {
+    margin: 6px;
+    padding: 10px;
+    text-align: center;
+    color: rgba(0, 124, 238, 1);
+    font-size: 40px;
+    text-shadow: 0 0 5px rgba(0, 124, 238, 0.5);
+    text-transform: uppercase;
+}
+
+/* Header Styles */
+
+header .container-fluid > .row > .col-md-6 > .home-1 .home-nav .navbar-brand {
+    color: #fff;
+    padding-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .container-fluid > .row > .col-md-6 > .home-1 .home-nav .navbar-brand span {
+    color: rgba(30, 30, 30, 1);
+}
+
+header .container-fluid > .row > .col-md-6 > .home-1 .home-nav #navbarNav {
+    margin: 10px;
+    font-size: 16px;
+    padding: 5px;
+}
+
+header .container-fluid > .row > .col-md-6 > .home-1 .home-nav #navbarNav .nav-item .nav-link {
+    color: #fff;
+    font-weight: 200;
+    padding: 0 10px;
+}
+
+header .container-fluid > .row > .col-md-6 > .home-1 .home-nav #navbarNav .navbar-nav .active .nav-link {
+    color: rgba(30, 30, 30, 1) !important;
+    font-weight: bold;
+}
+
+header .container-fluid > .row > .col-md-6 > .home-1 .image-1 {
+    margin: 70px 0 0 60px;
+    padding-left: 10px;
+    position: relative;
+}
+
+header .container-fluid > .row > .col-md-6 > .profile {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+header .container-fluid > .row > .col-md-6 > .profile a {
+    margin-right: 10px;
+    color: rgba(0, 124, 238, 1);
+    text-decoration: none;
+}
+
+header .container-fluid > .row > .col-md-6 > .profile img {
+    width: 30px;
+    border-radius: 30px;
+    margin-right: 10px;
+}
+
+header .container-fluid > .row > .col-md-6 > .home-3{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(0%, -70%);
+    z-index: 1;
+    padding:5px 0 10px 75px;
+    text-align: justify;
+    font-size: 24px;
+    color:rgba(30, 30, 30, 1);
+}
+
+header .container-fluid > .row > .col-md-6 > .home-3 .name{
+    color:rgba(30, 30, 30, 1);
+    font-size: 48px;
+}
+
+header .container-fluid > .row > .col-md-6 > .home-3 .name .text-2{
+    color:rgba(0, 124, 238, 1);
+}
+
+header .container-fluid > .row > .col-md-6 > .home-3 .text-4{
+    color:rgba(147, 147, 147, 1);
+    font-size: 16px;
+}
+
+header .container-fluid > .row > .col-md-6 > .home-3 .text-4 .text-5{
+    color: rgba(0, 124, 238, 1);
+}
+
+header .container-fluid > .row > .col-md-6 > .home-3 .book-ser{
+    background-color: rgba(0, 124, 238, 1);
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+/* end Style Header */
+
+/* Start style Services */
+.services .container .row .col-md-3 {
+    margin-top: 10px;
+}
+.services .container .row .col-md-3 .serv {
+    position: relative; /* Ensure positioning context for pseudo-element */
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    height: 30vh;
+    background-image: url("../images/Service_Oil\ Change_BG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.services .container .row .col-md-3 .serv::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(30, 30, 30, 0.6); 
+    border-radius: 5px;
+}
+
+
+.services .container .row .col-md-3 .serv .text-7 {
+    color: #fff;
+    font-size: 18px;
+    align-items: justify;
+    margin-top: 5px;
+    position: relative; 
+    z-index: 1; 
+}
+.services .container .row .col-md-3 a {
+    text-decoration: none;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative; 
+    z-index: 1;
+    color: #fff;
+}
+
+.services .container .row .col-md-3 .serv .book .fa-arrow-right {
+    padding-left: 4px;
+    width: 5px;
+    position: relative; 
+    color: #fff;
+    z-index: 1;
+}
+
+.services .container .see a.text-8 {
+    color: rgb(0, 123, 238);
+    text-align: center;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 200;
+    text-decoration: underline;
+    text-decoration-skip: initial;
+    text-underline-offset: 6px;
+}
+
+
+/* End style Services */
+/* Start Style Products */
+
+div.our-prod {
+    padding: 20px;
+    margin: 20px;
+}
+
+.products {
+    background-color: rgba(0, 124, 238, 0.15);
+    margin: 10px;
+}
+
+.products .container {
+    margin: 0px auto;
+}
+
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 {
+    padding-top: 50px;
+    height: 100vh;
+
+}
+
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 > .card {
+    margin: 0 auto;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 > .card > .card-img-top {
+    width: 80%;
+    padding-top: 15px;
+    margin: 0 auto;
+}
+
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 > .card > .card-body .card-title,
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 > .card > .card-body .card-text {
+    color: rgba(0, 124, 238, 1);
+    text-align: justify;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 > .card > .card-body .add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 > .card > .card-body .add .btn-info {
+    background-color: #007bee;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 100;
+    text-align: center;
+    width: 40%;
+}
+
+.products .container #productCarousel .carousel-inner .carousel-item .row > .col-md-4 > .card > .card-body .add .btn-light {
+    background-color: transparent;
+    color: #007bee;
+    border: 1px solid #007bee;
+    width: 20%;
+}
+
+/* Style for carousel control buttons */
+.products .container .carousel-control-prev {
+    position: absolute;
+    left: 0;
+}
+
+.products .container .carousel-control-next {
+    position: absolute;
+    right: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+    left: 0;
+}
+
+.carousel-control-next {
+    right: 0;
+}
+
+/* Style for carousel control icons */
+.carousel-control-icon {
+    color: #0094ee;
+    font-size: 30px;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 124, 238, 1);
+    border-radius: 5px;
+}
+
+
+/* Style for visually hidden text */
+
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* End style Products */
+
+
+/* Start style courses */
+.course .container .row .col-md-4 .card .card-body .text-9{
+    color: rgba(0, 124, 238, 1);
+    font-size: 20px;
+    font-weight: 300;
+}
+.course .container .row .col-md-4 .card .card-body .text-10{
+    color:rgba(147, 147, 147, 1);
+    font-size: 16px;
+}
+.course .container .row .col-md-4 .card .card-body .now .enroll{
+    background-color: #007bee;
+    color: #fff;
+    font-size: 14px;
+}
+.course .container .row .col-md-4 .card .card-body .now .btn-light{
+    color: rgba(0, 124, 238, 1);
+    font-size: 18px;
+    font-weight: bold;
+}
+.course .container .see a.text-8{
+    color: rgb(0, 123, 238);
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight:200;
+    /* border to a under line 
+     border-bottom: 3px solid rgb(0, 123, 238);
+    border-bottom-width: 4px;
+    padding-bottom: 5px;
+    width not work */
+    text-decoration: underline;
+    text-decoration-skip:initial;
+    text-underline-offset: 6px;
+}
+/* end style courses */
+
+/* Start Style mechanics */
+.Mechanic
+{
+    background-color: rgba(0, 124, 238, 0.15);
+}
+.Mechanic .container {
+    margin: 0 auto;
+}
+.Mechanic .container #mechanicCarousel .carousel-inner .carousel-item .row > .col-md-3{
+    padding-top:50px;
+    margin:0 auto;
+    height:100vh;
+}
+
+.Mechanic .container #mechanicCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card{
+    margin: 0 auto; 
+    width: 90%; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+.Mechanic .container #mechanicCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-img-top {
+    width:90%;
+    padding-top:15px;
+    margin: 0 auto;
+}
+.Mechanic .container #mechanicCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-body .tech .card-title{
+    color:rgba(30, 30, 30, 1);
+    font-size: 20px;
+}
+.Mechanic .container #mechanicCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-body .tech .card-text{
+    color:rgba(30, 30, 30, 1);
+    font-size: 16px;
+}
+.Mechanic .container #mechanicCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-body .text-10{
+    color: rgba(147, 147, 147, 1);
+}
+
+/* End Style mechanics */
+
+/* Start style problem */
+.problem .container #problemCarousel .carousel-inner .carousel-item .row > .col-md-2{
+    margin:10px;
+}
+button.popular{
+    color: #fff;
+    background-color: #007bee;
+    font-size: 24px;
+}
+/* End Style problem*/
+
+/* start style test */
+.testimonials{
+    background-color: rgba(0, 124, 238, 0.15);
+    height: 100vh;
+}
+.testimonials .container {
+    margin: 0 auto;  
+}
+ h4.text-11{
+    margin: 6px;
+    padding: 10px;
+    text-align: center;
+    color: rgba(0, 124, 238, 1);
+    font-size: 40px;
+    text-shadow: 0 0 5px rgba(0, 124, 238, 0.5);
+    text-transform: uppercase;
+}
+.testimonials .container #testimonialsCarousel .carousel-inner .carousel-item .row > .col-md-3{
+    padding-top:50px;
+    margin:30px auto;
+    /* height:100vh; */
+}
+.testimonials .container #testimonialsCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card{
+    margin: 0 auto; 
+    width: 100%; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+.testimonials .container #testimonialsCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-img-top {
+    width:15%;
+    position: absolute;
+    bottom: 95%;
+    border-radius: 100%;
+    left:40%;
+    border: 3px solid  rgba(0, 124, 238, 0.15);
+}
+.testimonials .container #testimonialsCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-body .tech .card-title{
+    color:rgba(0, 124, 238, 1);
+    font-size: 20px;
+    margin: 20px 0 0 50px;
+    padding: 5px;
+}
+.testimonials .container #testimonialsCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-body .card-text{
+    color:rgba(30, 30, 30, 1);
+    font-size: 16px;
+    margin: 0px 0 10px 70px;
+    padding: 5px;
+}
+.testimonials .container #testimonialsCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-body .text-10{
+    color: rgba(0, 124, 238, 1);
+    font-size: 16px;
+    font-weight:100;
+    text-align: center;
+
+}
+/* End style Test */
+/* /////////////////////////////////////////////////////////////////// */
+/* Start Footer */
+footer {
+
+    background-color: #fff;
+    color: rgba(147, 147, 147, 1);
+    padding: 30px 0;
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}
+footer .container .footer-content{
+    border-bottom: 2px solid rgba(217, 217, 217, 1);
+}
+footer .container .footer-content .footer-logo .logo{
+    text-decoration: none;
+    font-size: 24px;
+    color:#007bee;
+    font-weight:700;
+}
+footer .container .footer-content .footer-logo .logo span{
+    color: rgba(30, 30, 30, 1);
+}
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+  
+.footer-menu li {
+    display: inline-block;
+    margin-right: 20px;
+}
+  
+.footer-menu li:last-child {
+    margin-right: 0;
+}
+  
+.footer-menu a {
+    color:rgba(147, 147, 147, 1);
+    text-decoration: none;
+}
+
+/* End Footer */
+
+/* Start Footer Bottom */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+  }
+  
+  .footer-bottom .footer-copyright p {
+    margin-right: 10px;
+  }
+  
+  .footer-bottom .footer-social {
+    display: flex;
+  }
+  
+  .footer-bottom .footer-social ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-bottom .footer-social li {
+    margin-right: 10px;
+  }
+  .footer-bottom .social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+.footer-bottom .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+  
+.footer-bottom .social-icons li:last-child {
+    margin-right: 0;
+}
+  
+.footer-bottom .social-icons a {
+    color:rgba(217, 217, 217, 1);
+    text-decoration: none;
+    font-size: 20px;
+}
+/* End Footer Bottom */
+  

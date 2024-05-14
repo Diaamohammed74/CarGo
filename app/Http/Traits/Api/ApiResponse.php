@@ -13,8 +13,8 @@ trait ApiResponse
         return response()->json([
             'message' => $message,
             'data'    => !empty($data) ? $data : [],
-            'status'  => in_array($status, [200, 201, 202, 203]),
-            'code'    => $status,
+                'status'  => in_array($status, [200, 201, 202, 203]),
+                'code'    => $status,
         ], $status);
     }
 

@@ -13,20 +13,22 @@ class CreateMechanicalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name'        => ['required', 'string'],
-            'last_name'         => ['required', 'string'],
-            'email'             => ['required', 'email', 'unique:users,email'],
-            'phone'             => ['required', 'string', 'unique:users,phone'],
-            'image'             => ['nullable', 'image', 'max:2048'],
-            'status'            => ['required', 'integer', Rule::in(StatusEnum::getValues())],
-            'gender'            => ['required', 'string', Rule::in(['male', 'female'])],
-            'password'          => ['required', 'string', 'min:8'],
-            'join_date'         => ['required', 'date', 'date_format:Y-m-d'],
-            'birth_date'        => ['required', 'date', 'date_format:Y-m-d','before:today'],
-            'job_type'          => ['required', 'integer', Rule::in(MechanicalJobType::getValues())],
-            'specialization_id' => ['required', 'integer', 'exists:specializations,id'],
-            'monthly_salary'    => ['required_if:job_type,'.MechanicalJobType::FullTime->value, 'numeric'],
-            'city_id'           => ['required_if:job_type,'.MechanicalJobType::ByOrder->value, 'integer','exists:cities,id'],
+        'first_name'               => ['required', 'string'],
+        'last_name'                => ['required', 'string'],
+        'available_times'          => ['required', 'array'],
+        'available_times.week_day' => ['required', 'integer','exists:week_days,id'],
+        'email'                    => ['required', 'email', 'unique:users,email'],
+        'phone'                    => ['required', 'string', 'unique:users,phone'],
+        'image'                    => ['nullable', 'image', 'max:2048'],
+        'status'                   => ['required', 'integer', Rule::in(StatusEnum::getValues())],
+        'gender'                   => ['required', 'string', Rule::in(['male', 'female'])],
+        'password'                 => ['required', 'string', 'min:8'],
+        'join_date'                => ['required', 'date', 'date_format:Y-m-d'],
+        'birth_date'               => ['required', 'date', 'date_format:Y-m-d','before:today'],
+        'job_type'                 => ['required', 'integer', Rule::in(MechanicalJobType::getValues())],
+        'specialization_id'        => ['required', 'integer', 'exists:specializations,id'],
+        'monthly_salary'           => ['required_if:job_type,'.MechanicalJobType::FullTime->value, 'numeric'],
+        'city_id'                  => ['required_if:job_type,'.MechanicalJobType::ByOrder->value, 'integer','exists:cities,id'],
         ];
     }
     public function validated($key = null, $default = null)

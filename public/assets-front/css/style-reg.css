@@ -1,0 +1,152 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+h3{
+    color:rgba(0, 124, 238, 1);
+
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+.card-registration .select-arrow {
+    top: 13px;
+}
+.card-body h3{
+    color:rgba(0, 124, 238, 1);
+
+}
+.card-body .text-2{
+    color: black;
+}
+#create{
+    background-color: rgba(0, 124, 238, 1);
+    color: aliceblue;
+}
+.field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 6px;
+}
+.field button{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+    color: #fff;
+    background-color: rgba(0, 124, 238, 1);
+
+}
+.field button a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+    color: #fff;
+}
+.line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+}
+.line::before{
+    content: 'or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #8b8b8b;
+    padding: 0 15px;
+}
+.face-btn {
+    width: 90% !important;
+    background-color: rgb(47, 78, 203) !important;
+    border: none;
+}
+
+.face-btn i {
+    border: none;
+    border-radius: 15px !important;
+    background-color: #FFF;
+    padding: 5px; /* Add padding for spacing around the icon */
+}
+.google-btn{
+    width: 90% !important;
+    border: none;
+}
+.ios-btn{
+    width: 90% !important;
+    border: none;
+}
+
+
+/* Login Page */
+.field input
+{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+.field input{
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid#CACACA;
+}
+.field input:focus{
+    border-bottom-width: 2px;
+}
+.eye-icon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+.form-link{
+    text-align: center;
+    margin-top: 10px;
+}
+.form-link span,
+.form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+.form a{
+    color: #0171d3;
+    text-decoration: none;
+}
+.form-content a:hover{
+    text-decoration: underline;
+}
+.ser{
+    position: absolute;
+    margin: 30px;
+    padding: 10px;
+
+}
+.ser span{
+    color: #0171d3;
+}
+.ser h3,p{
+    color: #FFF;
+    font-size: 24px;
+}

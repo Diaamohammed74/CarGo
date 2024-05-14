@@ -1,19 +1,25 @@
-<?php 
-namespace App\Http\Controllers\Api\V1\Authentication\Front;
+<?php
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
-class EmailVerificationNotificationController extends Controller{
-    public function store(Request $request)
+class EmailVerificationNotificationController extends Controller
+{
+    /**
+     * Send a new email verification notification.
+     */
+    public function store(Request $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return $this->apiResponse([], __('main.mail_verified'), 200);
+            return redirect()->intended(RouteServiceProvider::HOME);
         }
-        $user = Auth::user();
-        $user->sendCustomEmailVerificationNotification();
-        return $this->apiResponse([], __('main.verification_sent'), 200);
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('status', 'verification-link-sent');
     }
-    
 }

@@ -23,15 +23,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(AdminSeeder::class);
-        $this->call(GovernrateSeeder::class);
-        $this->call(CitySeeder::class);
-        Specialization::factory(20)->create();
-        ProductCategory::factory(20)->create();
-        Product::factory(20)->create();
-        ServiceCategory::factory(20)->create();
-        Service::factory(20)->create();
-        VideoCategory::factory(20)->create();
-        Tag::factory(20)->create();
+        // $this->call(AdminSeeder::class);
+        // $this->call(GovernrateSeeder::class);
+        $this->call(WeekDaySeeder::class);
+        // $this->call(CitySeeder::class);
+        // Specialization::factory(20)->create();
+        // ProductCategory::factory(20)->create();
+        // Product::factory(20)->create();
+        // ServiceCategory::factory(20)->create();
+        // Service::factory(20)->create();
+        // VideoCategory::factory(20)->create();
+        // Tag::factory(20)->create();
     }
 }

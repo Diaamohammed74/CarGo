@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\Dashboard\City\CityController;
+use App\Http\Controllers\Api\V1\Dashboard\WeekDay\WeekDayController;
 
 Route::prefix('/dashboard')
     ->middleware(['auth:sanctum'])
@@ -31,13 +33,7 @@ Route::prefix('/dashboard')
         Route::apiResource('/governrates', \App\Http\Controllers\Api\V1\Dashboard\Governrate\GovernrateController::class);
 
 
-
-        Route::apiResource('/cities', \App\Http\Controllers\Api\V1\Dashboard\City\CityController::class);
-
-
-
         Route::apiResource('/specializations', \App\Http\Controllers\Api\V1\Dashboard\Specialization\SpecializationController::class);
-
 
         Route::apiResource('/product-categories', \App\Http\Controllers\Api\V1\Dashboard\ProductCategory\ProductCategoryController::class);
 
@@ -52,15 +48,13 @@ Route::prefix('/dashboard')
         Route::apiResource('/video-categories', \App\Http\Controllers\Api\V1\Dashboard\VideoCategory\VideoCategoryController::class);
 
         Route::apiResource('/videos', \App\Http\Controllers\Api\V1\Dashboard\Video\VideoController::class);
-        
+
         Route::apiResource('/tags', \App\Http\Controllers\Api\V1\Dashboard\Tag\TagController::class);
 
+        Route::get('/cities', CityController::class);
+
+        Route::get('/week-days', WeekDayController::class);
+
+        
+
     });
-
-
-/*===========================
-=           tags           =
-=============================*/
-
-
-/*=====  End of tags   ======*/
