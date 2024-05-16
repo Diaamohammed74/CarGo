@@ -4,12 +4,76 @@
 @section('content')
 
 
+<section class="problem">
+    <div class="container">
+        <h4 class="text-6">POPULAR CAR PROBLEMS</h4>
+        <div id="probleCarousel" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                        @foreach ($tags as $tag)
+                        <div class="col-md-2">
+                            <div class="card">
+                                <button class="btn popular">#{{$tag->title}}</button>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="row justify-content-center">
+                        <div class="col-md-2">
+                            <div class="card">
+                                <button class="btn popular">#Car Tires</button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card">
+                                <button class="btn popular">#Car Tires</button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card">
+                                <button class="btn popular">#Car Tires</button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card">
+                                <button class="btn popular">#Car Tires</button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card">
+                                <button class="btn popular">#Car Tires</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#mechanicCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-icon" aria-hidden="true"><i class="fa-solid fa-angles-left"
+                                style="color: #0094ee;"></i></span>
+
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#mechanicCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-icon" aria-hidden="true"><i
+                                class="fa-solid fa-angles-right" style="color: #0094ee;"></i></span>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</section>
     <!-- End header -->
 
     <!-- start section Services -->
     <section class="services">
         <div class="container">
-            <h4 class="text-6">Our Services</h4>
+            <h4 class="text-6">Services</h4>
             <div class="row justify-content-between">
                 @foreach ($services as $service)
                 <div class="col-md-3 mb-4">
@@ -28,25 +92,23 @@
             </div>
         </div>
     </section>
-    <!-- end section service -->
-    <!-- Start section Products -->
-    <div class="our-prod">
-        <h4 class="text-6">Our Products</h4>
-    </div>
+
 
     <section class="products">
         <div class="container">
+            <h4 class="text-6">Products</h4>
             <div id="productCarousel" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
+                            @forelse ($products as $product)
                             <div class="col-md-4">
                                 <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
+                                    <img src="{{ $product->image }}"
                                         class="card-img-top" alt="Product 1">
                                     <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
+                                        <h5 class="card-title">{{ $product->title }}</h5>
+                                        <p class="card-text">{{ $product->price }} $</p>
                                         <div class="add">
                                             <button class="btn btn-info">Add to Cart</button>
                                             <button class="btn btn-light"><i class="fa-solid fa-heart"
@@ -55,159 +117,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
+                            @empty
+                            <div class="col-12">
+                                <div class="alert alert-warning" role="alert">
+                                    No products available at the moment. Please check back later.
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforelse
                         </div>
                     </div>
-                    <div class="carousel-item ">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pre">
-                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-icon" aria-hidden="true"><i class="fa-solid fa-angles-left"
-                                style="color: #0094ee;"></i></span>
-                        <span class="visually-hidden">
-
-                        </span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-icon" aria-hidden="true"><i class="fa-solid fa-angles-right"
-                                style="color: #0094ee;"></i></span>
-                        <span class="visually-hidden"> </span>
-                    </button>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Section Products -->
 
-    <!-- start section Courses -->
+
     <section class="course">
         <div class="container">
             <h4 class="text-6">CarGo Clips</h4>
@@ -235,291 +159,74 @@
             </div>
         </div>
     </section>
-    <!-- End Section Courses -->
 
-    <!--start Section Mechanics  -->
-
-    <div class="our">
-        <h4 class="text-6">Our Mechanics</h4>
-    </div>
 
     <section class="Mechanic">
         <div class="container">
+            <h4 class="text-6">Mechanicals</h4>
             <div id="mechanicCarousel" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 100.png') }}"
-                                        class="card-img-top" alt="Product 1">
+                                    <img src="{{ asset('assets-front/images/Rectangle 166.png') }}"
+                                        class="card-img-top" alt="Mechanic 1">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between tech">
                                             <h5 class="card-title">Youssef Amir</h5>
-                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star"
-                                                    style="color: #ffd43b;"></i></p>
+                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star" style="color: #ffd43b;"></i></p>
                                         </div>
-                                        <p class="text-10">Techanic</p>
+                                        <p class="text-10">Technician</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card">
                                     <img src="{{ asset('assets-front/images/Rectangle 166.png') }}"
-                                        class="card-img-top" alt="Product 1">
+                                        class="card-img-top" alt="Mechanic 2">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between tech">
                                             <h5 class="card-title">Youssef Amir</h5>
-                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star"
-                                                    style="color: #ffd43b;"></i></p>
+                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star" style="color: #ffd43b;"></i></p>
                                         </div>
-                                        <p class="text-10">Techanic</p>
+                                        <p class="text-10">Technician</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card">
                                     <img src="{{ asset('assets-front/images/Rectangle 166.png') }}"
-                                        class="card-img-top" alt="technician2">
+                                        class="card-img-top" alt="Mechanic 3">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between tech">
                                             <h5 class="card-title">Youssef Amir</h5>
-                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star"
-                                                    style="color: #ffd43b;"></i></p>
+                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star" style="color: #ffd43b;"></i></p>
                                         </div>
-                                        <p class="text-10">Techanic</p>
+                                        <p class="text-10">Technician</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card">
                                     <img src="{{ asset('assets-front/images/Rectangle 166.png') }}"
-                                        class="card-img-top" alt="technician1">
+                                        class="card-img-top" alt="Mechanic 4">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between tech">
                                             <h5 class="card-title">Youssef Amir</h5>
-                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star"
-                                                    style="color: #ffd43b;"></i></p>
+                                            <p class="card-text mb-0">4.5<i class="fa-solid fa-star" style="color: #ffd43b;"></i></p>
                                         </div>
-                                        <p class="text-10">Techanic</p>
+                                        <p class="text-10">Technician</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item ">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                        class="card-img-top" alt="Product 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Car Tires</h5>
-                                        <p class="card-text">80$-240$</p>
-                                        <div class="add">
-                                            <button class="btn btn-info">Add to Cart</button>
-                                            <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                    style="color: #007bee;"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                            class="card-img-top" alt="Product 1">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Car Tires</h5>
-                                            <p class="card-text">80$-240$</p>
-                                            <div class="add">
-                                                <button class="btn btn-info">Add to Cart</button>
-                                                <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                        style="color: #007bee;"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                            class="card-img-top" alt="Product 2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Car Tires</h5>
-                                            <p class="card-text">80$-240$</p>
-                                            <div class="add">
-                                                <button class="btn btn-info">Add to Cart</button>
-                                                <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                        style="color: #007bee;"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                            class="card-img-top" alt="Product 3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Car Tires</h5>
-                                            <p class="card-text">80$-240$</p>
-                                            <div class="add">
-                                                <button class="btn btn-info">Add to Cart</button>
-                                                <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                        style="color: #007bee;"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img src="{{ asset('assets-front/images/Rectangle 181.png') }}"
-                                            class="card-img-top" alt="Product 3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Car Tires</h5>
-                                            <p class="card-text">80$-240$</p>
-                                            <div class="add">
-                                                <button class="btn btn-info">Add to Cart</button>
-                                                <button class="btn btn-light"><i class="fa-solid fa-heart"
-                                                        style="color: #007bee;"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#mechanicCarousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-icon" aria-hidden="true"><i class="fa-solid fa-angles-left"
-                                    style="color: #0094ee;"></i></span>
-
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#mechanicCarousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-icon" aria-hidden="true"><i
-                                    class="fa-solid fa-angles-right" style="color: #0094ee;"></i></span>
-
-                        </button>
-                    </div>
+                    <!-- Add more carousel-items here for additional mechanics if needed -->
                 </div>
             </div>
-    </section>
-
-    <!-- End Section Mechanics -->
-    <!-- ====================================================== -->
-    <!-- Start Section Problem -->
-
-    <section class="problem">
-        <div class="container">
-            <h4 class="text-6">POPULAR CAR PROBLEMS</h4>
-            <div id="probleCarousel" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row justify-content-center">
-                            @foreach ($tags as $tag)
-                            <div class="col-md-2">
-                                <div class="card">
-                                    <button class="btn popular">#{{$tag->title}}</button>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        <div class="row justify-content-center">
-                            <div class="col-md-2">
-                                <div class="card">
-                                    <button class="btn popular">#Car Tires</button>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card">
-                                    <button class="btn popular">#Car Tires</button>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card">
-                                    <button class="btn popular">#Car Tires</button>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card">
-                                    <button class="btn popular">#Car Tires</button>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card">
-                                    <button class="btn popular">#Car Tires</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="carousel-control-prev" type="button" data-bs-target="#mechanicCarousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-icon" aria-hidden="true"><i class="fa-solid fa-angles-left"
-                                    style="color: #0094ee;"></i></span>
-
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#mechanicCarousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-icon" aria-hidden="true"><i
-                                    class="fa-solid fa-angles-right" style="color: #0094ee;"></i></span>
-
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
         </div>
     </section>
-
 
     <section class="testimonials">
         <h4 class="text-11">Testimonials</h4>
