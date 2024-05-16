@@ -95,6 +95,15 @@ pwShowHide.forEach(eyeIcon => {
         
     })
 }) 
+function loader(){
+    document.querySelector('.loader-container').classList.add('rotateOut');
+  }
+  
+  function rotateOut() {
+    setInterval(loader, 3000);
+}
+
+window.onload = rotateOut; // Assign the function without invoking it
 
 
 

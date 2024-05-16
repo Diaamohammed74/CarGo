@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users','id')->onDelete('cascade');
-                $table->integer('national_id')->unique();
+                $table->integer('national_id')->nullable()->unique();
                 $table->primary(['user_id']);
                 $table->timestamps();
             });

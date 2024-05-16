@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Breeze\BreezeServiceProvider;
 
 return [
 
@@ -160,6 +161,7 @@ return [
          * Package Service Providers...
          */
 
+        // BreezeServiceProvider::class,
         /*
          * Application Service Providers...
          */

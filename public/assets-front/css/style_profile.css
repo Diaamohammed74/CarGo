@@ -403,6 +403,169 @@ footer .container .footer-bottom  .logo span{
 }
 /* End Footer Bottom */
   
+/* ********************************************************* */
+.side .container-fluid .row .account .row.noot{
+    height: auto;
+}
+.side .container-fluid .row .account .row .not{
+    border-radius: 5px;
+    border: 1px solid rgba(0, 124, 238, 1);
+    height: auto;
+    margin-bottom: 40px;
+}
+.side .container-fluid .row .account .row .col-md-9 .notifi{
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+    width:90%;
+    height: 5vh;
+    /* margin-left: 25px; */
 
+}
+.side .container-fluid .row .account .row .col-md-9 .notifi  .name{
+    font-size: 17px;
+    margin: 1px;
+    color: #007bee;
+    margin-top: 4px;
+    padding: 1px;
+    font-weight: bold;
+}
+.side .container-fluid .row .account .row .col-md-9 .notifi  .name span{
+    color: rgba(30, 30, 30, 1);
+}
+.side .container-fluid .row .account .row .col-md-9 .notifi  .job{
+    font-size: 12px;
+    text-align: center;
+    margin: 1px;
+    margin-top: 4px;
+    color: #007bee;
+    padding: 1px;
+}
+.side .container-fluid .row .account .row .col-md-9 .notifi .fa-solid{
+    color:rgba(0, 124, 238, 1);
+    margin-top: 8px;
+}
+@keyframes tada {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%, 60%, 80% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  
+  .animate__tada {
+    animation-name: tada;
+  }
+  
+  .animate__tada:hover {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes heartBeat {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%, 60%, 80% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+.animate__heartBeat {
+    animation-name: heartBeat;
+  }
+
+.animate__heartBeat:hover {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  
+
+  /* Style for profileCars */
+.side .container-fluid .row .account .row .col-md-9 .car{
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+    width:90%;
+    height: 12vh;
+} 
+.side .container-fluid .row .account .row .col-md-9 .car img{
+    width: 20%;
+    border-radius: 5px;
+}
+.side .container-fluid .row .account .row .col-md-9 .car .texts h6{
+    font-size: 14px;
+    color: #007bee;
+    margin-top: 14px;
+    padding: 1px;
+    font-weight:300;
+    margin-right: 9px;
+}
+.side .container-fluid .row .account .row .col-md-9 .car .texts p{
+    font-size: 14px;
+    margin: 1px;
+    color: rgba(147, 147, 147, 1);
+    padding: 1px;
+    font-weight:500;
+}
+
+
+/* style History */
+.side .container-fluid .row .account .history{
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.side .container-fluid .row .account .row .col-md-10{
+    margin: 30px;
+    background-color:rgba(0, 124, 238, 0.15);
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+.side .container-fluid .row .account .row .col-md-10 .row .histo {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    align-items: justify;
+
+}
+.side .container-fluid .row .account .row .col-md-10 .row .histo .hist h6{
+    padding: 5px;
+    color: rgba(147, 147 , 147,1);
+    font-size: 14px;
+    margin-top: 5px;
+}
+.side .container-fluid .row .account .row .col-md-10 .row .histo .hist p{
+    color:rgba(0, 124, 238, 1);
+    font-size: 12px;
+    margin-left: 4px;
+}
+.side .container-fluid .row .account .row .col-md-10 .row .histo .hist i{
+    color:rgba(117, 220, 144, 1);
+    position: absolute;
+    top:41%;
+    left:70%;
+    font-size: 20px;
+}
 
 

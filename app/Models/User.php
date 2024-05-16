@@ -8,6 +8,7 @@ use App\Filters\User\UserFilters;
 use Laravel\Sanctum\HasApiTokens;
 use App\Http\Traits\Api\StatusInfo;
 use Essa\APIToolKit\Filters\Filterable;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens,HasFactory,Filterable,Notifiable,StatusInfo;
+    use HasApiTokens, HasFactory, Filterable, Notifiable, StatusInfo;
     protected string $default_filters = UserFilters::class;
 
       /**
@@ -34,6 +35,8 @@ class User extends Authenticatable
         'gender',
         'email_verified_at',
         'password',
+        'provider',
+        'provider_id',
     ];
 
 
@@ -48,8 +51,9 @@ class User extends Authenticatable
         'status'            => StatusEnum::class,
         'type'              => UsersTypes::class,
     ];
-    public function getFullNameAttribute(){
-        return $this->attributes['first_name'] . ' ' .$this->attributes['last_name'];
+    public function getFullNameAttribute()
+    {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
     }
     public function scopeActive($query)
     {
@@ -64,20 +68,32 @@ class User extends Authenticatable
         return $query->where('type', UsersTypes::MECHANICAL->value);
     }
     public function mechanicalUser()
-{
-    return $this->hasOne(Mechanical::class, 'user_id');
-}
+    {
+        return $this->hasOne(Mechanical::class, 'user_id');
+    }
 
-public function services()
-{
-    return $this->hasManyThrough(
-        Service::class,
-        Mechanical::class,
-        'user_id', // Foreign key on Mechanical
-        'id', // Foreign key on Service
-        'id', // Local key on User
-        'specialization_id' // Local key on Mechanical
-    );
-}
+    public function services()
+    {
+        return $this->hasManyThrough(
+            Service::class,
+            Mechanical::class,
+            'user_id',                     // Foreign key on Mechanical
+            'id'     ,                     // Foreign key on Service
+            'id'     ,                     // Local key on User
+                      'specialization_id'  // Local key on Mechanical
+        );
+    }
 
+
+    public function getImageAttribute()
+    {
+        if(isset($this->attributes['image'])){
+            if (str_starts_with($this->attributes['image'], 'http')) {
+                return $this->attributes['image'];
+            } else {
+                return Storage::url($this->attributes['image']);
+            }
+        }
+        return null;
+    }
 }

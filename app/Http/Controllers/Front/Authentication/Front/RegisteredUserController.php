@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Authentication\Front;
+namespace App\Http\Controllers\Front\Authentication\Front;
 
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use App\Http\Requests\front\Auth\RegisterRequest;
-use App\Models\Customer;
 
 class RegisteredUserController extends Controller
 {
@@ -25,6 +25,6 @@ class RegisteredUserController extends Controller
         $data['user_id'] = $user->id;
         Customer::create($data);
         Auth::login($user);
-        return to_route('auth.login');
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

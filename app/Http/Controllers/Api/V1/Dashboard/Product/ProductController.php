@@ -44,7 +44,7 @@ class ProductController extends Controller
     {
         $data = $request->validated();
         if (isset($data['image'])) {
-            $this->updateMedia($data['image'], 'uploads/images', $product->image);
+            $data['image']=$this->updateMedia($data['image'], 'uploads/images', $product->image);
         }
         $product->update($data);
         $product->load(['category']);
