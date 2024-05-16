@@ -6,7 +6,7 @@ use App\Http\Controllers\Front\Authentication\Front\RegisteredUserController;
 use App\Http\Controllers\Front\Authentication\Front\AuthenticatedSessionController;
 
 Route::prefix('/')->group(function () {
-  Route::name('auth.')->group(function () {
+  Route::name('auth.')->middleware('guest:web')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store'])->name('registerStore');
@@ -15,7 +15,6 @@ Route::prefix('/')->group(function () {
 
     Route::controller(AuthenticatedSessionController::class)->group(function () {
       Route::get('login', 'create')->name('login');
-
       Route::post('login', 'store')->name('loginStore');
     });
     Route::controller(SocialiteController::class)->group(function () {
