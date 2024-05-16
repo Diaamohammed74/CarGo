@@ -136,7 +136,7 @@
         <div class="container">
             <h4 class="text-6">CarGo Clips</h4>
             <div class="row justify-content-between">
-                @foreach ($videos as $video )
+                @forelse ($videos as $video )
                 <div class="col-md-4">
                     <div class="card">
                         <img src="{{ asset('assets-front/images/Rectangle 97.png') }}" alt="fix HeadLights"
@@ -151,7 +151,13 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        No Clips available at the moment. Please check back later.
+                    </div>
+                </div>
+                @endforelse
             </div>
             <br /> <br />
             <div class="see text-center">
