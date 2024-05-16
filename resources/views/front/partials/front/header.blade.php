@@ -30,11 +30,11 @@
                 </div>
                 <!-- User Profile -->
                 <div class="col-md-6">
-                    {{-- @if (auth()->check()) --}}
+                    @if (auth()->check())
                         @include('front.partials.front.user-profile')
-                    {{-- @else --}}
-                        {{-- @include('front.partials.front.login-register-buttons') --}}
-                    {{-- @endif --}}
+                    @else
+                        @include('front.partials.front.login-register-buttons')
+                    @endif
                 </div>
 
                 <!-- Site Information -->
