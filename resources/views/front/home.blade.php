@@ -119,7 +119,7 @@
                             </div>
                             @empty
                             <div class="col-12">
-                                <div class="alert alert-warning" role="alert">
+                                <div class="alert alert-warning" role="info">
                                     No products available at the moment. Please check back later.
                                 </div>
                             </div>
@@ -153,8 +153,8 @@
                 </div>
                 @empty
                 <div class="col-12">
-                    <div class="alert alert-warning" role="alert">
-                        No Clips available at the moment. Please check back later.
+                    <div class="alert alert-warning" role="info">
+                        No clips available at the moment. Please check back later.
                     </div>
                 </div>
                 @endforelse
