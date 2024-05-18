@@ -14,6 +14,7 @@ Route::prefix('/')->group(function () {
     Route::controller(AuthenticatedSessionController::class)->group(function () {
       Route::get('login', 'create')->name('login');
       Route::post('login', 'store')->name('loginStore');
+      Route::delete('logout','destroy')->name('logout');
     });
     Route::controller(SocialiteController::class)->group(function () {
       Route::get('/login/{provider}', 'redirectToProvider')->name('socialite.login');
@@ -29,5 +30,10 @@ Route::prefix('/')->group(function () {
 
       // Route::post('reset-password', [NewPasswordController::class, 'store'])
       //     ->name('password.store');
+  });
+
+
+  Route::controller(AuthenticatedSessionController::class)->group(function () {
+    Route::delete('logout','destroy')->name('auth.logout');
   });
 });

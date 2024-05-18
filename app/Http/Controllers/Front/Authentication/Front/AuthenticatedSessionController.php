@@ -26,9 +26,8 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
+        toast('Welcome back again ' . auth()->user()->first_name, 'success');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -42,7 +41,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        return redirect('/');
+        toast('Loggedout successfult','warning');
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

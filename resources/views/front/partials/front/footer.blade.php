@@ -4,14 +4,14 @@
             <div class="footer-logo">
                 <a class="logo" href="#">Car<span>Go</span></a>
             </div>
-            <div class="footer-links">
+            {{-- <div class="footer-links">
                 <ul class="footer-menu">
                     <li><a href="#">About</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">Sessions</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-            </div>
+            </div> --}}
 
         </div>
         <div class="footer-bottom d-flex justify-content-spacebetween">

@@ -53,7 +53,7 @@ class SocialiteController extends Controller
         ]);
     
         Auth::login($user, true);
-    
+        toast('Welcome back again ' . auth()->user()->first_name, 'success');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
     

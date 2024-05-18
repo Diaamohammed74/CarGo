@@ -12,7 +12,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/socialite": "^5.14",
         "laravel/tinker": "^2.8",
-        "yoeunes/toastr": "^2.3"
+        "realrashid/sweet-alert": "^7.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
