@@ -1,6 +1,6 @@
 <script>
     Swal.fire({
-        title: 'Your Account Not Verified yetز',
+        title: 'Your Account Not Verified yet.',
         icon: 'warning',
         position: 'top',
         showConfirmButton: false,
