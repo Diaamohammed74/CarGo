@@ -7,8 +7,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{route('home')}}">Home</a>
+            <li class="nav-item{{ request()->is('/') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="index_services.html">Services</a>
@@ -16,11 +16,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="index_session.html">CarGo Clips</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('about-us')}}">About us</a>
+            <li class="nav-item{{ request()->is('about-us') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('about-us') }}">About us</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('contact-us')}}">Contact</a>
+            <li class="nav-item{{ request()->is('contact-us') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('contact-us') }}">Contact</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Blogs</a>
