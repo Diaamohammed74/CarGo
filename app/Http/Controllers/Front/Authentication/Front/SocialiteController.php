@@ -21,7 +21,6 @@ class SocialiteController extends Controller
     public function handleProviderCallback($provider)
     {
         $socialiteUser = Socialite::driver($provider)->user();
-        
         $firstName = '';
         $lastName = '';
         
@@ -46,7 +45,6 @@ class SocialiteController extends Controller
             'status'            => StatusEnum::Active->value,
             'email'             => $socialiteUser->getEmail(),
             'image'             => $socialiteUser->getAvatar(),
-            'email_verified_at' => now(),
         ]);
     
         Customer::updateOrCreate([

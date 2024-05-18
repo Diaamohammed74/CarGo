@@ -58,6 +58,14 @@ header .container-fluid > .row > .col-md-6 > .profile img {
     border-radius: 30px;
     margin-right: 10px;
 }
+
+
+header .container-fluid > .row > .col-md-6 > .profile a.reg{
+    background-color: #007bee;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
 /* end Style header */
 
 /* Media Queries for Responsive Design */

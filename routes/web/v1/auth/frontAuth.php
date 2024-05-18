@@ -10,9 +10,7 @@ Route::prefix('/')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store'])->name('registerStore');
-
-
-
+    
     Route::controller(AuthenticatedSessionController::class)->group(function () {
       Route::get('login', 'create')->name('login');
       Route::post('login', 'store')->name('loginStore');

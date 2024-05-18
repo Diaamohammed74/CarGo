@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="index_home.html">Home</a>
+                <a class="nav-link" href="{{route('home')}}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="index_services.html">Services</a>
@@ -17,10 +17,10 @@
                 <a class="nav-link" href="index_session.html">CarGo Clips</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index_about.html">About us</a>
+                <a class="nav-link" href="{{route('about-us')}}">About us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index_contact.html">Contact</a>
+                <a class="nav-link" href="{{route('contact-us')}}">Contact</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Blogs</a>

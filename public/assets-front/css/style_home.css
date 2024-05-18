@@ -25,7 +25,7 @@ html::-webkit-scrollbar-thumb {
     border-radius: 6px; /* Radius of the thumb */
 }
 body {
-    background-color: rgba(235, 242, 250, 1) !important;
+    background-color: #fff !important;
 }
 
 header {
@@ -150,18 +150,18 @@ header .container-fluid > .row > .col-md-6 > .home-3 .book-ser{
 .services .container .row .col-md-3 {
     margin-top: 10px;
 }
-.services .container .row .col-md-3 .serv {
-    position: relative; /* Ensure positioning context for pseudo-element */
+/* .services .container .row .col-md-3 .serv {
+    position: relative; 
     width: 100%;
     border-radius: 5px;
     padding: 5px;
     height: 30vh;
-    background-image: url("../images/Service_Oil\ Change_BG.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    
+} */
+.services .container .row .col-md-3 .serv img{
+    opacity: 0.9;
 }
-
-.services .container .row .col-md-3 .serv::before {
+.services .container .row .col-md-3 .serv img::after {
     content: "";
     position: absolute;
     top: 0;
@@ -172,13 +172,32 @@ header .container-fluid > .row > .col-md-6 > .home-3 .book-ser{
     border-radius: 5px;
 }
 
-
+.services .container .row .col-md-3 .serv .se{
+    position: absolute;
+    top: 110%;
+    left:10%;
+}
+.services .container .row .col-md-3 .serv .se-2{
+    position: absolute;
+    top: 110%;
+    left:32%;
+}
+.services .container .row .col-md-3 .serv .se-3{
+    position: absolute;
+    top: 110%;
+    left:52%;
+}
+.services .container .row .col-md-3 .serv .se-4{
+    position: absolute;
+    top: 110%;
+    left:75%;
+}
 .services .container .row .col-md-3 .serv .text-7 {
     color: #fff;
     font-size: 18px;
     align-items: justify;
     margin-top: 5px;
-    position: relative; 
+    
     z-index: 1; 
 }
 .services .container .row .col-md-3 a {
@@ -455,10 +474,11 @@ button.popular{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 .testimonials .container #testimonialsCarousel .carousel-inner .carousel-item .row > .col-md-3 > .card > .card-img-top {
-    width:15%;
+    width:18%;
+    height: 17%;
     position: absolute;
     bottom: 95%;
-    border-radius: 100%;
+    border-radius: 50%;
     left:40%;
     border: 3px solid  rgba(0, 124, 238, 0.15);
 }
@@ -591,7 +611,9 @@ footer .container .footer-content .footer-logo .logo span{
 }
 
 .loader-container img {
-    border-radius: 100%;
+    border-radius: 50%;
+    height: 30%;
+    width: 30%;
 }
 
 .loader-container.rotateOut {

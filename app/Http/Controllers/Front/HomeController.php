@@ -17,7 +17,7 @@ class HomeController extends Controller
             $products = $this->getProducts();
             $tags     = $this->getPobularCarProblems();
             $videos   = $this->getVideos();
-        return view('front.home', compact(['services','products','tags','videos']));
+        return view('front.pages.home.index', compact(['services','products','tags','videos']));
     }
     protected function getServices()
     {
@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
     protected function getProducts()
     {
-        return Product::latest()->take(3)->get();
+        return Product::latest()->take(4)->get();
     }
     protected function getPobularCarProblems()
     {
