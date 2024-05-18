@@ -12,6 +12,9 @@
             <div class="col-md-6">
                 @if (auth()->check())
                     @include('front.partials.front.user-profile')
+                    @if (!auth()->user()->hasVerifiedEmail())
+                    @include('front.partials.front.verification-alert')
+                    @endif
                 @else
                     @include('front.partials.front.login-register-buttons')
                 @endif
