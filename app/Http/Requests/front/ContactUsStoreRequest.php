@@ -19,4 +19,12 @@ class ContactUsStoreRequest extends FormRequest
             'message' => ['required', 'string','max:500'],
         ];
     }
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($validator->fails()) {
+                alert()->warning('Failed!');
+            }
+        });
+    }
 }
