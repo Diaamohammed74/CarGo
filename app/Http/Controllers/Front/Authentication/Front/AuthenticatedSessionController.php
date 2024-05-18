@@ -41,7 +41,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-        toast('Loggedout successfult','warning');
+        toast('Loggedout successfuly','warning');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 }
