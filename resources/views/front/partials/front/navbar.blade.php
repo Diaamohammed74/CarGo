@@ -14,16 +14,16 @@
                 <a class="nav-link" href="index_services.html">Services</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="index_services.html">Products</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="index_session.html">CarGo Clips</a>
             </li>
             <li class="nav-item{{ request()->is('about-us') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('about-us') }}">About us</a>
             </li>
             <li class="nav-item{{ request()->is('contact-us') ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('contact-us') }}">Contact</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Blogs</a>
+                <a class="nav-link" href="{{ route('contact-us') }}">Contact us</a>
             </li>
         </ul>
     </div>
