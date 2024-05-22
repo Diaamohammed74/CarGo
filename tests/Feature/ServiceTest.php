@@ -11,7 +11,7 @@ class ServiceTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/services';
+    protected string $endpoint = '/services';
     protected string $tableName = 'services';
 
     public function setUp(): void

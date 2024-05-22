@@ -11,7 +11,7 @@ class VideoCategoryTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/videoCategories';
+    protected string $endpoint = '/videoCategories';
     protected string $tableName = 'videoCategories';
 
     public function setUp(): void

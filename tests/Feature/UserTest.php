@@ -3,15 +3,13 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use App\Models\User;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/users';
+    protected string $endpoint = '/users';
     protected string $tableName = 'users';
 
     public function setUp(): void

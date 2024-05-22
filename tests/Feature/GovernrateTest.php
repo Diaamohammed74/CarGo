@@ -11,7 +11,7 @@ class GovernrateTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/governrates';
+    protected string $endpoint = '/governrates';
     protected string $tableName = 'governrates';
 
     public function setUp(): void

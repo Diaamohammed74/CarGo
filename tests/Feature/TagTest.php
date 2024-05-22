@@ -11,7 +11,7 @@ class TagTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/tags';
+    protected string $endpoint = '/tags';
     protected string $tableName = 'tags';
 
     public function setUp(): void

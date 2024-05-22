@@ -11,7 +11,7 @@ class MechanicalTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/mechanicals';
+    protected string $endpoint = '/mechanicals';
     protected string $tableName = 'mechanicals';
 
     public function setUp(): void

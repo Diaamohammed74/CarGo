@@ -43,7 +43,7 @@ return [
             GeneratorFilesType::CONTROLLER => [
                 'folder_path' => app_path('Http/Controllers/Api/V1/Dashboard/{ModelName}'),
                 'file_name'   => '{ModelName}Controller.php',
-                'namespace'   => 'App\Http\Controllers\Api\V1\Dashboard\{ModelName}',
+                'namespace'   => 'App\Http\Controllers\Dashboard\{ModelName}',
             ],
             GeneratorFilesType::RESOURCE => [
                 'folder_path' => app_path('Http/Resources/Dashboard/{ModelName}'),

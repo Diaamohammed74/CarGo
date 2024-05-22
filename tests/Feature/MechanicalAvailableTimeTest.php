@@ -11,7 +11,7 @@ class MechanicalAvailableTimeTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/mechanicalAvailableTimes';
+    protected string $endpoint = '/mechanicalAvailableTimes';
     protected string $tableName = 'mechanicalAvailableTimes';
 
     public function setUp(): void

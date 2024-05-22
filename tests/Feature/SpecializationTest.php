@@ -11,7 +11,7 @@ class SpecializationTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/specializations';
+    protected string $endpoint = '/specializations';
     protected string $tableName = 'specializations';
 
     public function setUp(): void

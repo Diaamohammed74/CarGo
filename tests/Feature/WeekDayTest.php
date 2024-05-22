@@ -11,7 +11,7 @@ class WeekDayTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/weekDays';
+    protected string $endpoint = '/weekDays';
     protected string $tableName = 'weekDays';
 
     public function setUp(): void

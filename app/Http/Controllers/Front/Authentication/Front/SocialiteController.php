@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Front\Authentication\Front;
-
 use App\Enums\StatusEnum;
 use App\Enums\UsersTypes;
 use App\Models\User;

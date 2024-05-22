@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Front\Authentication\Front;
-
 use App\Models\User;
 use App\Models\Customer;
 use Illuminate\View\View;

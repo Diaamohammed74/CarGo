@@ -11,7 +11,7 @@ class VideoTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/videos';
+    protected string $endpoint = '/videos';
     protected string $tableName = 'videos';
 
     public function setUp(): void

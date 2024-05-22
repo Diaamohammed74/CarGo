@@ -11,7 +11,7 @@ class AdminTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/admins';
+    protected string $endpoint = '/admins';
     protected string $tableName = 'admins';
 
     public function setUp(): void

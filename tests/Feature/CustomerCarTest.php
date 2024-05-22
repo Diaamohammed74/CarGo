@@ -11,7 +11,7 @@ class CustomerCarTest extends TestCase
 {
     use  RefreshDatabase;
 
-    protected string $endpoint = '/api/v1/customerCars';
+    protected string $endpoint = '/customerCars';
     protected string $tableName = 'customerCars';
 
     public function setUp(): void
