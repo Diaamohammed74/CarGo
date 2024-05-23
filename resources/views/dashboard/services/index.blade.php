@@ -38,7 +38,6 @@
                                     @foreach ($services as $service)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-
                                             <td>{{ $service->title }}</td>
                                             <td>{{ $service->price }}</td>
                                             <td>{{ $service->specialization->title }}</td>

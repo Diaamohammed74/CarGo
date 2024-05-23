@@ -72,11 +72,11 @@
 
             <li class="{{ Request::is('dashboard/service-categories*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);"
-                    aria-expanded="{{ Request::is('dashboard/service-categories*') ? 'true' : 'false' }}">
+                    aria-expanded="{{ Request::is('dashboard/services*') ? 'true' : 'false' }}">
                     <div class="menu-icon">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-car-burst"></i>
                     </div>
-                    <span class="nav-text">Service categories</span>
+                    <span class="nav-text">Services</span>
                 </a>
                 <ul aria-expanded="{{ Request::is('dashboard/service-categories*') ? 'true' : 'false' }}"
                     class="{{ Request::is('dashboard/service-categories*') ? 'mm-show' : '' }}">

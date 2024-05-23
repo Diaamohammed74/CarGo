@@ -81,6 +81,7 @@ class ServiceController extends Controller
 
     public function destroy(Service $service)
     {
+        dd($service);
         if (isset($service->image)) {
             $this->deleteMedia($service->image);
         }
