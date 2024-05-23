@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard\Service;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Service\UpdateServiceRequest;
-use App\Http\Requests\Service\CreateServiceRequest;
-use App\Http\Resources\Dashboard\Service\ServiceResource;
-use App\Http\Traits\Api\MediaHandler;
 use App\Models\Service;
+use App\Models\Specialization;
+use App\Models\ServiceCategory;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Traits\Api\MediaHandler;
+use App\Http\Requests\Service\CreateServiceRequest;
+use App\Http\Requests\Service\UpdateServiceRequest;
+use App\Http\Resources\Dashboard\Service\ServiceResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ServiceController extends Controller
@@ -18,9 +20,10 @@ class ServiceController extends Controller
     {
     }
 
-    public function index(): AnonymousResourceCollection
+    public function index()
     {
         $services = Service::useFilters()
+            ->latest()
             ->with([
                 'category',
                 'specialization',
@@ -33,25 +36,34 @@ class ServiceController extends Controller
                     ]
                 ],
             ])
-            ->dynamicPaginate();
-        return ServiceResource::collection($services);
+            ->get();
+        return view('dashboard.services.index', compact(['services']));
     }
-    
+    public function create()
+    {
+        $specializations = Specialization::get();
+        $categories      = ServiceCategory::get();
+        return view('dashboard.services.add', compact(['categories', 'specializations']));
+    }
 
-    public function store(CreateServiceRequest $request): JsonResponse
+    public function store(CreateServiceRequest $request)
     {
         $data          = $request->validated();
         $data['image'] = $this->upload($data['image'], 'uploads/images');
         $service       = Service::create($data);
-        $service->tags()->sync($data['tag_ids']);
-        $service->load(['category','specialization','tags']);
-        $service->refresh();
-        return $this->apiResponseStored(new ServiceResource($service));
+        if (isset($data['tag_ids'])) {
+            $service->tags()->sync($data['tag_ids']);
+        }
+        return back()->with('success', 'Added Successfuly.');
     }
 
     public function show(Service $service): JsonResponse
     {
         return $this->apiResponseShow(new ServiceResource($service));
+    }
+    public function edit(Service $service)
+    {
+        return view();
     }
 
     public function update(UpdateServiceRequest $request, Service $service): JsonResponse
@@ -62,18 +74,17 @@ class ServiceController extends Controller
         }
         $service->update($data);
         $service->tags()->sync($data['tag_ids']);
-        $service->load(['category','specialization','tags']);
+        $service->load(['category', 'specialization', 'tags']);
         $service->refresh();
         return $this->apiResponseUpdated(new ServiceResource($service));
     }
 
-    public function destroy(Service $service): JsonResponse
+    public function destroy(Service $service)
     {
         if (isset($service->image)) {
             $this->deleteMedia($service->image);
         }
         $service->delete();
-        return $this->apiResponseDeleted();
+        return back()->with('error', 'Deleted Successfuly.');
     }
-
 }

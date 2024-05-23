@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use App\Filters\Service\ServiceFilters;
 use App\Http\Traits\Api\Slugify;
+use App\Filters\Service\ServiceFilters;
 use Essa\APIToolKit\Filters\Filterable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Service extends Model
 {
-    use HasFactory, Filterable,Slugify;
+    use HasFactory, Filterable, Slugify;
 
     protected string $default_filters = ServiceFilters::class;
 
@@ -29,11 +30,13 @@ class Service extends Model
         'image'
     ];
 
-    public function category(){
-        return $this->belongsTo(ServiceCategory::class,'service_category_id');
+    public function category()
+    {
+        return $this->belongsTo(ServiceCategory::class, 'service_category_id');
     }
-    public function specialization(){
-        return $this->belongsTo(Specialization::class,'specialization_id');
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class, 'specialization_id');
     }
 
     public function mechanicals()
@@ -44,7 +47,7 @@ class Service extends Model
             'specialization_id',           // Foreign key on Mechanical
             'id'               ,           // Foreign key on User
             'specialization_id',           // Local key on Service
-            'user_id'                      // Local key on Mechanical
+                                'user_id'  // Local key on Mechanical
         );
     }
 
@@ -53,5 +56,9 @@ class Service extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'service_tags');
+    }
+    public function getImageAttribute()
+    {
+        return asset(Storage::url($this->attributes['image']));
     }
 }

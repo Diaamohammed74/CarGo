@@ -20,11 +20,20 @@
                 </a>
             </li>
             
+            <li>
+                <a href="{{ route('home') }}" aria-expanded="false">
+                    <div class="menu-icon">
+                        <i class="fa-brands fa-edge"></i>
+                    </div>
+                    <span class="nav-text">Website</span>
+                </a>
+            </li>
+
             <li class="{{ Request::is('dashboard/specializations*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);"
                     aria-expanded="{{ Request::is('dashboard/specializations*') ? 'true' : 'false' }}">
                     <div class="menu-icon">
-                        <i class="fad fa-books fa-lg"></i>
+                        <i class="fa-solid fa-wrench"></i>
                     </div>
                     <span class="nav-text">Specializations</span>
                 </a>
@@ -39,11 +48,12 @@
                     </li>
                 </ul>
             </li>
+            
             <li class="{{ Request::is('dashboard/tags*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);"
                     aria-expanded="{{ Request::is('dashboard/tags*') ? 'true' : 'false' }}">
                     <div class="menu-icon">
-                        <i class="fad fa-books fa-lg"></i>
+                        <i class="fa-solid fa-hashtag"></i>
                     </div>
                     <span class="nav-text">Tags</span>
                 </a>
@@ -64,7 +74,7 @@
                 <a class="has-arrow" href="javascript:void(0);"
                     aria-expanded="{{ Request::is('dashboard/service-categories*') ? 'true' : 'false' }}">
                     <div class="menu-icon">
-                        <i class="fad fa-books fa-lg"></i>
+                        <i class="fa-solid fa-list"></i>
                     </div>
                     <span class="nav-text">Service categories</span>
                 </a>
@@ -79,13 +89,33 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="{{ Request::is('dashboard/services*') ? 'mm-active' : '' }}">
+                <a class="has-arrow" href="javascript:void(0);"
+                    aria-expanded="{{ Request::is('dashboard/services*') ? 'true' : 'false' }}">
+                    <div class="menu-icon">
+                        <i class="fa-solid fa-car-burst"></i>
+                    </div>
+                    <span class="nav-text">Services</span>
+                </a>
+                <ul aria-expanded="{{ Request::is('dashboard/services*') ? 'true' : 'false' }}"
+                    class="{{ Request::is('dashboard/services*') ? 'mm-show' : '' }}">
+                    <li class="{{ Route::currentRouteName() == 'dashboard.services.index' ? 'mm-active' : '' }}">
+                        <a href="{{ route('dashboard.services.index') }}">View</a>
+                    </li>
+                    <li
+                        class="{{ Route::currentRouteName() == 'dashboard.services.create' ? 'mm-active' : '' }}">
+                        <a href="{{ route('dashboard.services.create') }}">Add new</a>
+                    </li>
+                </ul>
+            </li>
             
 
             <li class="{{ Request::is('dashboard/product-categories*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);"
                     aria-expanded="{{ Request::is('dashboard/product-categories*') ? 'true' : 'false' }}">
                     <div class="menu-icon">
-                        <i class="fad fa-books fa-lg"></i>
+                        <i class="fa-solid fa-list"></i>
                     </div>
                     <span class="nav-text">Product Categories</span>
                 </a>
@@ -106,7 +136,7 @@
                 <a class="has-arrow" href="javascript:void(0);"
                     aria-expanded="{{ Request::is('dashboard/video-categories*') ? 'true' : 'false' }}">
                     <div class="menu-icon">
-                        <i class="fad fa-books fa-lg"></i>
+                        <i class="fa-solid fa-list"></i>
                     </div>
                     <span class="nav-text">video Categories</span>
                 </a>
