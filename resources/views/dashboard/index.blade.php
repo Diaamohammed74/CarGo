@@ -16,7 +16,7 @@
                         </div>
                         <div class="total-projects ms-3">
                             <h3 class="text-success count">0</h3>
-                            <span>Total Students</span>
+                            <span>Total Customers</span>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="total-projects ms-3">
                             <h3 class="text-primary count">0</h3>
-                            <span>Total Subscriped Students</span>
+                            <span>Total Mechanicals</span>
                         </div>
                     </div>
                 </div>
