@@ -74,7 +74,7 @@
                 <a class="has-arrow" href="javascript:void(0);"
                     aria-expanded="{{ Request::is('dashboard/services*') ? 'true' : 'false' }}">
                     <div class="menu-icon">
-                        <i class="fa-solid fa-car-burst"></i>
+                        <i class="fa-solid fa-list"></i>
                     </div>
                     <span class="nav-text">Service Categroy</span>
                 </a>
