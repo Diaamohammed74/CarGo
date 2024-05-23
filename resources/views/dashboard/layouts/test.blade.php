@@ -77,7 +77,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="{{ url('index')}}" class="brand-logo">
+            <a href="{{route('home')}}" class="brand-logo">
 
                 <img class="logo-abbr w-25" src="{{ asset('images/logo/logo-img.png')}}" alt="Logo" />
                 <img class="brand-title w-75" src="{{ asset('images/logo/logo-text.png')}}" alt="Logo" />

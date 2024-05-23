@@ -80,6 +80,9 @@
     @endforeach
     @endif
     @stack('scripts')
+    @if (!empty($errors))
+        
+
     @if($errors->any())
     @foreach ($errors->all() as $error)
     <script>
@@ -103,6 +106,7 @@
                 });
     </script>
     @endforeach
+    @endif
     @endif
 </body>
 </html>

@@ -7,7 +7,7 @@
             <div class="col-xl-12">
                 <div class="auth-form">
                     <div class="text-center mb-3">
-                        <a href="{{ url('index')}}"><img src="{{ asset('images/logo/logo-full.png')}}" alt=""></a>
+                        <a href="{{route('home')}}"><img src="{{ asset('images/logo/logo-full.png')}}" alt=""></a>
                     </div>
                     <h4 class="text-center mb-4">Sign up your account</h4>
                     <form action="{{ url('index')}}">

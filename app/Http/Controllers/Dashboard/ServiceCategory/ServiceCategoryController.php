@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Dashboard\ServiceCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceCategory\UpdateServiceCategoryRequest;
 use App\Http\Requests\ServiceCategory\CreateServiceCategoryRequest;
-use App\Http\Resources\Dashboard\ServiceCategory\ServiceCategoryResource;
 use App\Models\ServiceCategory;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+
 
 class ServiceCategoryController extends Controller
 {
@@ -16,33 +14,42 @@ class ServiceCategoryController extends Controller
     {
     }
 
-    public function index(): AnonymousResourceCollection
+    public function index()
     {
-        $serviceCategories = ServiceCategory::useFilters()->dynamicPaginate();
-        return ServiceCategoryResource::collection($serviceCategories);
+        $serviceCategories = ServiceCategory::useFilters()->latest()->get();
+        return view('dashboard.service-category.index', compact('serviceCategories'));
     }
 
-    public function store(CreateServiceCategoryRequest $request): JsonResponse
+    public function create()
     {
-        $serviceCategory = ServiceCategory::create($request->validated());
-        return $this->apiResponseStored(new ServiceCategoryResource($serviceCategory));
+        return view('dashboard.service-category.add');
     }
 
-    public function show(ServiceCategory $serviceCategory): JsonResponse
+    public function store(CreateServiceCategoryRequest $request)
     {
-        return $this->apiResponseShow(new ServiceCategoryResource($serviceCategory));
+        ServiceCategory::create($request->validated());
+        return back()->with('success', 'Added Successfully');
     }
 
-    public function update(UpdateServiceCategoryRequest $request, ServiceCategory $serviceCategory): JsonResponse
+    public function show(ServiceCategory $serviceCategory)
+    {
+        return view('dashboard.service-category.show', compact('serviceCategory'));
+    }
+
+    public function edit(ServiceCategory $serviceCategory)
+    {
+        return view('dashboard.service-category.edit', compact('serviceCategory'));
+    }
+
+    public function update(UpdateServiceCategoryRequest $request, ServiceCategory $serviceCategory)
     {
         $serviceCategory->update($request->validated());
-        return $this->apiResponseUpdated(new ServiceCategoryResource($serviceCategory));
+        return to_route('dashboard.service-categories.index')->with('success', 'Updated Successfully');
     }
 
-    public function destroy(ServiceCategory $serviceCategory): JsonResponse
+    public function destroy(ServiceCategory $serviceCategory)
     {
         $serviceCategory->delete();
-        return $this->apiResponseDeleted();
+        return back()->with('error', 'Deleted Successfully');
     }
-
 }

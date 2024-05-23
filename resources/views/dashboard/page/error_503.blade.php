@@ -8,7 +8,7 @@
         <h4 class="error-head"><i class="fa fa-times-circle text-danger"></i> Service Unavailable</h4>
 
         <div>
-            <a href="{{ url('index')}}" class="btn btn-secondary">BACK TO HOMEPAGE</a>
+            <a href="{{route('home')}}" class="btn btn-secondary">BACK TO HOMEPAGE</a>
         </div>
     </div>
     </div>

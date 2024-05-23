@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Dashboard\Tag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tag\UpdateTagRequest;
 use App\Http\Requests\Tag\CreateTagRequest;
-use App\Http\Resources\Dashboard\Tag\TagResource;
 use App\Models\Tag;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class TagController extends Controller
 {
@@ -16,34 +13,43 @@ class TagController extends Controller
     {
     }
 
-    public function index(): AnonymousResourceCollection
-    {
-        $tags = Tag::useFilters()->dynamicPaginate();
 
-        return TagResource::collection($tags);
+    public function index()
+    {
+        $tags = Tag::useFilters()->latest()->get();
+        return view('dashboard.tags.index', compact('tags'));
     }
 
-    public function store(CreateTagRequest $request): JsonResponse
+    public function create()
     {
-        $tag = Tag::create($request->validated());
-        return $this->apiResponseStored(new TagResource($tag));
+        return view('dashboard.tags.add');
     }
 
-    public function show(Tag $tag): JsonResponse
+    public function store(CreateTagRequest $request)
     {
-        return $this->apiResponseShow(new TagResource($tag));
+        Tag::create($request->validated());
+        return back()->with('success', 'Added Successfully');
     }
 
-    public function update(UpdateTagRequest $request, Tag $tag): JsonResponse
+    public function show(Tag $tag)
+    {
+        return view('dashboard.tags.show', compact('tag'));
+    }
+
+    public function edit(Tag $tag)
+    {
+        return view('dashboard.tags.edit', compact('tag'));
+    }
+
+    public function update(UpdateTagRequest $request, Tag $tag)
     {
         $tag->update($request->validated());
-
-        return $this->apiResponseUpdated(new TagResource($tag));
+        return to_route('dashboard.tags.index')->with('success', 'Updated Successfully');
     }
 
-    public function destroy(Tag $tag): JsonResponse
+    public function destroy(Tag $tag)
     {
         $tag->delete();
-        return $this->apiResponseDeleted();
+        return back()->with('error', 'Deleted Successfully');
     }
 }

@@ -2,49 +2,55 @@
 
 namespace App\Http\Controllers\Dashboard\ProductCategory;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductCategory\UpdateProductCategoryRequest;
-use App\Http\Requests\ProductCategory\CreateProductCategoryRequest;
-use App\Http\Resources\Dashboard\ProductCategory\ProductCategoryResource;
 use App\Models\ProductCategory;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductCategory\CreateProductCategoryRequest;
+use App\Http\Requests\ProductCategory\UpdateProductCategoryRequest;
+use App\Http\Requests\ServiceCategory\CreateServiceCategoryRequest;
+use App\Http\Requests\ServiceCategory\UpdateServiceCategoryRequest;
 
 class ProductCategoryController extends Controller
 {
     public function __construct()
     {
-
     }
 
-    public function index(): AnonymousResourceCollection
+    public function index()
     {
-        $productCategories = ProductCategory::useFilters()->dynamicPaginate();
-        return ProductCategoryResource::collection($productCategories);
+        $serviceCategories = ProductCategory::useFilters()->latest()->get();
+        return view('dashboard.product-category.index', compact('serviceCategories'));
     }
 
-    public function store(CreateProductCategoryRequest $request): JsonResponse
+    public function create()
     {
-        $productCategory = ProductCategory::create($request->validated());
-        return $this->apiResponseStored(new ProductCategoryResource($productCategory));
+        return view('dashboard.product-category.add');
     }
 
-    public function show(ProductCategory $productCategory): JsonResponse
+    public function store(CreateProductCategoryRequest $request)
     {
-        return $this->apiResponseShow(new ProductCategoryResource($productCategory));
+        ProductCategory::create($request->validated());
+        return back()->with('success', 'Added Successfully');
     }
 
-    public function update(UpdateProductCategoryRequest $request, ProductCategory $productCategory): JsonResponse
+    public function show(ProductCategory $productCategory)
+    {
+        return view('dashboard.product-category.show', compact('ProductCategory'));
+    }
+
+    public function edit(ProductCategory $productCategory)
+    {
+        return view('dashboard.product-category.edit', compact('productCategory'));
+    }
+
+    public function update(UpdateProductCategoryRequest $request, ProductCategory $productCategory)
     {
         $productCategory->update($request->validated());
-        return $this->apiResponseUpdated(new ProductCategoryResource($productCategory));
+        return to_route('dashboard.product-categories.index')->with('success', 'Updated Successfully');
     }
 
-    public function destroy(ProductCategory $productCategory): JsonResponse
+    public function destroy(ProductCategory $productCategory)
     {
         $productCategory->delete();
-        return $this->apiResponseDeleted();
+        return back()->with('error', 'Deleted Successfully');
     }
-
-   
 }

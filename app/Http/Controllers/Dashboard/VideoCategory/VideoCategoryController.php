@@ -7,8 +7,6 @@ use App\Http\Requests\VideoCategory\UpdateVideoCategoryRequest;
 use App\Http\Requests\VideoCategory\CreateVideoCategoryRequest;
 use App\Http\Resources\Dashboard\VideoCategory\VideoCategoryResource;
 use App\Models\VideoCategory;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class VideoCategoryController extends Controller
 {
@@ -16,36 +14,42 @@ class VideoCategoryController extends Controller
     {
     }
 
-    public function index(): AnonymousResourceCollection
+    public function index()
     {
-        $videoCategories = VideoCategory::useFilters()->dynamicPaginate();
-
-        return VideoCategoryResource::collection($videoCategories);
+        $serviceCategories = VideoCategory::useFilters()->latest()->get();
+        return view('dashboard.video-category.index', compact('serviceCategories'));
     }
 
-    public function store(CreateVideoCategoryRequest $request): JsonResponse
+    public function create()
     {
-        $videoCategory = VideoCategory::create($request->validated());
-
-        return $this->apiResponseStored(new VideoCategoryResource($videoCategory));
+        return view('dashboard.video-category.add');
     }
 
-    public function show(VideoCategory $videoCategory): JsonResponse
+    public function store(CreateVideoCategoryRequest $request)
     {
-        return $this->apiResponseShow(new VideoCategoryResource($videoCategory));
+        VideoCategory::create($request->validated());
+        return back()->with('success', 'Added Successfully');
     }
 
-    public function update(UpdateVideoCategoryRequest $request, VideoCategory $videoCategory): JsonResponse
+    public function show(VideoCategory $videoCategory)
+    {
+        return view('dashboard.video-category.show', compact('videoCategory'));
+    }
+
+    public function edit(VideoCategory $videoCategory)
+    {
+        return view('dashboard.video-category.edit', compact('videoCategory'));
+    }
+
+    public function update(UpdateVideoCategoryRequest $request, VideoCategory $videoCategory)
     {
         $videoCategory->update($request->validated());
-
-        return $this->apiResponseUpdated(new VideoCategoryResource($videoCategory));
+        return to_route('dashboard.video-categories.index')->with('success', 'Updated Successfully');
     }
 
-    public function destroy(VideoCategory $videoCategory): JsonResponse
+    public function destroy(VideoCategory $videoCategory)
     {
         $videoCategory->delete();
-
-        return $this->apiResponseDeleted();
+        return back()->with('error', 'Deleted Successfully');
     }
 }

@@ -11,8 +11,8 @@
 
 						<div class="card-body">
 							<div class="logo-header">
-								<a href="{{ url('index')}}" class="logo"><img src="{{asset('images/logo/logo-full.png')}}" alt="" class="width-230 light-logo"></a>
-								<a href="{{ url('index')}}" class="logo"><img src="{{asset('images/logo/logofull-white.png')}}" alt="" class="width-230 dark-logo"></a>
+								<a href="{{route('home')}}" class="logo"><img src="{{asset('images/logo/logo-full.png')}}" alt="" class="width-230 light-logo"></a>
+								<a href="{{route('home')}}" class="logo"><img src="{{asset('images/logo/logofull-white.png')}}" alt="" class="width-230 dark-logo"></a>
 							</div>
 
 							<nav>
