@@ -76,7 +76,7 @@
                     <div class="menu-icon">
                         <i class="fa-solid fa-car-burst"></i>
                     </div>
-                    <span class="nav-text">Services</span>
+                    <span class="nav-text">Service Categroy</span>
                 </a>
                 <ul aria-expanded="{{ Request::is('dashboard/service-categories*') ? 'true' : 'false' }}"
                     class="{{ Request::is('dashboard/service-categories*') ? 'mm-show' : '' }}">
