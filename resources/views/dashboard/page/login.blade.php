@@ -119,8 +119,7 @@
 							<div class="card-footer">
 								<div class=" bottom-footer clearfix m-t10 m-b20 row text-center">
 								<div class="col-lg-12 text-center">
-									<span> © Copyright Easy-Spelling by <span class="heart"></span>
-									<a href="https://ceo.phoenixtechs.tech">Phoenix </a> All rights reserved.</span>
+									<span> © Copyright CarGo</span>
 								</div>
 							</div>
 						</div>
