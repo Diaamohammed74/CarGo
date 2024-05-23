@@ -14,6 +14,7 @@ class isAdmin
         if (auth()->user()->type->value == UsersTypes::ADMIN->value) {
             return $next($request);
         }
-        return response(view('dashboard.errors.403'), 403);
+        // return response(view('dashboard.errors.403'), 403);
+        return to_route('dashboard.login');
     }
 }
