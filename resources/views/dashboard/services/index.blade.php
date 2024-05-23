@@ -46,7 +46,7 @@
                                             <td>{{ $service->category->title }}</td>
                                             <td>{{ Str::limit($service->description, 50) }}</td>
                                             <td>
-                                                <a href  = "{{ route('dashboard.services.edit', $service->id) }}"
+                                                {{-- <a href  = "{{ route('dashboard.services.edit', $service->id) }}" --}}
                                                     class = "btn btn-primary btn-sm"><i class = "fas fa-edit"></i></a>
                                                     <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="POST" id="deleteForm" style="display:inline;">
                                                         @csrf
