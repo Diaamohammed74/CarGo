@@ -70,7 +70,7 @@
 							<div class="card-footer">
 								<div class=" bottom-footer clearfix m-t10 m-b20 row text-center">
 								<div class="col-lg-12 text-center">
-									<span> © Copyright CarGo</span>
+									<span> © Copyright CarGo Diaaaaaa</span>
 								</div>
 							</div>
 						</div>

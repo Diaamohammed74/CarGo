@@ -19,10 +19,10 @@ class RegisterRequest extends FormRequest
             'first_name' => ['required', 'string'],
             'last_name'  => ['required', 'string'],
             'email'      => ['required', 'email', 'unique:users,email'],
-            'gender'   => ['required', 'string', Rule::in(['male', 'female'])],
-            'password' => ['required', 'string', 'confirmed'],
+            'gender'     => ['required', 'string', Rule::in(['male', 'female'])],
+            'password'   => ['required', 'string', 'confirmed'],
             'phone'      => [
-                'required', 'string', 'unique:users,phone', 'regex:/^01[0125][0-9]{8}$/'
+                'required', 'string', 'unique:users,phone', 'digits:11', 'regex:/^01[0125][0-9]{8}$/'
             ],
             'national_id' => [
                 'required', 'numeric', 'digits:14', 'unique:customers,national_id', 'regex:/^[23][0-9]{13}$/'

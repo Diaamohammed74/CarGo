@@ -46,15 +46,13 @@
                                             <td>{{ $service->category->title }}</td>
                                             <td>{{ Str::limit($service->description, 50) }}</td>
                                             <td>
-                                                {{-- <a href  = "{{ route('dashboard.services.edit', $service->id) }}" --}}
-                                                    {{-- class = "btn btn-primary btn-sm"><i class = "fas fa-edit"></i></a> --}}
-                                                    <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="POST" id="deleteForm" style="display:inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm', 'You will not be able to recover this service!');">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
+                                                <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="POST" id="deleteForm-{{ $service->id }}" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $service->id }}', 'You will not be able to recover this service!');">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -74,8 +74,6 @@ class ServiceController extends Controller
         }
         $service->update($data);
         $service->tags()->sync($data['tag_ids']);
-        $service->load(['category', 'specialization', 'tags']);
-        $service->refresh();
         return $this->apiResponseUpdated(new ServiceResource($service));
     }
 
