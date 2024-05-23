@@ -14,7 +14,7 @@
             <li class="{{ Request::is('dashboard/home') ? 'mm-active' : '' }}">
                 <a href="{{ route('dashboard.home') }}" aria-expanded="false">
                     <div class="menu-icon">
-                        <i class="fad fa-home"></i>
+                        <i class="fa-duotone fa-van-shuttle"></i>
                     </div>
                     <span class="nav-text">Dashboard</span>
                 </a>
