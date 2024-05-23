@@ -20,7 +20,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="@yield('page_description', $page_description ?? '')">
-	<meta property="og:title" content="Easy Spelling Dashboard">
+	<meta property="og:title" content="Cargo">
 	<meta property="og:description" content="{{ config('dz.name') }} | @yield('title', $page_title ?? '')">
 	<meta property="og:image" content="">
 	<meta name="format-detection" content="telephone=no">
