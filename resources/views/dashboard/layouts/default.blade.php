@@ -57,7 +57,6 @@
     <link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
     @endforeach
     @endif
-    {{-- {!! RecaptchaV3::initJs() !!} --}}
     <link href="https://rawcdn.githack.com/hung1001/font-awesome-pro/4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
     <style>
        .menu-icon i {

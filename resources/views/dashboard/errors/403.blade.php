@@ -8,7 +8,7 @@
 			<h4 class="error-head"><i class="fa fa-times-circle text-danger"></i> Forbidden Error!</h4>
 			<p class="error-head">You do not have permission to view this resource.</p>
 			<div>
-				<a href="{{ url('/')}}" class="btn btn-secondary">BACK TO HOMEPAGE</a>
+				<a href="{{route('home')}}" class="btn btn-secondary">BACK TO HOMEPAGE</a>
 			</div>
 		</div>
 	</div>

@@ -21,9 +21,11 @@
                 <a href="#"><i class="fa-regular fa-rectangle-list" style="color: #939393;"></i>Orders</a>
                 <a href="#"><i class="fa-solid fa-heart" style="color: #939393;"></i>Wishlist</a>
                 <a href="#" class="log" id="logout-link"><i class="fa-solid fa-person-walking-arrow-loop-left" style="color: #ea4335;"></i>Logout</a>
+
                 <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
                     @csrf
                     @method('delete')
+                    <input type="hidden" name="redirect" value="{{ route('home') }}">
                 </form>
                 
             </div>

@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('front.auth.login');
+        return view('dashboard.auth.login');
     }
 
     /**
@@ -27,19 +27,14 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        toast('Welcome back again ' . auth()->user()->first_name, 'success');
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route('dashboard.home');
     }
-
-    /**
-     * Destroy an authenticated session.
-     */
+    
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        toast('We hope to see you back on the road soon.keep your ride smooth!','warning');
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route('dashboard.home');
     }
 }

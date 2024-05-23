@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('dashboard.auth.login');
+        return view('front.auth.login');
     }
 
     /**
@@ -29,6 +29,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         toast('Welcome back again ' . auth()->user()->first_name, 'success');
         return redirect()->intended(RouteServiceProvider::HOME);
+
+        
     }
 
     /**

@@ -41,7 +41,6 @@
     <link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
     @endforeach
     @endif
-    {!! RecaptchaV3::initJs() !!}
 </head>
 
 

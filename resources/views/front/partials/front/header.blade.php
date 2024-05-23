@@ -14,7 +14,7 @@
                     @include('front.partials.front.user-profile')
                     @if (!auth()->user()->hasVerifiedEmail())
                     @include('front.partials.front.verification-alert')
-                    @endif
+                    @endif  
                 @else
                     @include('front.partials.front.login-register-buttons')
                 @endif

@@ -22,13 +22,12 @@
                         <div class="d-flex justify-content-between mt-4">
                             <form method="POST" action="{{ route('verification.send') }}">
                                 @csrf
-                                {!! RecaptchaV3::field('resend_verification') !!}
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Resend Verification Email') }}
                                 </button>
                             </form>
 
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('dashboard.logout') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-link text-muted text-decoration-none">
                                     {{ __('Log Out') }}

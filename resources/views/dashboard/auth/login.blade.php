@@ -22,9 +22,8 @@
 
 							<div class="tab-content w-100" id="nav-tabContent">
 								<div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
-								<form action="{{ route('admin_store') }}" class=" dz-form pb-3" method="post">
+								<form action="{{ route('dashboard.loginStore') }}" class=" dz-form pb-3" method="post">
 									@csrf
-                                    {!! RecaptchaV3::field('login') !!}
 										<h3 class="form-title m-t0">Personal Information</h3>
 										<div class="dz-separator-outer m-b5">
 											<div class="dz-separator bg-primary style-liner"></div>
@@ -60,27 +59,8 @@
                                             </span>
                                         @enderror
 									</form>
-									<div class="text-center bottom">
-										<a href="{{route("register")}}" class="btn btn-primary button-md btn-block" >Create an account</a>
-
-									</div>
 								</div>
 								<div class="tab-pane fade" id="nav-forget" role="tabpanel" aria-labelledby="nav-forget-tab">
-								<form class="dz-form" action="{{ route('password.email') }}">
-									@csrf
-									<h3 class="form-title m-t0">Forget Password ?</h3>
-									<div class="dz-separator-outer m-b5">
-										<div class="dz-separator bg-primary style-liner"></div>
-									</div>
-									<p>Enter your e-mail address below to reset your password. </p>
-									<div class="form-group mb-4">
-										<input name="email" required class="form-control" placeholder="Email Address" type="text">
-									</div>
-									<div class="form-group clearfix text-left">
-										<button class=" active btn btn-primary" id="nav-personal-tab" data-bs-toggle="tab" data-bs-target="#nav-personal" type="button" role="tab" aria-controls="nav-personal" aria-selected="true">Back</button>
-										<button class="btn btn-primary float-end">Submit</button>
-									</div>
-								</form>
 								</div>
 							</div>
 

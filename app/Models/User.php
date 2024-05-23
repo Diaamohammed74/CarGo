@@ -40,6 +40,12 @@ class User extends Authenticatable
     ];
 
 
+    public function isAdmin()
+    {
+        // Assuming you have a 'role' field to check for admin role
+        return $this->type ==UsersTypes::ADMIN;
+    }
+
     protected $hidden = [
         'password',
         'remember_token',
