@@ -24,7 +24,7 @@
 								<div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
 								<form action="{{ route('dashboard.loginStore') }}" class=" dz-form pb-3" method="post">
 									@csrf
-										<h3 class="form-title m-t0">Personal Information</h3>
+										<h3 class="form-title m-t0">Personal Information diaa</h3>
 										<div class="dz-separator-outer m-b5">
 											<div class="dz-separator bg-primary style-liner"></div>
 										</div>
