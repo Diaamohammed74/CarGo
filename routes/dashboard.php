@@ -63,10 +63,10 @@ Route::prefix('dashboard')
             Route::get('/product-categories', 'index')->name('product-categories.index');
             Route::get('/product-categories/create', 'create')->name('product-categories.create');
             Route::post('/product-categories', 'store')->name('product-categories.store');
-            Route::get('/product-categories/{product_category}', 'show')->name('product-categories.show');
-            Route::get('/product-categories/{product_category}/edit', 'edit')->name('product-categories.edit');
-            Route::put('/product-categories/{product_category}', 'update')->name('product-categories.update');
-            Route::delete('/product-categories/{product_category}', 'destroy')->name('product-categories.destroy');
+            Route::get('/product-categories/{productCategory}', 'show')->name('product-categories.show');
+            Route::get('/product-categories/{productCategory}/edit', 'edit')->name('product-categories.edit');
+            Route::put('/product-categories/{productCategory}', 'update')->name('product-categories.update');
+            Route::delete('/product-categories/{productCategory}', 'destroy')->name('product-categories.destroy');
         });
 
           // Products
@@ -180,15 +180,17 @@ Route::prefix('dashboard')
         });
 
           // Tags
-        Route::controller(TagController::class)->group(function () {
-            Route::get('/tags', 'index')->name('tags.index');
-            Route::get('/tags/create', 'create')->name('tags.create');
-            Route::post('/tags', 'store')->name('tags.store');
-            Route::get('/tags/{tag}', 'show')->name('tags.show');
-            Route::get('/tags/{tag}/edit', 'edit')->name('tags.edit');
-            Route::put('/tags/{tag}', 'update')->name('tags.update');
-            Route::delete('/tags/{tag}', 'destroy')->name('tags.destroy');
-        });
+        // Route::controller(TagController::class)->group(function () {
+        //     Route::get('/tags', 'index')->name('tags.index');
+        //     Route::get('/tags/create', 'create')->name('tags.create');
+        //     Route::post('/tags', 'store')->name('tags.store');
+        //     Route::get('/tags/{tag}', 'show')->name('tags.show');
+        //     Route::get('/tags/{tag}/edit', 'edit')->name('tags.edit');
+        //     Route::put('/tags/{tag}', 'update')->name('tags.update');
+        //     Route::delete('/tags/{tag}', 'destroy')->name('tags.destroy');
+        // });
+
+        Route::resource('tags',TagController::class);
 
         Route::get('/week-days', [WeekDayController::class, 'index'])->name('week-days.index');
     });
