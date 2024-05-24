@@ -36,14 +36,20 @@
                                                 <a href="{{ route('dashboard.tags.edit', $tag->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('dashboard.tags.destroy', $tag->id) }}" method="POST" id="deleteForm" style="display:inline;">
+                                                {{-- <form action="{{ route('dashboard.tags.destroy', $tag->id) }}" method="POST" id="deleteForm" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm', 'You will not be able to recover this tag!');">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
+                                                </form> --}}
+                                                <form action="{{ route('dashboard.tags.destroy', $tag->id) }}" method="POST" id="deleteForm-{{ $tag->id }}" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $tag->id }}', 'You will not be able to recover this tag!');">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 </form>
-                                                
                                             </td>
                                             
                                     @endforeach

@@ -49,6 +49,25 @@ $(document).ready(function () {
 <!-- SweetAlert JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+{{-- <script>
+    function confirmDelete(formId, confirmationMessage) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: confirmationMessage,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form if the user confirms
+                document.getElementById(formId).submit();
+            }
+        });
+    }
+</script> --}}
+
 <script>
     function confirmDelete(formId, confirmationMessage) {
         Swal.fire({
@@ -67,6 +86,7 @@ $(document).ready(function () {
         });
     }
 </script>
+
 <script>
     document.getElementById('imageInput').addEventListener('change', function(event) {
         var reader = new FileReader();
