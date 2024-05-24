@@ -24,13 +24,13 @@
 								<div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
 								<form action="{{ route('dashboard.loginStore') }}" class=" dz-form pb-3" method="post">
 									@csrf
-										<h3 class="form-title m-t0">Personal Information diaa</h3>
+										<h3 class="form-title m-t0">Personal Information</h3>
 										<div class="dz-separator-outer m-b5">
 											<div class="dz-separator bg-primary style-liner"></div>
 										</div>
 										<p>Enter your e-mail address and your password. </p>
 										<div class="form-group mb-3">
-											<input class="form-control" placeholder="Email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username">
+											<input class="form-control" placeholder="Email" type="email" name="email" value="{{old('email')}}" required autofocus autocomplete="email">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong class="text-danger">{{ $message }}</strong>
