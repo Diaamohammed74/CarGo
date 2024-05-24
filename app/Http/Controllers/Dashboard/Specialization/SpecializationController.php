@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard\Specialization;
 
 use App\Models\Specialization;
 use App\Http\Controllers\Controller;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\Specialization\CreateSpecializationRequest;
 use App\Http\Requests\Specialization\UpdateSpecializationRequest;
 
@@ -30,7 +29,7 @@ class SpecializationController extends Controller
     {
         Specialization::create($request->validated());
         $this->StoredToaster();
-        return redirect()->route('dashboard.specializations.create')->with('success', 'Added Successfully');
+        return redirect()->route('dashboard.specializations.create');
     }
 
     public function show(Specialization $specialization)

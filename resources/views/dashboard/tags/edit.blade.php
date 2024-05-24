@@ -31,9 +31,7 @@
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">Name</label>
                                         <input type="text" class="form-control" placeholder="Name" name="title" value="{{$tag->title}}">
-                                        @error('title')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <x-input-error :messages="$errors->get('title')" class="mt-2" />
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>

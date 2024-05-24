@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.default')
-@section('title','Tags')
+@section('title', 'Tags')
 @push('styles')
     <link rel = "stylesheet"
         href = "https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/css/fontawesome-iconpicker.min.css"
@@ -42,9 +42,7 @@
                                         <label class = "form-label">Name</label>
                                         <input type  = "text" class = "form-control" placeholder = "Name" name = "title"
                                             value="{{ old('title') }}">
-                                        @error('title')
-                                            <div class = "alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <x-input-error :messages="$errors->get('title')" class="mt-2" />
                                     </div>
                                 </div>
                                 <button type = "submit" class = "btn btn-primary">Add</button>

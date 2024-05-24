@@ -247,7 +247,7 @@
     @endif
     @if($errors->any())
     @foreach ($errors->all() as $error)
-    <script>
+    {{-- <script>
          toastr.error("{{ $error }}", "Error !", {
                     positionClass: "toast-top-right",
                     timeOut: 5e3,
@@ -266,7 +266,7 @@
                     hideMethod: "fadeOut",
                     tapToDismiss: !1
                 });
-    </script>
+    </script> --}}
     @endforeach
     @endif
     <script type="text/javascript" src="{{asset("dashboard-debs/js/bootstrapicon-iconpicker.min.js")}}"></script>
