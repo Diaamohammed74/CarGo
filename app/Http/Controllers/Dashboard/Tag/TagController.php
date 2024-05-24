@@ -49,6 +49,7 @@ class TagController extends Controller
 
     public function destroy(Tag $tag)
     {
+        dd($tag);
         $tag->delete();
         return back()->with('error', 'Deleted Successfully');
     }
