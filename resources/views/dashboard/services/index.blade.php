@@ -46,10 +46,10 @@
                                             <td>{{ $service->category->title }}</td>
                                             <td>{{ Str::limit($service->description, 50) }}</td>
                                             <td>
-                                                <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="POST" id="deleteForm-{{ $service->id }}" style="display:inline;">
+                                                <form action="{{ route('dashboard.tags.destroy', $service->id) }}" method="POST" id="deleteForm-{{ $service->id }}" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $service->id }}', 'You will not be able to recover this service!');">
+                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $service->id }}', 'You will not be able to recover this Service!');">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </form>

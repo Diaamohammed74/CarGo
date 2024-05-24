@@ -17,8 +17,8 @@ class ProductCategoryController extends Controller
 
     public function index()
     {
-        $serviceCategories = ProductCategory::useFilters()->latest()->get();
-        return view('dashboard.product-category.index', compact('serviceCategories'));
+        $productCategories = ProductCategory::useFilters()->latest()->get();
+        return view('dashboard.product-category.index', compact('productCategories'));
     }
 
     public function create()

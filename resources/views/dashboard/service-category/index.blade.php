@@ -36,10 +36,10 @@
                                                 <a href="{{ route('dashboard.service-categories.edit', $serviceCategory->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('dashboard.service-categories.destroy', $serviceCategory->id) }}" method="POST" id="deleteForm" style="display:inline;">
+                                                <form action="{{ route('dashboard.tags.destroy', $serviceCategory->id) }}" method="POST" id="deleteForm-{{ $serviceCategory->id }}" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm', 'You will not be able to recover this category!');">
+                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $serviceCategory->id }}', 'You will not be able to recover this Category!');">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </form>
