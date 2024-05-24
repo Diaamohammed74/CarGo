@@ -26,7 +26,7 @@
 	<meta name="format-detection" content="telephone=no">
 
 	<!-- FAVICONS ICON -->
-	<link rel="shortcut icon" type="image/png" href="{{ asset('images/logo/logo-img.png')}}">
+	<link rel="shortcut icon" type="image/png" href="{{ asset('images/logo/IMG_1058.PNG')}}">
 
 
 	@if(!empty(config('dz.public.pagelevel.css.'.$action)))
@@ -101,8 +101,8 @@
         <div class="nav-header">
             <a href="{{route('home')}}" class="brand-logo">
 
-                {{-- <img class="logo-abbr w-25" src="{{ asset('images/logo/logo-img.png')}}" alt="Logo" />
-                <img class="brand-title w-75" src="{{ asset('images/logo/logo-text.png')}}" alt="Logo" /> --}}
+                {{-- <img class="logo-abbr w-25" src="{{ asset('images/logo/IMG_1058.PNG')}}" alt="Logo" /> --}}
+                <img class="brand-title w-100" src="{{ asset('images/logo/IMG_1058.PNG')}}" alt="Logo" />
             </a>
             <div class="nav-control">
                 <div class="hamburger">
@@ -203,7 +203,7 @@
 
     @if(Session::has('success'))
     <script>
-         toastr.success("{{ Session::get('success') }}", "Success !", {
+         toastr.success("{{ Session::get('success') }}",{
                     positionClass: "toast-top-right",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -225,7 +225,7 @@
     @endif
     @if(Session::has('error'))
     <script>
-         toastr.error("{{ Session::get('error') }}", "Error !", {
+         toastr.error("{{ Session::get('error') }}",{
                     positionClass: "toast-top-right",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -272,7 +272,7 @@
     <script type="text/javascript" src="{{asset("dashboard-debs/js/bootstrapicon-iconpicker.min.js")}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @include('dashboard.elements.scripts')
-
+    @include('sweetalert::alert')
     @stack('scripts')
 </body>
 </html>

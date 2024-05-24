@@ -54,7 +54,9 @@ class ServiceController extends Controller
         if (isset($data['tag_ids'])) {
             $service->tags()->sync($data['tag_ids']);
         }
-        return back()->with('success', 'Added Successfuly.');
+
+        $this->StoredToaster();
+        return back();
     }
 
     public function show(Service $service): JsonResponse
@@ -83,6 +85,7 @@ class ServiceController extends Controller
             $this->deleteMedia($service->image);
         }
         $service->delete();
-        return back()->with('error', 'Deleted Successfuly.');
+        $this->DeletedToaster();
+        return back();
     }
 }

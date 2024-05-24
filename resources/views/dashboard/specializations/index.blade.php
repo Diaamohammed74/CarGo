@@ -37,7 +37,7 @@
                                                 <a href="{{ route('dashboard.specializations.edit', $specialization->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('dashboard.tags.destroy', $specialization->id) }}" method="POST" id="deleteForm-{{ $specialization->id }}" style="display:inline;">
+                                                <form action="{{ route('dashboard.specializations.destroy', $specialization->id) }}" method="POST" id="deleteForm-{{ $specialization->id }}" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $specialization->id }}', 'You will not be able to recover this specialization!');">

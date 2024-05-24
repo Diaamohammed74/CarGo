@@ -28,7 +28,8 @@ class VideoCategoryController extends Controller
     public function store(CreateVideoCategoryRequest $request)
     {
         VideoCategory::create($request->validated());
-        return back()->with('success', 'Added Successfully');
+        $this->StoredToaster();
+        return back();
     }
 
     public function show(VideoCategory $videoCategory)
@@ -44,12 +45,14 @@ class VideoCategoryController extends Controller
     public function update(UpdateVideoCategoryRequest $request, VideoCategory $videoCategory)
     {
         $videoCategory->update($request->validated());
-        return to_route('dashboard.video-categories.index')->with('success', 'Updated Successfully');
+        $this->UpdatedToaster();
+        return to_route('dashboard.video-categories.index');
     }
 
     public function destroy(VideoCategory $videoCategory)
     {
         $videoCategory->delete();
-        return back()->with('error', 'Deleted Successfully');
+        $this->DeletedToaster();
+        return back();
     }
 }

@@ -29,7 +29,8 @@ class ProductCategoryController extends Controller
     public function store(CreateProductCategoryRequest $request)
     {
         ProductCategory::create($request->validated());
-        return back()->with('success', 'Added Successfully');
+        $this->StoredToaster();
+        return back();
     }
 
     public function show(ProductCategory $productCategory)
@@ -45,12 +46,14 @@ class ProductCategoryController extends Controller
     public function update(UpdateProductCategoryRequest $request, ProductCategory $productCategory)
     {
         $productCategory->update($request->validated());
-        return to_route('dashboard.product-categories.index')->with('success', 'Updated Successfully');
+        $this->UpdatedToaster();
+        return to_route('dashboard.product-categories.index');
     }
 
     public function destroy(ProductCategory $productCategory)
     {
         $productCategory->delete();
-        return back()->with('error', 'Deleted Successfully');
+        $this->DeletedToaster();
+        return back();
     }
 }

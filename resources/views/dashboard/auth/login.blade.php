@@ -10,10 +10,9 @@
 				<div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
 					<div class="login-form style-2">
 
-
 						<div class="card-body ">
 							<div class="logo-header text-center">
-								<a href="{{ url('')}}" class="logo text-center"><img src="{{asset('images/logo/logo-img.png')}}" alt="" class="width-230 light-logo"></a>
+								<a href="{{ url('')}}" class="logo text-center"><img src="{{asset('images/logo/logo-text.png')}}" alt="" class="width-230 light-logo"></a>
 								<a href="{{ url('')}}" class="logo text-center"><img src="{{asset('images/logo/logo-img.png')}}" alt="" class="width-230 dark-logo"></a>
 							</div>
 
@@ -70,7 +69,7 @@
 							<div class="card-footer">
 								<div class=" bottom-footer clearfix m-t10 m-b20 row text-center">
 								<div class="col-lg-12 text-center">
-									<span> © Copyright CarGo Diaaaaaa</span>
+									<span> © Copyright CarGo </span>
 								</div>
 							</div>
 						</div>

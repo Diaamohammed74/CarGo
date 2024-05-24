@@ -28,7 +28,8 @@ class TagController extends Controller
     public function store(CreateTagRequest $request)
     {
         Tag::create($request->validated());
-        return back()->with('success', 'Added Successfully');
+        $this->StoredToaster();
+        return back();
     }
 
     public function show(Tag $tag)
@@ -44,12 +45,14 @@ class TagController extends Controller
     public function update(UpdateTagRequest $request, Tag $tag)
     {
         $tag->update($request->validated());
-        return to_route('dashboard.tags.index')->with('success', 'Updated Successfully');
+        $this->UpdatedToaster();
+        return to_route('dashboard.tags.index');
     }
 
     public function destroy(Tag $tag)
     {
         $tag->delete();
-        return back()->with('error', 'Deleted Successfully');
+        $this->DeletedToaster();
+        return back();
     }
 }

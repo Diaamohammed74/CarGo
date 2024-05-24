@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard\Specialization;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Specialization\UpdateSpecializationRequest;
-use App\Http\Requests\Specialization\CreateSpecializationRequest;
 use App\Models\Specialization;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\Specialization\CreateSpecializationRequest;
+use App\Http\Requests\Specialization\UpdateSpecializationRequest;
 
 class SpecializationController extends Controller
 {
@@ -28,7 +29,7 @@ class SpecializationController extends Controller
     public function store(CreateSpecializationRequest $request)
     {
         Specialization::create($request->validated());
-        toast('Added Successfuly');
+        $this->StoredToaster();
         return redirect()->route('dashboard.specializations.create')->with('success', 'Added Successfully');
     }
 
@@ -45,12 +46,14 @@ class SpecializationController extends Controller
     public function update(UpdateSpecializationRequest $request, Specialization $specialization)
     {
         $specialization->update($request->validated());
-        return redirect()->route('dashboard.specializations.index')->with('success', 'Updated Successfully');
+        $this->UpdatedToaster();
+        return redirect()->route('dashboard.specializations.index');
     }
 
     public function destroy(Specialization $specialization)
     {
         $specialization->delete();
-        return redirect()->route('dashboard.specializations.index')->with('error', 'Deleted Successfully');
+        $this->DeletedToaster();
+        return redirect()->route('dashboard.specializations.index');
     }
 }

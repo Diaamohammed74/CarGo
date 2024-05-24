@@ -28,7 +28,8 @@ class ServiceCategoryController extends Controller
     public function store(CreateServiceCategoryRequest $request)
     {
         ServiceCategory::create($request->validated());
-        return back()->with('success', 'Added Successfully');
+        $this->StoredToaster();
+        return back();
     }
 
     public function show(ServiceCategory $serviceCategory)
@@ -44,12 +45,14 @@ class ServiceCategoryController extends Controller
     public function update(UpdateServiceCategoryRequest $request, ServiceCategory $serviceCategory)
     {
         $serviceCategory->update($request->validated());
-        return to_route('dashboard.service-categories.index')->with('success', 'Updated Successfully');
+        $this->UpdatedToaster();
+        return to_route('dashboard.service-categories.index');
     }
 
     public function destroy(ServiceCategory $serviceCategory)
     {
         $serviceCategory->delete();
-        return back()->with('error', 'Deleted Successfully');
+        $this->DeletedToaster();
+        return back();
     }
 }
