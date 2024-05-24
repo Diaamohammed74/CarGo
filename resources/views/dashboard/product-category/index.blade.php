@@ -10,7 +10,7 @@
                             <h4 class="card-title">product Category</h4>
                         </div>
                         <a href="{{ route('dashboard.product-categories.create') }}" type="button" class="btn btn-primary">Add product Categroy<span
-                                class="btn-icon-end"><i class="fas fa-book fa-lg"></i></span>
+                                class="btn-icon-end"><i class="fa-solid fa-plus fa-lg"></i></span>
                         </a>
                     </div>
                     <div class="card-body pt-0">

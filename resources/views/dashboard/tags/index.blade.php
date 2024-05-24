@@ -10,7 +10,9 @@
                             <h4 class="card-title">Tags</h4>
                         </div>
                         <a href="{{ route('dashboard.tags.create') }}" type="button" class="btn btn-primary">Add Tag<span
-                                class="btn-icon-end"><i class="fas fa-book fa-lg"></i></span>
+                                class="btn-icon-end">
+                                <i class="fa-solid fa-plus fa-lg"></i>
+                            </span>
                         </a>
                     </div>
                     <div class="card-body pt-0">

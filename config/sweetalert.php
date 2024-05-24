@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'theme' => env('SWEET_ALERT_THEME', 'dark'),
+    'theme' => env('SWEET_ALERT_THEME', 'default'),
 
     /*
     |--------------------------------------------------------------------------

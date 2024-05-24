@@ -11,7 +11,6 @@ use App\Http\Traits\Api\MediaHandler;
 use App\Http\Requests\Service\CreateServiceRequest;
 use App\Http\Requests\Service\UpdateServiceRequest;
 use App\Http\Resources\Dashboard\Service\ServiceResource;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ServiceController extends Controller
 {
@@ -54,7 +53,6 @@ class ServiceController extends Controller
         if (isset($data['tag_ids'])) {
             $service->tags()->sync($data['tag_ids']);
         }
-
         $this->StoredToaster();
         return back();
     }
