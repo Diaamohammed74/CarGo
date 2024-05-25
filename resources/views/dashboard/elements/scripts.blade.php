@@ -98,3 +98,19 @@ $(document).ready(function () {
         reader.readAsDataURL(event.target.files[0]);
     });
 </script>
+
+
+<script>
+    document.getElementById('videoInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const videoPreview = document.getElementById('videoPreview');
+            videoPreview.src = URL.createObjectURL(file);
+            videoPreview.style.display = 'block';
+            videoPreview.load();
+        } else {
+            videoPreview.style.display = 'none';
+            videoPreview.src = '';
+        }
+    });
+</script>

@@ -63,18 +63,21 @@ class ServiceController extends Controller
     }
     public function edit(Service $service)
     {
-        return view();
+        $specializations = Specialization::get();
+        $categories      = ServiceCategory::get();
+        return view('dashboard.services.edit', compact(['service', 'specializations','categories']));
     }
 
-    public function update(UpdateServiceRequest $request, Service $service): JsonResponse
+    public function update(UpdateServiceRequest $request, Service $service)
     {
         $data = $request->validated();
         if (isset($data['image'])) {
-            $this->updateMedia($data['image'], 'uploads/images', $service->image);
+            $data['image']=$this->updateMedia($data['image'], 'uploads/images', $service->image);
         }
         $service->update($data);
-        $service->tags()->sync($data['tag_ids']);
-        return $this->apiResponseUpdated(new ServiceResource($service));
+        $this->UpdatedToaster();
+        // $service->tags()->sync($data['tag_ids']);
+        return to_route('dashboard.services.index');
     }
 
     public function destroy(Service $service)

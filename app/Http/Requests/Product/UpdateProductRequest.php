@@ -13,6 +13,7 @@ class UpdateProductRequest extends FormRequest
             'image'               => ['nullable', 'bail', 'file', 'image', 'mimes:jpg,jpeg,png,gif,svg,webp'],
             'description'         => ['nullable', 'string', 'max:500'],
             'price'               => ['required', 'numeric', 'min:0'],
+            'quantity'            => ['required', 'numeric', 'min:0'],
             'product_category_id' => ['required', 'exists:product_categories,id'],
         ];
     }

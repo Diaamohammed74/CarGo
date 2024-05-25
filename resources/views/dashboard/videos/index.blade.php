@@ -6,10 +6,10 @@
                 <div class = "card dz-card" id = "accordion-one">
                     <div class = "card-header flex-wrap">
                         <div>
-                            <h4 class = "card-title">Service Category</h4>
+                            <h4 class = "card-title">CarGo Clips</h4>
                         </div>
-                        <a href  = "{{ route('dashboard.services.create') }}" type = "button"
-                            class = "btn btn-primary">Add Service<span class = "btn-icon-end"><i
+                        <a href  = "{{ route('dashboard.videos.create') }}" type = "button" class = "btn btn-primary">Add
+                            Clip<span class = "btn-icon-end"><i
                                     class                                   = "fa-solid fa-plus fa-lg"></i></span>
                         </a>
                     </div>
@@ -24,35 +24,40 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Title</th>
-                                        <th>Price</th>
-                                        <th>Specialization</th>
-                                        <th>Image</th>
-                                        <th>Category</th>
                                         <th>Description</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Clip preview</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
-                                    @foreach ($services as $service)
+                                    @foreach ($videos as $videos)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $service->title }}</td>
-                                            <td>{{ $service->price }}</td>
-                                            <td>{{ $service->specialization->title }}</td>
-                                            <td><img src = "{{$service->image}}" alt = ""
-                                                    width = "100px" height = "100px"></td> 
-                                            <td>{{ $service->category->title }}</td>
-                                            <td>{{ Str::limit($service->description, 50) }}</td>
+                                            <td>{{ $videos->title }}</td>
+                                            <td>{{ Str::limit($videos->description, 50) }}</td>
+                                            <td>{{ $videos->category->title }}</td>
+                                            <td>{{ $videos->price }}</td>
                                             <td>
-                                                <a href="{{ route('dashboard.services.edit', $service->id) }}" class="btn btn-primary btn-sm">
+                                                <video width="320" height="240" controls>
+                                                    <source src="{{ $videos->video }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('dashboard.videos.edit', $videos->id) }}"
+                                                    class="btn btn-primary btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="POST" id="deleteForm-{{ $service->id }}" style="display:inline;">
+                                                <form action="{{ route('dashboard.videos.destroy', $videos->id) }}"
+                                                    method="POST" id="deleteForm-{{ $videos->id }}"
+                                                    style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $service->id }}', 'You will not be able to recover this Service!');">
+                                                    <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                                        onclick="confirmDelete('deleteForm-{{ $videos->id }}', 'You will not be able to recover this product!');">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </form>

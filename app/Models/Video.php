@@ -26,7 +26,6 @@ class Video extends Model
         'slug',
         'description',
         'price',
-        'quantity',
         'video_category_id',
         'video'
     ];
