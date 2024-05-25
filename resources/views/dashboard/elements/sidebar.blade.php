@@ -71,7 +71,7 @@
                 <ul aria-expanded="false" class="mm-collapse">
 
                     <li class="{{ Request::is('dashboard/service-categories*') ? 'mm-active' : '' }}">
-                        <a href="javascript:void(0);" aria-expanded="false" class="has-arrow">Service Categories</a>
+                        <a href="javascript:void(0);" aria-expanded="false" class="has-arrow">Services</a>
                         <ul aria-expanded="{{ Request::is('dashboard/service-categories*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard.service-categories*') ? 'mm-show' : '' }}">
                             <li class="{{ Route::currentRouteName() == 'dashboard.service-categories.index' ? 'mm-active' : '' }}">
                                 <a href="{{ route('dashboard.service-categories.index') }}">View</a>
@@ -83,7 +83,7 @@
                     </li>
 
                     <li class="{{ Request::is('dashboard/product-categories*') ? 'mm-active' : '' }}">
-                        <a href="javascript:void(0);" aria-expanded="false" class="has-arrow">Product Categories</a>
+                        <a href="javascript:void(0);" aria-expanded="false" class="has-arrow">Products</a>
                         <ul aria-expanded="{{ Request::is('dashboard/product-categories*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard.product-categories*') ? 'mm-show' : '' }}">
                             <li class="{{ Route::currentRouteName() == 'dashboard.product-categories.index' ? 'mm-active' : '' }}">
                                 <a href="{{ route('dashboard.product-categories.index') }}">View</a>
@@ -95,7 +95,7 @@
                     </li>
 
                     <li class="{{ Request::is('dashboard/video-categories*') ? 'mm-active' : '' }}">
-                        <a href="javascript:void(0);" aria-expanded="false" class="has-arrow">Clips Categories</a>
+                        <a href="javascript:void(0);" aria-expanded="false" class="has-arrow">Clips</a>
                         <ul aria-expanded="{{ Request::is('dashboard/video-categories*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard.video-categories*') ? 'mm-show' : '' }}">
                             <li class="{{ Route::currentRouteName() == 'dashboard.video-categories.index' ? 'mm-active' : '' }}">
                                 <a href="{{ route('dashboard.video-categories.index') }}">View</a>
