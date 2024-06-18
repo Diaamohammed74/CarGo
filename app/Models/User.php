@@ -108,6 +108,6 @@ class User extends Authenticatable
                 return Storage::url($this->attributes['image']);
             }
         }
-        return null;
+        return Storage::url(asset('images/avatar/1.jpg'));
     }
 }

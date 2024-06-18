@@ -40,7 +40,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td><img src    = "{{ $mechanical->image }}" alt = "" width = "100px"
-                                                height = "100px"></td>
+                                                    height = "100px"></td>
                                             <td>{{ $mechanical->full_name }}</td>
                                             <td>{{ $mechanical->email }}</td>
                                             <td>{{ $mechanical->phone }}</td>
@@ -48,12 +48,17 @@
                                             <td>{{ $mechanical->mechanicalUser->join_date }}</td>
                                             <td>{{ $mechanical->mechanicalUser->birth_date }}</td>
                                             <td>{{ $mechanical->mechanicalUser->job_type['name'] }}</td>
-                                            @if ( $mechanical->mechanicalUser->job_type['value']==1)
-                                            <td>{{ $mechanical->mechanicalUser->fullTimeJob->monthly_salary }}</td>
+                                            @if ($mechanical->mechanicalUser->job_type['value'] == 1)
+                                                <td>{{ $mechanical->mechanicalUser->fullTimeJob->monthly_salary }}</td>
                                             @else
-                                            <td>{{ $mechanical->mechanicalUser->byOrderJob->city->city_name_en }}</td>
+                                                <td>{{ $mechanical->mechanicalUser->byOrderJob->city->city_name_en }}</td>
                                             @endif
-                                            <td>{{ $mechanical->status['name'] }}</td>
+                                            <td>
+                                                <span
+                                                    class="{{ $customer->status['value'] == 1 ? 'text-success' : 'text-danger' }}">
+                                                    {{ $customer->status['name'] }}
+                                                </span>
+                                            </td>
                                             <td>{{ $mechanical->gender }}</td>
 
                                             <td>
@@ -61,7 +66,8 @@
                                                     class = "btn btn-primary btn-sm">
                                                     <i class = "fas fa-edit"></i>
                                                 </a>
-                                                <form action = "{{ route('dashboard.mechanicals.destroy', $mechanical->id) }}"
+                                                <form
+                                                    action = "{{ route('dashboard.mechanicals.destroy', $mechanical->id) }}"
                                                     method = "POST" id = "deleteForm-{{ $mechanical->id }}"
                                                     style  = "display:inline;">
                                                     @csrf
