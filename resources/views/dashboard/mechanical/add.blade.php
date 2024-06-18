@@ -148,7 +148,8 @@
                                                 Choose Specialization
                                             </option>
                                             @foreach ($specializations as $specialization)
-                                                <option value = "{{ $specialization->id }}">
+                                                <option value = "{{ $specialization->id }}"
+                                                    {{ old('specialization_id') == $specialization->id ? 'selected' : '' }}>
                                                     {{ $specialization->title }}
                                                 </option>
                                             @endforeach
@@ -165,7 +166,7 @@
                                         <label class = "form-label">Birth Date</label>
                                         <input type  = "date" class = "form-control" placeholder = "Birth Date"
                                             name = "birth_date"
-                                            value="{{ old('') }}>
+                                            value="{{ old('birth_date') }}>
                                 <x-input-error :messages="$errors->get('join_date')"
                                         class="mt-2" />
                                     </div>
