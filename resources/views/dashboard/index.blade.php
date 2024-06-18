@@ -14,10 +14,14 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M22.9714 23.0537C27.7304 23.0537 31.5875 19.1948 31.5875 14.4359C31.5875 9.67694 27.7304 5.81979 22.9714 5.81979C18.2125 5.81979 14.3536 9.67694 14.3536 14.4359C14.3375 19.1787 18.1696 23.0377 22.9107 23.0537H22.9714Z" stroke="#3AC977" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </div>
+                        <a href="{{route('dashboard.customers.index')}}">
                         <div class="total-projects ms-3">
-                            <h3 class="text-success count">0</h3>
-                            <span>Total Customers</span>
-                        </div>
+                            <h3 class="text-success count">
+                                    {{$counts['customers']}}
+                                </h3>
+                                <span>Total Customers</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -34,7 +38,7 @@
 
                         </div>
                         <div class="total-projects ms-3">
-                            <h3 class="text-primary count">0</h3>
+                            <h3 class="text-primary count">{{$counts['mechanicals']}}</h3>
                             <span>Total Mechanicals</span>
                         </div>
                     </div>
@@ -75,8 +79,8 @@
                             </svg>
                         </div>
                         <div class="total-projects ms-3">
-                            <h3 class="text-danger count">0</h3>
-                            <span>Total Users</span>
+                            <h3 class="text-danger count">{{$counts['admins']}}</h3>
+                            <span>Total Admins</span>
                         </div>
                     </div>
                 </div>
@@ -84,7 +88,5 @@
         </div>
 	</div>
 </div>
-
-
 @endsection
 

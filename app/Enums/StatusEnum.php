@@ -9,8 +9,8 @@ enum StatusEnum: int
     {
         return match($this)
         {
-            self::Active   => __('main.attributes.active'),
-            self::Inactive => __('main.attributes.inactive'),
+            self::Active   => 'Active',
+            self::Inactive => 'Disabled',
         };
     }
 

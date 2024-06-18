@@ -28,6 +28,35 @@
                     <span class="nav-text">Website</span>
                 </a>
             </li>
+            <li class="{{ Request::is('dashboard/customers*') ? 'mm-active' : '' }}">
+                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                    <div class="menu-icon">
+                        <i class="fa-solid fa-hashtag fa-spin"></i>
+                    </div>
+                    <span class="nav-text">Customers</span>
+                </a>
+                <ul aria-expanded="{{ Request::is('dashboard/customers*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/mechanicals*') ? 'mm-show' : '' }}">
+                    <li class="{{ Route::currentRouteName() == 'dashboard.customers.index' ? 'mm-active' : '' }}">
+                        <a href="{{ route('dashboard.customers.index') }}">View</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="{{ Request::is('dashboard/mechanicals*') ? 'mm-active' : '' }}">
+                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                    <div class="menu-icon">
+                        <i class="fa-solid fa-hashtag fa-spin"></i>
+                    </div>
+                    <span class="nav-text">Mechanicals</span>
+                </a>
+                <ul aria-expanded="{{ Request::is('dashboard/mechanicals*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/mechanicals*') ? 'mm-show' : '' }}">
+                    <li class="{{ Route::currentRouteName() == 'dashboard.mechanicals.index' ? 'mm-active' : '' }}">
+                        <a href="{{ route('dashboard.mechanicals.index') }}">View</a>
+                    </li>
+                    <li class="{{ Route::currentRouteName() == 'dashboard.mechanicals.create' ? 'mm-active' : '' }}">
+                        <a href="{{ route('dashboard.mechanicals.create') }}">Add new</a>
+                    </li>
+                </ul>
+            </li>
             <li class="{{ Request::is('dashboard/tags*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">

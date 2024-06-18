@@ -73,9 +73,17 @@ class User extends Authenticatable
     {
         return $query->where('type', UsersTypes::MECHANICAL->value);
     }
+    public function scopeCustomer($query)
+    {
+        return $query->where('type', UsersTypes::CUSTOMER->value);
+    }
     public function mechanicalUser()
     {
         return $this->hasOne(Mechanical::class, 'user_id');
+    }
+    public function customerUser()
+    {
+        return $this->hasOne(Customer::class, 'user_id');
     }
 
     public function services()

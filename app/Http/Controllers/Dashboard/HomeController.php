@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
@@ -10,6 +11,14 @@ class HomeController extends Controller
     {
         $page_title       = 'Dashboard';
         $page_description = 'Some description for the page';
-        return view('dashboard.index', compact('page_title', 'page_description'));
+        $counts           = $this->getCounts();
+        return view('dashboard.index', compact(['page_title', 'page_description','counts']));
+    }
+    public function getCounts()
+    {
+        $counts['mechanicals'] = User::mechanical()->active()->count();
+        $counts['customers']   = User::customer()->active()->count();
+        $counts['admins']      = User::admin()->active()->count();
+        return $counts;
     }
 }

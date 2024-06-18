@@ -2,47 +2,53 @@
 
 namespace App\Http\Controllers\Dashboard\Mechanical;
 
+use App\Http\Traits\Api\MediaHandler;
+use App\Models\City;
 use App\Models\User;
+use App\Models\WeekDay;
+use App\Enums\StatusEnum;
 use App\Models\Mechanical;
+use App\Models\Specialization;
 use App\Enums\MechanicalJobType;
 use Illuminate\Http\JsonResponse;
+use App\Models\MechanicalsByOrder;
+use App\Models\MechanicalsFullTime;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Dashboard\User\UserResource;
 use App\Http\Requests\Mechanical\CreateMechanicalRequest;
 use App\Http\Requests\Mechanical\UpdateMechanicalRequest;
-use App\Models\MechanicalsByOrder;
-use App\Models\MechanicalsFullTime;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class MechanicalController extends Controller
 {
-    public function __construct()
+    use MediaHandler;
+    public function index()
     {
+        $mechanicals = User::useFilters()
+            ->mechanical()
+            ->with([
+                'mechanicalUser' => [
+                    'fullTimeJob',
+                    'byOrderJob.city'
+                ],
+                'mechanicalUser',
+            ])->get();
+        return view('dashboard.mechanical.index', ['mechanicals' => $mechanicals]);
     }
-    public function index(): AnonymousResourceCollection
+    public function create()
     {
-        $users = User::useFilters()
-        ->mechanical()
-        ->with([
-            'mechanicalUser'=>[
-                'fullTimeJob',
-                'byOrderJob.city'
-            ],
-            'mechanicalUser',
-        ])
-        ->dynamicPaginate();
-        return UserResource::collection($users);
+        return view('dashboard.mechanical.add')->with([
+            'specializations' => Specialization::query()->get(['id', 'title']),
+            'cities'          => City::where('governrate_id', '1')->get(['id', 'city_name_en']),
+        ]);
     }
-
-    public function store(CreateMechanicalRequest $request): JsonResponse
+    public function store(CreateMechanicalRequest $request)
     {
-        $dataValidated = $request->validated();
-        $user          = User::create($dataValidated);
-
+        $dataValidated                  = $request->validated();
+        $dataValidated['image']         = $this->upload($dataValidated['image'],'uploads/images');
+        $user                           = User::create($dataValidated);
         $dataValidated['user_id']       = $user->id;
         $dataValidated['mechanical_id'] = $user->id;
-        $mechanical                     = Mechanical::create($dataValidated);
-
+        Mechanical::create($dataValidated);
         if ($dataValidated['job_type'] == MechanicalJobType::FullTime->value) {
             MechanicalsFullTime::create([
                 'mechanical_id'  => $dataValidated['mechanical_id'],
@@ -61,10 +67,11 @@ class MechanicalController extends Controller
                 'byOrderJob.city',
             ]
         ]);
-        return $this->apiResponseStored(new UserResource($user));
+        $this->StoredToaster();
+        return back();
     }
 
-    public function show(User $mechanical)
+    public function edit(User $mechanical)
     {
         $mechanical->load([
             'mechanicalUser' => [
@@ -73,40 +80,53 @@ class MechanicalController extends Controller
             ],
             'mechanicalUser',
         ]);
-        return $this->apiResponseShow(new UserResource($mechanical));
+        return view('dashboard.mechanical.edit', [
+            'mechanical'      => $mechanical,
+            'specializations' => Specialization::query()->get(['id', 'title']),
+            'cities'          => City::where('governrate_id', '1')->get(['id', 'city_name_en']),
+        ]);
     }
 
-    public function update(UpdateMechanicalRequest $request, $mechanical): JsonResponse
+    public function update(UpdateMechanicalRequest $request, $mechanical)
     {
         $userDataValidated       = $request->validated();
         $mechanicalDataValidated = $request->validated();
         unset(
             $userDataValidated['job_type'],
+            $userDataValidated['city_id'],
+            $userDataValidated['monthly_salary'],
             $userDataValidated['birth_date'],
             $userDataValidated['join_date'],
             $userDataValidated['specialization_id']
         );
         User::where('id', $mechanical)->update($userDataValidated);
         $user = User::findOrFail($mechanical);
+        $userId= $user->id;
         $user->mechanicalUser()->update([
             'specialization_id' => $mechanicalDataValidated['specialization_id'],
             'job_type'          => $mechanicalDataValidated['job_type'],
             'birth_date'        => $mechanicalDataValidated['birth_date'],
             'join_date'         => $mechanicalDataValidated['join_date'],
         ]);
-        $user->load([
-            'mechanicalUser' => [
-                'specialization',
-                'fullTimeJob',
-                'byOrderJob',
-            ]
-    ]);
-        return $this->apiResponseUpdated(new UserResource($user));
+        $jobType = $mechanicalDataValidated['job_type'];
+        if ($jobType == MechanicalJobType::FullTime->value) {
+            MechanicalsFullTime::where('mechanical_id',$userId)->update(
+                ['monthly_salary' => $mechanicalDataValidated['monthly_salary']]
+            );
+        } elseif ($jobType == MechanicalJobType::ByOrder->value) {
+            MechanicalsByOrder::where('mechanical_id',$userId)->update(
+                [
+                    'city_id' => $mechanicalDataValidated['city_id'],
+                ]
+            );
+        }
+        return to_route('dashboard.mechanicals.index');
     }
 
-    public function destroy(User $mechanical): JsonResponse
+    public function destroy(User $mechanical)
     {
         $mechanical->delete();
-        return $this->apiResponseDeleted();
+        $this->DeletedToaster();
+        return back();
     }
 }

@@ -23,5 +23,9 @@ class Customer extends Model
         'national_id','user_id'
     ];
 
+    public function cars()
+    {
+        return $this->hasMany(CustomerCar::class, 'customer_id');
+    }
 
 }

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard\Customer;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Customer\UpdateCustomerRequest;
-use App\Http\Requests\Customer\CreateCustomerRequest;
-use App\Http\Resources\Dashboard\Customer\CustomerResource;
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Customer\UpdateCustomerRequest;
+use App\Http\Resources\Dashboard\Customer\CustomerResource;
 
 class CustomerController extends Controller
 {
@@ -17,38 +16,41 @@ class CustomerController extends Controller
 
     }
 
-    public function index(): AnonymousResourceCollection
+    public function index()
     {
-        $customers = Customer::useFilters()->dynamicPaginate();
-
-        return CustomerResource::collection($customers);
+        $customers = User::useFilters()
+            ->customer()
+            ->latest()
+            ->with([
+                'customerUser' => [
+                    'cars',
+                ],
+            ])->get();
+        return view('dashboard.customer.index', ['customers' => $customers]);
     }
 
-    public function store(CreateCustomerRequest $request): JsonResponse
-    {
-        $customer = Customer::create($request->validated());
+    // public function store(CreateCustomerRequest $request): JsonResponse
+    // {
+    //     $customer = Customer::create($request->validated());
 
-        return $this->apiResponseStored('Customer created successfully', new CustomerResource($customer));
+    //     return $this->apiResponseStored('Customer created successfully', new CustomerResource($customer));
+    // }
+
+    // public function show(Customer $customer): JsonResponse
+    // {
+    //     return $this->responseSuccess(null, new CustomerResource($customer));
+    // }
+
+    public function update(UpdateCustomerRequest $request,$customer)
+    {
+        User::where('id', $customer)->update($request->validated());
+        return to_route('dashboard.customers.index');
     }
 
-    public function show(Customer $customer): JsonResponse
-    {
-        return $this->responseSuccess(null, new CustomerResource($customer));
-    }
-
-    public function update(UpdateCustomerRequest $request, Customer $customer): JsonResponse
-    {
-        $customer->update($request->validated());
-
-        return $this->responseSuccess('Customer updated Successfully', new CustomerResource($customer));
-    }
-
-    public function destroy(Customer $customer): JsonResponse
+    public function destroy(User $customer)
     {
         $customer->delete();
-
-        return $this->apiResponseDeleted();
+        $this->DeletedToaster();
+        return back();
     }
-
-   
 }

@@ -15,16 +15,14 @@ class CreateMechanicalRequest extends FormRequest
         return [
         'first_name'               => ['required', 'string'],
         'last_name'                => ['required', 'string'],
-        'available_times'          => ['required', 'array'],
-        'available_times.week_day' => ['required', 'integer','exists:week_days,id'],
         'email'                    => ['required', 'email', 'unique:users,email'],
         'phone'                    => ['required', 'string', 'unique:users,phone'],
-        'image'                    => ['nullable', 'image', 'max:2048'],
-        'status'                   => ['required', 'integer', Rule::in(StatusEnum::getValues())],
-        'gender'                   => ['required', 'string', Rule::in(['male', 'female'])],
         'password'                 => ['required', 'string', 'min:8'],
         'join_date'                => ['required', 'date', 'date_format:Y-m-d'],
         'birth_date'               => ['required', 'date', 'date_format:Y-m-d','before:today'],
+        'image'                    => ['nullable', 'image', 'max:2048'],
+        'status'                   => ['required', 'integer', Rule::in(StatusEnum::getValues())],
+        'gender'                   => ['required', 'string', Rule::in(['male', 'female'])],
         'job_type'                 => ['required', 'integer', Rule::in(MechanicalJobType::getValues())],
         'specialization_id'        => ['required', 'integer', 'exists:specializations,id'],
         'monthly_salary'           => ['required_if:job_type,'.MechanicalJobType::FullTime->value, 'numeric'],
@@ -39,7 +37,6 @@ class CreateMechanicalRequest extends FormRequest
             $validatedData['type'] = UsersTypes::MECHANICAL->value;
             return $validatedData;
         }
-
         return $validatedData[$key] ?? $default;
     }
 }

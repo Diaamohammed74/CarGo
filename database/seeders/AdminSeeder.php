@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
-      /**
+        /**
      * Run the database seeds.
      *
      * @return void
@@ -25,6 +25,7 @@ class AdminSeeder extends Seeder
             'image'             => null,
             'type'              => 1,
             'status'            => StatusEnum::Active,
+            'membership'        => null,
             'gender'            => 'Male',
             'email_verified_at' => now(),
             'password'          => Hash::make('password'),
