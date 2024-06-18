@@ -34,7 +34,7 @@ class CreateMechanicalRequest extends FormRequest
     {
         $validator->after(function ($validator) {
             if ($validator->errors()->count() > 0) {
-                $validator->errors()->add('error', 'The given data was invalid.');
+            dd(  $validator->errors());
             }
         });
     }
