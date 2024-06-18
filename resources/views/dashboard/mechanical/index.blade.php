@@ -21,6 +21,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Image</th>
                                         <th>Name</th>
                                         <th>email</th>
                                         <th>phone</th>
@@ -31,7 +32,6 @@
                                         <th>Monthly Salary/city</th>
                                         <th>Status</th>
                                         <th>Gender</th>
-                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -39,6 +39,8 @@
                                     @foreach ($mechanicals as $mechanical)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td><img src    = "{{ $mechanical->image }}" alt = "" width = "100px"
+                                                height = "100px"></td>
                                             <td>{{ $mechanical->full_name }}</td>
                                             <td>{{ $mechanical->email }}</td>
                                             <td>{{ $mechanical->phone }}</td>
@@ -53,8 +55,7 @@
                                             @endif
                                             <td>{{ $mechanical->status['name'] }}</td>
                                             <td>{{ $mechanical->gender }}</td>
-                                            <td><img src    = "{{ $mechanical->image }}" alt = "" width = "100px"
-                                                    height = "100px"></td>
+
                                             <td>
                                                 <a href  = "{{ route('dashboard.mechanicals.edit', $mechanical->id) }}"
                                                     class = "btn btn-primary btn-sm">
