@@ -29,6 +29,15 @@ class CreateMechanicalRequest extends FormRequest
         'city_id'                  => ['required_if:job_type,'.MechanicalJobType::ByOrder->value, 'integer','exists:cities,id'],
         ];
     }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($validator->errors()->count() > 0) {
+                $validator->errors()->add('error', 'The given data was invalid.');
+            }
+        });
+    }
     public function validated($key = null, $default = null)
     {
         $validatedData = parent::validated();
