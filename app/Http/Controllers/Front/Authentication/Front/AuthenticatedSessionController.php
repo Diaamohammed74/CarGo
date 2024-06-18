@@ -27,6 +27,13 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
+        if(auth()->user()->status['value']!=1){
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            toast('Your Account has been blocked.');
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
         toast('Welcome back again ' . auth()->user()->first_name, 'success');
         return redirect()->intended(RouteServiceProvider::HOME);
 
