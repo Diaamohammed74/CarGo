@@ -103,12 +103,12 @@
 
                                     <div class = "mb-3 col-md-6" id="cityDiv" style="display:none;">
                                         <label class = "form-label">City</label>
-                                        <select class = "form-select" name = "city_id">
+                                        <select class = "form-select" name = "city_id" {{ old('job_type') == App\Enums\MechanicalJobType::ByOrder->value ? '' : 'disabled' }}>
                                             <option value="0" >
                                                 Choose City
                                             </option>
                                             @foreach ($cities as $city)
-                                                <option value = "{{ $city->id }} selected">
+                                                <option value = "{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>
                                                     {{ $city->city_name_en }}
                                                 </option>
                                             @endforeach
