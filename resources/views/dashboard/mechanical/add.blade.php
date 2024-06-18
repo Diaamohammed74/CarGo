@@ -104,11 +104,11 @@
                                     <div class = "mb-3 col-md-6" id="cityDiv" style="display:none;">
                                         <label class = "form-label">City</label>
                                         <select class = "form-select" name = "city_id">
-                                            <option value="0" selected>
+                                            <option value="0" >
                                                 Choose City
                                             </option>
                                             @foreach ($cities as $city)
-                                                <option value = "{{ $city->id }}">
+                                                <option value = "{{ $city->id }} selected">
                                                     {{ $city->city_name_en }}
                                                 </option>
                                             @endforeach
