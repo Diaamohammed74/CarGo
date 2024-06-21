@@ -55,8 +55,8 @@
                                             @endif
                                             <td>
                                                 <span
-                                                    class="{{ $customer->status['value'] == 1 ? 'text-success' : 'text-danger' }}">
-                                                    {{ $customer->status['name'] }}
+                                                    class="{{ $mechanical->status['value'] == 1 ? 'text-success' : 'text-danger' }}">
+                                                    {{ $mechanical->status['name'] }}
                                                 </span>
                                             </td>
                                             <td>{{ $mechanical->gender }}</td>

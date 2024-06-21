@@ -52,4 +52,12 @@ class Mechanical extends Model
     {
         return $this->hasOne(MechanicalsByOrder::class, 'mechanical_id');
     }
+
+    /**
+     * Get the orders associated with the mechanical.
+     */
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_mechanicals');
+    }
 }

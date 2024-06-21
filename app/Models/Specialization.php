@@ -23,5 +23,7 @@ class Specialization extends Model
         'title'
     ];
 
-
+public function mechanicals(){
+    return $this->hasMany(Mechanical::class,'specialization_id');
+}
 }

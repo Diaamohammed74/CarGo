@@ -57,6 +57,19 @@
                     </li>
                 </ul>
             </li>
+            <li class="{{ Request::is('dashboard/contacts*') ? 'mm-active' : '' }}">
+                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                    <div class="menu-icon">
+                        <i class="fa-solid fa-hashtag fa-spin"></i>
+                    </div>
+                    <span class="nav-text">Contact us</span>
+                </a>
+                <ul aria-expanded="{{ Request::is('dashboard/contact-us.index*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/contact-us.index*') ? 'mm-show' : '' }}">
+                    <li class="{{ Route::currentRouteName() == 'dashboard.contact-us.index.index' ? 'mm-active' : '' }}">
+                        <a href="{{ route('dashboard.contact-us.index') }}">View</a>
+                    </li>
+                </ul>
+            </li>
             <li class="{{ Request::is('dashboard/tags*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">

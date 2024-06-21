@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\Front\ContactUsController;
+use App\Http\Controllers\Front\PayMobController;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Front\ContactUsController;
+use App\Http\Controllers\Front\Order\OrderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -21,6 +23,18 @@ Route::prefix('/')->group(function () {
             ->controller(ProfileController::class)
             ->name('user.')->group(function () {
                 Route::get('profile', 'index')->name('profile');
+                Route::post('add-car', 'storeCar')->name('storeCar');
+            });
+        Route::prefix('order/')
+            ->controller(OrderController::class)
+            ->name('order.')->group(function () {
+                Route::get('create', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
             });
     });
+
+    Route::post('/pay/paymob',[PayMobController::class,'payWithPaymob'])->name('pay');
+
+    Route::get('/payments/verify/{payment?}',[PayMobController::class,'verifyWithPaymob'])->name('payment-verify');
+
 });

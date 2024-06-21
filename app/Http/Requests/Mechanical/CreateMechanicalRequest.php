@@ -16,10 +16,10 @@ class CreateMechanicalRequest extends FormRequest
         'first_name'               => ['required', 'string'],
         'last_name'                => ['required', 'string'],
         'email'                    => ['required', 'email', 'unique:users,email'],
-        'phone'                    => ['required', 'string', 'unique:users,phone'],
+        'phone'                    => ['required', 'string', 'unique:users,phone','digits:11','regex:/^01[0125][0-9]{8}$/'],
         'password'                 => ['required', 'string', 'min:8'],
-        'join_date'                => ['required', 'date', 'date_format:Y-m-d'],
         'birth_date'               => ['required', 'date', 'date_format:Y-m-d','before:today'],
+        'join_date'                => ['required', 'date', 'date_format:Y-m-d','after:birth_date'],
         'image'                    => ['nullable', 'image', 'max:2048'],
         'status'                   => ['required', 'integer', Rule::in(StatusEnum::getValues())],
         'gender'                   => ['required', 'string', Rule::in(['male', 'female'])],
@@ -30,14 +30,7 @@ class CreateMechanicalRequest extends FormRequest
         ];
     }
 
-    public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-            if ($validator->errors()->count() > 0) {
-            dd(  $validator->errors());
-            }
-        });
-    }
+
     public function validated($key = null, $default = null)
     {
         $validatedData = parent::validated();

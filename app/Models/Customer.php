@@ -27,5 +27,13 @@ class Customer extends Model
     {
         return $this->hasMany(CustomerCar::class, 'customer_id');
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }

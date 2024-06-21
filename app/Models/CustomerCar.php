@@ -20,7 +20,7 @@ class CustomerCar extends Model
      * @var array
      */
     protected $fillable = [
-        
+        'customer_id','model','type','color','plate_number'
     ];
 
 

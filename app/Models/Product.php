@@ -38,4 +38,8 @@ class Product extends Model
         return asset(Storage::url($this->attributes['image']));
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_products')->withPivot('quantity');
+    }
 }
