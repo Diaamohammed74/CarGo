@@ -1,5 +1,5 @@
 @extends('front.partials.master')
-@section('title', 'Contact us')
+@section('title', 'CarGo | Contact us')
 @section('style-sheet')
     <link rel="stylesheet" href="{{ asset('assets-front/css/style_contact.css') }}" />
 @endsection

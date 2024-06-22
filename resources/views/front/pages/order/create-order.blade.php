@@ -1,5 +1,5 @@
 @extends('front.partials.master')
-@section('title', 'Contact us')
+@section('title', 'CarGo | Order')
 @section('style-sheet')
     <style>
         /* Custom styles for multi-select dropdown */

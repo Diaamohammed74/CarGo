@@ -28,8 +28,8 @@ class CreateOrderRequest extends FormRequest
                 'required',
                 Rule::in(OrderTypeEnum::getValues()),
             ],
-            'latitude'  => ['required', 'numeric'],
-            'longitude' => ['required', 'numeric'],
+            'latitude'  => ['required_if:order_type,1', 'numeric'],
+            'longitude' => ['required_if:order_type,1', 'numeric'],
         ];
     }
     public function validated($key = null, $default = null)
@@ -42,7 +42,19 @@ class CreateOrderRequest extends FormRequest
     }
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
-            // throw new \Illuminate\Validation\ValidationException($validator);
-        dd($validator->errors());
+        $errorMessage = $validator->errors()->all();
+        toast($errorMessage, 'error');
+        return back();
+    }
+
+    public function attributeNames(): array
+    {
+        return [
+            'services_ids'    => 'services',
+            'customer_car_id' => 'customer car',
+            'order_type'      => 'order type',
+            'latitude'        => 'latitude',
+            'longitude'       => 'longitude',
+        ];
     }
 }

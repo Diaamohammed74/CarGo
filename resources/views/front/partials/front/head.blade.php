@@ -13,7 +13,7 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" />
-    {{-- <link rel="stylesheet" href="{{ asset('assets-front/css/style_contact.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ asset('assets-front/css/footer.css') }}" />
     @yield('style-sheet')
     <link rel="stylesheet" href="{{ asset('assets-front/css/bootstrap.min.css') }}" />
 

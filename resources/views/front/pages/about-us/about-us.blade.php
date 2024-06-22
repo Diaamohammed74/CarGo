@@ -1,6 +1,6 @@
 @extends('front.partials.master')
 
-@section('title', 'About us')
+@section('title', 'CarGo | About us')
 
 @section('style-sheet')
     <link rel="stylesheet" href="{{ asset('assets-front/css/style_about.css') }}">

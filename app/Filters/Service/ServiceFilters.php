@@ -6,7 +6,10 @@ use Essa\APIToolKit\Filters\QueryFilters;
 
 class ServiceFilters extends QueryFilters
 {
-    protected array $allowedFilters = [];
+    protected array $allowedFilters = ['service_category_id'];
 
-    protected array $columnSearch = [];
+    protected array $columnSearch   = ['title'];
+    protected array $relationSearch = [
+        'tags' => ['title'],
+    ];
 }

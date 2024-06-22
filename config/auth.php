@@ -51,6 +51,10 @@ return [
     ],
     
     'providers' => [
+        'web' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
