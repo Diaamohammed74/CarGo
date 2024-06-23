@@ -28,6 +28,9 @@ border-bottom: 1px solid #fff;">
                 </li>
             </ul>
             @auth
+            @if (auth()->user()->type->value == UsersTypes::CUSTOMER->value)
+                
+
             <div class="profile d-flex align-items-center gap-3">
                 <div class="name_profile">
                     <p class="fs-6 mb-0 text-light fw-bold overflow-hidden">
@@ -44,6 +47,7 @@ border-bottom: 1px solid #fff;">
                         alt="your image which you uploaded on site" class="w-100 h-100" onclick="{{route('user.profile')}}" />
                 </div>
             </div>
+            @endif
             @endauth
         </div>
     </div>
