@@ -34,15 +34,17 @@
                                             <td>{{ $loop->iteration }}</td>
                                             {{-- @if ($order->order_status->value!==3) --}}
                                             <td>
-                                                <form action="{{ route('dashboard.orders.update', $order->id) }}" method="POST" id="updateForm-{{ $order->id }}" style="display:inline;">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <select class="form-select" name="order_status" onchange="this.form.submit()">
-                                                        <option value="2" {{ $order->order_status->value == 2 ? 'selected' : '' }}>Pending</option>
-                                                        <option value="1" {{ $order->order_status->value == 1 ? 'selected' : '' }}>Processing</option>
-                                                        <option value="3" {{ $order->order_status->value == 3 ? 'selected' : '' }}>Completed</option>
-                                                    </select>
-                                                </form>
+                                                {{-- @if (!empty($order)) --}}
+                                                    <form action="{{ route('dashboard.orders.update', $order->id) }}" method="POST" id="updateForm-{{ $order->id }}" style="display:inline;">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <select class="form-select" name="order_status" onchange="this.form.submit()">
+                                                            <option value="2" {{ $order->order_status->value == 2 ? 'selected' : '' }}>Pending</option>
+                                                            <option value="1" {{ $order->order_status->value == 1 ? 'selected' : '' }}>Processing</option>
+                                                            <option value="3" {{ $order->order_status->value == 3 ? 'selected' : 'disabled' }}>Completed</option>
+                                                        </select>
+                                                    </form>
+                                                {{-- @endif --}}
                                             </td>
                                             {{-- @endif --}}
                                             <td>
@@ -53,15 +55,15 @@
                                                     {{ $order->payment_status->name }}
                                                 </span>
                                             </td>
-                                            {{-- @if ($order->order_status->value == 1) --}}
+                                            @if ($order->order_status->value == 1)
                                             <td>
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-order-id="{{ $order->id }}">
                                                     Add Products
                                                 </button>
                                             </td>
-                                            {{-- @else
+                                            @else
                                             <td>You can not add products now</td>
-                                            @endif --}}
+                                            @endif
                                             <td>{{ $order->customer->user->full_name }}</td>
                                             <td>{{ $order->customer->user->phone }}</td>
                                             <td>{{ $order->customerCar->type }}</td>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\OrderStatusEnum;
 use App\Enums\OrderTypeEnum;
+use App\Enums\PaymentStatus;
 use App\Models\OrderProduct;
 use App\Filters\Order\OrderFilters;
 use Essa\APIToolKit\Filters\Filterable;
@@ -17,17 +18,19 @@ class Order extends Model
 
     protected string $default_filters = OrderFilters::class;
 
-        /**
+      /**
      * Mass-assignable attributes.
      *
      * @var array
      */
     protected $casts = [
-        'order_type'   => OrderTypeEnum::class,
-        'order_status' => OrderStatusEnum::class,
+        'order_type'     => OrderTypeEnum::class,
+        'order_status'   => OrderStatusEnum::class,
+        'payment_status' => PaymentStatus::class,
     ];
     protected $fillable = [
         'customer_id',
+        'payment_id',
         'customer_car_id',
         'order_type',
         'order_status',
@@ -37,9 +40,9 @@ class Order extends Model
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class,'customer_id','user_id');
+        return $this->belongsTo(Customer::class, 'customer_id', 'user_id');
     }
-    
+
     public function customerCar()
     {
         return $this->belongsTo(CustomerCar::class, 'customer_car_id');
@@ -47,7 +50,7 @@ class Order extends Model
 
     public function orderMechanicals()
     {
-        return $this->belongsToMany(Mechanical::class, 'order_mechanicals','mechanical_id','order_id');
+        return $this->belongsToMany(Mechanical::class, 'order_mechanicals', 'mechanical_id', 'order_id');
     }
 
     public function orderServices()
@@ -59,8 +62,8 @@ class Order extends Model
     {
         return $this->belongsToMany(Product::class, 'order_products')->withPivot('quantity');
     }
-    public function onRoad(){
-        return $this->hasOne(OnRoadOrder::class,'order_id');
+    public function onRoad()
+    {
+        return $this->hasOne(OnRoadOrder::class, 'order_id');
     }
-
 }

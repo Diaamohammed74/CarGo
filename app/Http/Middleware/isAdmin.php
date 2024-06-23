@@ -11,7 +11,7 @@ class isAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type->value == UsersTypes::ADMIN->value) {
+        if (auth()->user()->type->value == UsersTypes::ADMIN->value||auth()->user()->type->value == UsersTypes::MECHANICAL->value) {
             return $next($request);
         }
         return to_route('dashboard.login');

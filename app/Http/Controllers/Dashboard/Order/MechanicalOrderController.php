@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Dashboard\Order;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Enums\OrderTypeEnum;
+use App\Models\OrderProduct;
+use App\Models\OrderMechanical;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\UpdateOrderRequest;
 use App\Http\Traits\blade\BladeToasterMessages;
 use App\Http\Resources\Dashboard\Order\OrderResource;
 use App\Http\Requests\Order\CreateProductOrderRequest;
-use App\Models\OrderProduct;
 
-class OrderController extends Controller
+class MechanicalOrderController extends Controller
 {
     use BladeToasterMessages;
     public function __construct()
@@ -21,13 +23,19 @@ class OrderController extends Controller
 
     public function index()
     {
-        
+        $mechanicalId = auth()->id();
+        $orderIds = OrderMechanical::where('mechanical_id', $mechanicalId)
+            ->pluck('order_id');
+
         $orders = Order::useFilters()
-        ->latest()
-        ->where('order_type', '=', 1)
-        ->with(['customer', 'onRoad', 'customerCar', 'orderMechanicals', 'orderServices', 'orderProducts'])->get();
+            ->latest()
+            ->whereIn('id', $orderIds)
+            ->where('order_type',1)
+            ->with(['customer', 'onRoad', 'customerCar', 'orderMechanicals', 'orderServices', 'orderProducts'])
+            ->get();
         $products = Product::get();
-        return view('dashboard.orders.OnRoadIndex', compact(['orders', 'products']));
+
+        return view('dashboard.orders.mechanical.OnRoadIndex', compact('orders', 'products'));
     }
 
     public function addProduct(CreateProductOrderRequest $request, Order $order)
