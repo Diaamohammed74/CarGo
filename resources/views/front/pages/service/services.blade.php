@@ -9,43 +9,50 @@
 
 <section class="side">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-sm-12 bar d-flex flex-column">
-                <!-- Content for the "bar" section -->
-                <br>
+        <div class="row justify-content-center">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+                <div class="bar d-flex flex-column"><h6 class="fw-bold bar-header mb-0">Categories</h6>
                 @foreach ($categories as $category)
                     <a href="{{ route('services.index', ['service_category_id' => $category->id]) }}" class="act">{{ $category->title }}</a>
-                @endforeach
+                @endforeach</div>
             </div>
-            <div class="col-md-9 col-sm-12">
+            <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
                 <!-- Content for the "Search" section -->
-                <div class="search">
-                    <div class="input-group">
-                        <button type="button" class="btn" data-mdb-ripple-init>
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <div class="form">
-                            <input type="search" id="form1" class="form-control" placeholder="Search Anything..." />
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="service">
-                    <div class="row">
-                        <div class="col-md-11">
-                            @foreach ($services as $index => $service)
-                            <div class="ser">
-                                <div class="list">
-                                    <img src="{{$service->image}}" alt="" srcset="">
-                                    <p>Xenon Headlights
-                                        <br>$725
-                                    </p>
-                                </div>
-                                <div class="list">
-                                    <button class="btn cart animate__animated animate__flash" onclick="window.location.href='{{route('order.create')}}'">Book Now</button>
+                <div class="p-4">
+                    <div class=" d-flex justify-content-end">
+                        <div class="search mb-4 w-100">
+                            <div class="input-group d-flex flex-nowrap" >
+                                <button type="button" class="btn" data-mdb-ripple-init>
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <div class="form w-100">
+                                    <input type="search" id="form1" class="form-control" placeholder="Search Anything..." />
                                 </div>
                             </div>
-                            @endforeach
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="row ">
+                            @forelse ($services as $index => $service)
+                            <div class="col-lg-3 col-md-6 col-sm-12 rounded mb-5">
+                                <div class="service_image w-100">
+                                    <img src="{{$service->image}}" alt="" class="w-100" />
+                                    <div class="service_description d-flex justify-content-end flex-column p-3">
+                                        <div>
+                                            <h3 class="main_text" style="color: white">{{ Str::limit($service->title, 20) }}</h3>
+                                            <p class="main_text mb-0" style="color: white">{{ $service->price }} EGP</p>
+                                        </div>
+                                        <div class="book_btn d-flex justify-content-center mt-3 px-4 py-2 border mx-auto rounded-2" style="width: fit-content;">
+                                            <a href="{{route('order.create')}}" class="main_text d-flex gap-2 align-items-center text-decoration-none" style="color: white">
+                                                Book Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @empty
+                                <h2 class="text-center my-5">No services available at the moment. Please check back later.</h2>
+                            @endforelse
                         </div>
                     </div>
                 </div>

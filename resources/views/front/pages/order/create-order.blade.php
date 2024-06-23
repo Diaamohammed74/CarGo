@@ -98,37 +98,45 @@
                     <form action="{{ route('user.storeCar') }}" method="post" class="row mt-4 add_car" id="addCarForm">
                         @csrf
                         <p class="w-100 text-primary fw-bold fs-5">Add Car</p>
-                        <div class="form-floating mb-3 col-lg-6 col-md-12 col-sm-12 mt-3">
-                            <input type="text" class="form-control" id="model" name="model" placeholder="Model"
-                                value="{{ old('model') }}" />
-                            <label for="model"> Model </label>
-                            @error('model')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="mb-3 col-lg-6 col-md-12 col-sm-12 mt-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="model" name="model" placeholder="Model"
+                                    value="{{ old('model') }}" />
+                                <label for="model"> Model </label>
+                                @error('model')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="form-floating col-lg-6 col-md-12 col-sm-12 mt-3">
-                            <input type="text" class="form-control" id="type" name="type" placeholder="Type"
-                                value="{{ old('type') }}" />
-                            <label for="type">Type</label>
-                            @error('type')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="col-lg-6 col-md-12 col-sm-12 mt-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="type" name="type" placeholder="Type"
+                                    value="{{ old('type') }}" />
+                                <label for="type">Type</label>
+                                @error('type')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="form-floating col-lg-6 col-md-12 col-sm-12 mt-3">
-                            <input type="text" class="form-control" id="color" name="color" placeholder="Color"
-                                value="{{ old('color') }}" />
-                            <label for="color">Color</label>
-                            @error('color')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="col-lg-6 col-md-12 col-sm-12 mt-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="color" name="color" placeholder="Color"
+                                    value="{{ old('color') }}" />
+                                <label for="color mx-2">Color</label>
+                                @error('color')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="form-floating col-lg-6 col-md-12 col-sm-12 mt-3">
-                            <input type="text" class="form-control" id="plate_number" name="plate_number"
-                                placeholder="Plate-Number" value="{{ old('plate_number') }}" />
-                            <label for="plate_number">Plate-Number</label>
-                            @error('plate_number')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="col-lg-6 col-md-12 col-sm-12 mt-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="plate_number" name="plate_number"
+                                    placeholder="Plate-Number" value="{{ old('plate_number') }}" />
+                                <label for="plate_number">Plate-Number</label>
+                                @error('plate_number')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <button class="btn btn-primary col-lg-5 col-md-12 col-sm-12 mt-3 ms-2" type="submit">
                             Submit
@@ -140,7 +148,7 @@
                         @csrf
                         <input type="hidden" name="customer_car_id" id="selectedCustomerCarId" value="">
                         <label for="order_type" class="text-primary mb-2 fw-bold mt-4">Where are you?</label>
-                        <select name="order_type" id="order_type" class="w-100 p-2 select_status rounded">
+                        <select name="order_type" id="order_type" class="w-100 p-2 select_status rounded form-control">
                             <option value="select">Select---</option>
                             <option value="1">On Road</option>
                             <option value="2">At Center</option>
@@ -149,7 +157,10 @@
 
                         {{-- Choose services --}}
                         <p class="w-100 text-primary fw-bold fs-5 mt-4">Choose Services</p>
-                        <select name="services_ids[]" id="services" class="form-control select_service rounded" multiple>
+                        <select name="services_ids[]" id="services" class="form-control select_service rounded">
+                            <option value="" hidden>
+                                Select a service
+                            </option>
                             @foreach ($services as $service)
                                 <option value="{{ $service->id }}" data-title="{{ $service->title }}"
                                     data-price="{{ $service->price }}">
@@ -175,17 +186,24 @@
                         </div>
                         <input type="hidden" name="latitude" id="latitude">
                         <input type="hidden" name="longitude" id="longitude">
-                        <select name="time" id="time" class="w-100 p-2 select_service rounded d-block my-3 time">
-                            <option value="timeOne">00:11</option>
-                            <option value="timeTwo">12:00</option>
-                        </select>
-                        <select name="day" id="day" class="w-100 p-2 select_service rounded d-block my-3 day">
-                            <option value="dayOne">Sunday</option>
-                            <option value="dayTwo">Monday</option>
-                        </select>
-                        <div class="d-flex flex-column nots_area">
+                        <div class="form-floating order_date d-none mb-3">
+                            <input type="datetime-local" class="form-control" id="order_date" name="order_date"
+                                value="{{ old('order_date') }}" />
+                            <label for="order_date"> Order Date </label>
+                            @error('order_date')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <!-- <div class="d-flex flex-column nots_area d-none">
                             <label for="nots" class="mb-2 text-primary fw-bold">Notes</label>
-                            <textarea name="nots" id="nots" placeholder="Notes"></textarea>
+                            
+                        </div> -->
+                        <div class="form-floating nots_area">
+                            <textarea name="notes" class="form-control" id="nots" placeholder="Notes" style="height: 100px">{{ old('notes') }}</textarea>
+                            <label for="order_date"> Notes </label>
+                            @error('notes')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                     </form>
@@ -245,11 +263,31 @@
                     selectedServicesTable.appendChild(row);
 
                     selectedServiceIdsInput.value = selectedServiceIds.join(',');
+
+                    servicesSelect.value = ""
                 }
             });
+
+            const locationSelect = document.querySelector('select[name="order_type"]');
+            const locationMap = document.querySelector('.map');
+            const datetimeInput = document.querySelector('.order_date');
+            const notesArea = document.querySelector('.nots_area');
+            console.log(locationSelect);
+            locationSelect.addEventListener('change', (e) => {
+                if(e.target.value == 1){    
+                    locationMap.classList.remove("d-none");
+                    datetimeInput.classList.add("d-none");
+                    notesArea.classList.add("d-none");
+                } else {
+                    locationMap.classList.add("d-none");
+                    datetimeInput.classList.remove("d-none");
+                    notesArea.classList.remove("d-none");
+                }
+            })
         });
     </script>
     <script src="{{ asset('assets-front/js/geo.js') }}"></script>
+    <script src="{{ asset('assets-front/js/order.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const carRadioButtons = document.querySelectorAll('input[name="customer_car_id"]');

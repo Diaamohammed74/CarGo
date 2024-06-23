@@ -5,7 +5,7 @@
     @include('front.partials.auth.head')
 </head>
 <body>
-    <section class="h-100 bg-dark">
+    <section class="bg-dark" style="min-height: 100vh;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">

@@ -177,15 +177,15 @@ function bestMachine() {
       // when window width is >= 640px
       640: {
         slidesPerView: 2,
-        spaceBetween: 10,
+        spaceBetween: 24,
       },
       768: {
         slidesPerView: 2,
-        spaceBetween: 10,
+        spaceBetween: 24,
       },
       1140: {
         slidesPerView: 4,
-        spaceBetween: 10,
+        spaceBetween: 24,
       },
     },
   });
@@ -194,7 +194,8 @@ function problems() {
   const swiper = new Swiper(".swiper_problems", {
     // Optional parameters
     loop: true,
-    slidesPerView: 4,
+    slidesPerView: 5,
+    
     // Navigation arrows
     navigation: {
       nextEl: ".swiper-button-next",
@@ -205,11 +206,13 @@ function problems() {
       320: {
         slidesPerView: 1,
         spaceBetween: 15,
+        navigation: false,
       },
       // when window width is >= 480px
       480: {
         slidesPerView: 1,
         spaceBetween: 20,
+        navigation: false,
       },
       // when window width is >= 640px
       640: {
@@ -225,7 +228,39 @@ function problems() {
         spaceBetween: 10,
       },
     },
+    on: {
+      init: function() {
+        centerSlides();
+      },
+      resize: function() {
+        centerSlides();
+      }
+    }
   });
+
+  function centerSlides() {
+    var slides = document.querySelectorAll('.swiper_problems .swiper-slide');
+    var totalSlideWidth = 0;
+    
+    slides.forEach(function(slide) {
+      totalSlideWidth += slide.offsetWidth;
+    });
+    
+    var swiperWidth = document.querySelector('.swiper_problems').offsetWidth;
+    
+    if (totalSlideWidth < swiperWidth) {
+      var extraSpace = (swiperWidth - totalSlideWidth) / 2;
+      slides.forEach(function(slide) {
+        slide.style.marginLeft = `${extraSpace / slides.length}px`;
+        slide.style.marginRight = `${extraSpace / slides.length}px`;
+      });
+    } else {
+      // slides.forEach(function(slide) {
+      //   slide.style.marginLeft = '';
+      //   slide.style.marginRight = '';
+      // });
+    }
+  }
 }
 
 swiperProducts();

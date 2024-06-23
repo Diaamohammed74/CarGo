@@ -1,0 +1,1 @@
+const locationSelect = document.querySelector(".")
