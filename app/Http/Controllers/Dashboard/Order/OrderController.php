@@ -26,7 +26,6 @@ class OrderController extends Controller
     public function store(CreateOrderRequest $request): JsonResponse
     {
         $order = Order::create($request->validated());
-
         return $this->responseCreated('Order created successfully', new OrderResource($order));
     }
 
