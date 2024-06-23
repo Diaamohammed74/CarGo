@@ -102,21 +102,33 @@
                             <input type="text" class="form-control" id="model" name="model" placeholder="Model"
                                 value="{{ old('model') }}" />
                             <label for="model"> Model </label>
+                            @error('model')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="form-floating col-lg-6 col-md-12 col-sm-12 mt-3">
                             <input type="text" class="form-control" id="type" name="type" placeholder="Type"
                                 value="{{ old('type') }}" />
                             <label for="type">Type</label>
+                            @error('type')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-floating col-lg-6 col-md-12 col-sm-12 mt-3">
                             <input type="text" class="form-control" id="color" name="color" placeholder="Color"
                                 value="{{ old('color') }}" />
                             <label for="color">Color</label>
+                            @error('color')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-floating col-lg-6 col-md-12 col-sm-12 mt-3">
                             <input type="text" class="form-control" id="plate_number" name="plate_number"
                                 placeholder="Plate-Number" value="{{ old('plate_number') }}" />
                             <label for="plate_number">Plate-Number</label>
+                            @error('plate_number')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button class="btn btn-primary col-lg-5 col-md-12 col-sm-12 mt-3 ms-2" type="submit">
                             Submit

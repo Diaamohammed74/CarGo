@@ -16,4 +16,5 @@ class CreateCustomerCarRequuest extends FormRequest
             'plate_number' => ['required', 'string', 'min:3', 'max:255', 'unique:customer_cars,plate_number'],
         ];
     }
+    
 }
