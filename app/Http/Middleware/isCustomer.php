@@ -14,6 +14,6 @@ class isCustomer
         if (auth()->user()->type->value == UsersTypes::CUSTOMER->value) {
             return $next($request);
         }
-        return to_route('dashboard.login');
+        return to_route('auth.login');
     }
 }
