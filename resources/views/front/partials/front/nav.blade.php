@@ -28,8 +28,7 @@ border-bottom: 1px solid #fff;">
                 </li>
             </ul>
             @auth
-            @if (auth()->user()->type->value == UsersTypes::CUSTOMER->value)
-                
+            @if (auth()->user()->type->value == 3)
 
             <div class="profile d-flex align-items-center gap-3">
                 <div class="name_profile">
