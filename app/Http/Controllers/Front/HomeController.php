@@ -43,7 +43,8 @@ class HomeController extends Controller
             ->mechanical()
             ->with([
                 'mechanicalUser' => [
-                    'specialization'
+                    'specialization',
+                    'mechanicalUser',
                 ],
             ])->get();
     }

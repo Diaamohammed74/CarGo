@@ -22,12 +22,11 @@ class ContactUsController extends Controller
     {
         $data = ContactUs::create($request->validated());
         alert()->success('Thank You!', 'We\'ve received your message and will get back to you shortly. Thank you!');
-        // $whatsAppMsg = "Hello! $data->name ,
-        // Thank you for reaching out to CarGo!
-        // We will get back to you as soon as possible.
-        // Thank you for your patience!
-        // Best regards,CarGo.";
-        $whatsAppMsg="Hello, $data->name This is a test message from CarGo Whatsapp integration.";
+        $whatsAppMsg = "Hello! $data->name ,
+        Thank you for reaching out to CarGo!
+        We will get back to you as soon as possible.
+        Thank you for your patience!
+        Best regards,CarGo.";
         $this->waSenderService->sendMessage($data->phone, $whatsAppMsg);
         return back();
     }

@@ -24,7 +24,7 @@ class RegisteredUserController extends Controller
         $data['user_id'] = $user->id;
         Customer::create($data);
         Auth::login($user);
-        toast("Account successfully created", 'success');
+        $this->StoredToaster();
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

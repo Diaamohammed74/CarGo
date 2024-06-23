@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatusEnum;
 use App\Enums\OrderTypeEnum;
 use App\Models\OrderProduct;
 use App\Filters\Order\OrderFilters;
@@ -16,12 +17,15 @@ class Order extends Model
 
     protected string $default_filters = OrderFilters::class;
 
-      /**
+        /**
      * Mass-assignable attributes.
      *
      * @var array
      */
-    protected $casts=['order_type'=>OrderTypeEnum::class];
+    protected $casts = [
+        'order_type'   => OrderTypeEnum::class,
+        'order_status' => OrderStatusEnum::class,
+    ];
     protected $fillable = [
         'customer_id',
         'customer_car_id',

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Front;
 
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Customer;
 use App\Models\CustomerCar;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\Api\MediaHandler;
 use App\Http\Requests\front\Auth\UpdateProfileRequest;
 use App\Http\Requests\front\CreateCustomerCarRequuest;
-use App\Http\Traits\Api\MediaHandler;
 
 class ProfileController extends Controller
 {
@@ -34,5 +36,10 @@ class ProfileController extends Controller
         CustomerCar::create($validatedData);
         toast('Your car added successfuly', 'success');
         return back();
+    }
+    public function getUserOrders()
+    {
+        $orders=Order::where('customer_id',auth()->id())->with(['orderProducts','orderServices'])->get();
+        return view('front.pages.order.show-orders',compact('orders'));
     }
 }

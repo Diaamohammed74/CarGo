@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets-front/css/style_profile.css') }}" />
     <style>
-        /* Hide the file input element */
         #fileUpload {
             display: none;
         }
@@ -35,10 +34,9 @@
 
                         <div class="d-flex gap-3 align-items-center justify-content-center">
                             <i class="fa-regular fa-clipboard"></i>
-                            <a href="invoices.html" class="text-decoration-none">Orders</a>
+                            <a href="{{route('user.orders')}}" class="text-decoration-none">Orders</a>
                         </div>
                         <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
-                            
                             @csrf
                             @method('DELETE')
                         </form>

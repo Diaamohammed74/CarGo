@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\UpdateOrderRequest;
 use App\Http\Requests\Order\CreateOrderRequest;
 use App\Http\Resources\Dashboard\Order\OrderResource;
+use App\Http\Traits\blade\BladeToasterMessages;
 use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 
 class OrderController extends Controller
 {
+    use BladeToasterMessages;
     public function __construct()
     {
     }
@@ -28,17 +30,17 @@ class OrderController extends Controller
         return $this->responseCreated('Order created successfully', new OrderResource($order));
     }
 
+    public function update(UpdateOrderRequest $request,Order $order)
+    {
+        $order->update($request->validated());
+        $this->UpdatedToaster();
+        return back();
+    }
     public function show(Order $order): JsonResponse
     {
         return $this->responseSuccess(null, new OrderResource($order));
     }
 
-    public function update(UpdateOrderRequest $request, Order $order): JsonResponse
-    {
-        $order->update($request->validated());
-
-        return $this->responseSuccess('Order updated Successfully', new OrderResource($order));
-    }
 
     public function destroy(Order $order): JsonResponse
     {

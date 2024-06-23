@@ -12,17 +12,13 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
+
     public function create(): View
     {
         return view('front.auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
+
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
@@ -36,13 +32,8 @@ class AuthenticatedSessionController extends Controller
         }
         toast('Welcome back again ' . auth()->user()->first_name, 'success');
         return redirect()->intended(RouteServiceProvider::HOME);
-
-        
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
@@ -51,4 +42,5 @@ class AuthenticatedSessionController extends Controller
         toast('We hope to see you back on the road soon.keep your ride smooth!','warning');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
 }

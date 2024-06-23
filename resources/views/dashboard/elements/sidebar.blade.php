@@ -28,6 +28,19 @@
                     <span class="nav-text">Website</span>
                 </a>
             </li>
+            <li class="{{ Request::is('dashboard/orders*') ? 'mm-active' : '' }}">
+                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                    <div class="menu-icon">
+                        <i class="fa-solid fa-hashtag fa-spin"></i>
+                    </div>
+                    <span class="nav-text">Orders</span>
+                </a>
+                <ul aria-expanded="{{ Request::is('dashboard/orders*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/mechanicals*') ? 'mm-show' : '' }}">
+                    <li class="{{ Route::currentRouteName() == 'dashboard.orders.index' ? 'mm-active' : '' }}">
+                        <a href="{{ route('dashboard.orders.index') }}">View</a>
+                    </li>
+                </ul>
+            </li>
             <li class="{{ Request::is('dashboard/customers*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">

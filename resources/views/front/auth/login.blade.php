@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>{{ env('APP_NAME') }} | Login</title>
     @include('front.partials.auth.head')
 </head>
-
 <body>
     <section class="h-100 bg-dark">
         <div class="container py-5 h-100">
@@ -13,9 +11,7 @@
                 <div class="col">
                     <div class="card card-registration my-4">
                         <div class="row g-0">
-
                             @include('front.partials.auth.logo')
-
                             <div class="col-xl-6">
                                 <form action="{{ route('auth.loginStore') }}" method="POST">
                                     @csrf
@@ -55,14 +51,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <!-- End form -->
-
-                                <!-- br for or -->
                                 <div class="line"></div>
-                                <!-- SocialGroupButton -->
-                                {{-- @include('front.partials.auth.social') --}}
-
-
                                 <div class="row justify-content-center">
                                     <div class="col-md-4">
                                         <div class="mb-4 d-flex justify-content-center">
@@ -74,8 +63,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                
                             </div>
                         </div>
                     </div>
@@ -83,10 +70,6 @@
             </div>
         </div>
     </section>
-    <!--End Section  -->
-
-    <!-- js script -->
     @include('front.partials.auth.scripts')
 </body>
-
 </html>

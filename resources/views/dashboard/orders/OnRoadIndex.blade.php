@@ -18,18 +18,29 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Order Status</th>
                                         <th>Customer name</th>
                                         <th>Customer phone</th>
                                         <th>Car type</th>
                                         <th>Car model</th>
                                         <th>view location</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <form action="{{ route('dashboard.orders.update', $order->id) }}" method="POST" id="updateForm-{{ $order->id }}" style="display:inline;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <select class="form-select" name="order_status" onchange="this.form.submit()">
+                                                        <option value="2" {{ $order->order_status == 2 ? 'selected' : '' }}>Pending</option>
+                                                        <option value="1" {{ $order->order_status == 1 ? 'selected' : '' }}>Processing</option>
+                                                        <option value="3" {{ $order->order_status == 3 ? 'selected' : '' }}>Completed</option>
+                                                    </select>
+                                                </form>
+                                            </td>
                                             <td>
                                                 {{ $order->customer->user->full_name }}
                                             </td>
@@ -45,19 +56,6 @@
                                             <td>
                                                 <div id="map_{{ $order->id }}" style="height: 300px; cursor: pointer;"></div>
                                             </td>
-                                            {{-- <td>
-                                                <a href="{{ route('dashboard.tags.edit', $tag->id) }}" class="btn btn-primary btn-sm">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <form action="{{ route('dashboard.tags.destroy', $tag->id) }}" method="POST" id="deleteForm-{{ $tag->id }}" style="display:inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="confirmDelete('deleteForm-{{ $tag->id }}', 'You will not be able to recover this tag!');">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td> --}}
-                                            
                                     @endforeach
                                 </tbody>
                             </table>

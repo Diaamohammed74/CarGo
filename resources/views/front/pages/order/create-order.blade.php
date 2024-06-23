@@ -103,7 +103,7 @@
                                 value="{{ old('model') }}" />
                             <label for="model"> Model </label>
                             @error('model')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-floating col-lg-6 col-md-12 col-sm-12 mt-3">
@@ -249,11 +249,7 @@
             });
         });
     </script>
-
     <script src="{{ asset('assets-front/js/geo.js') }}"></script>
-
-
-    {{-- form submit --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const carRadioButtons = document.querySelectorAll('input[name="customer_car_id"]');
@@ -272,11 +268,5 @@
             });
         });
     </script>
-
-
-
-
-
-
 @endsection
 @endsection

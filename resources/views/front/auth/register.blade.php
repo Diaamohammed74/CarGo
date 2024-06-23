@@ -4,26 +4,19 @@
     {{ env('APP_NAME') }} | Register
 @endsection
 @include('front.partials.auth.head')
-
 <body>
-    <!-- section register -->
     <section class="h-100 bg-dark">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">
                     <div class="card card-registration my-4">
                         <div class="row g-0">
-
-
                             @include('front.partials.auth.logo')
-
-
                             <div class="col-xl-6">
                                 <form action="{{ route('auth.registerStore') }}" method="POST">
                                     @csrf
                                     <div class="card-body p-md-5 text">
                                         <h3 class="mb-5 text-1">Car<span class="text-2">GO</span></h3>
-                                        <!-- Form -->
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div data-mdb-input-init class="form-outline">
@@ -35,7 +28,6 @@
                                                     @enderror
                                                 </div>
                                             </div>
-
                                             <div class="col-md-6 mb-4">
                                                 <div data-mdb-input-init class="form-outline">
                                                     <input type="text" id="lastName" name="last_name"
@@ -47,7 +39,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <input type="email" id="email" name="email"
                                                 class="form-control form-control-lg @error('email') is-invalid @enderror"
@@ -56,7 +47,6 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <input type="text" id="nationId" name="national_id"
                                                 class="form-control form-control-lg @error('national_id') is-invalid @enderror"
@@ -65,7 +55,6 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <input type="password" id="password" name="password"
                                                 class="form-control form-control-lg @error('password') is-invalid @enderror"
@@ -74,7 +63,6 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <input type="password" id="conPassword" name="password_confirmation"
                                                 class="form-control form-control-lg @error('password_confirmation') is-invalid @enderror"
@@ -83,9 +71,6 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
-
-
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <input type="text" id="phone" name="phone"
                                                 class="form-control form-control-lg @error('phone') is-invalid @enderror"
@@ -94,7 +79,6 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <select id="gender" name="gender"
                                                 class="form-select form-select-lg @error('gender') is-invalid @enderror">
@@ -108,24 +92,12 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
-
                                         <div class="field button-field">
                                             <button id="send" type="submit">Register</button>
                                         </div>
                                     </div>
                                 </form>
-
-                                <!-- End form -->
-
-
-                                <!-- br for or -->
                                 <div class="line"></div>
-
-                                <!-- GroupButton -->
-                                {{-- @include('front.partials.auth.social') --}}
-
-
                                 <div class="row justify-content-center">
                                     <div class="col-md-4">
                                         <div class="mb-4 d-flex justify-content-center">
@@ -160,11 +132,6 @@
             </div>
         </div>
     </section>
-    <!--End Section  -->
-
-    <!-- js script -->
     @include('front.partials.auth.scripts')
-
 </body>
-
 </html>

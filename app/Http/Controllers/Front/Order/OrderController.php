@@ -8,7 +8,6 @@ use App\Models\CustomerCar;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\CreateOrderRequest;
 use App\Http\Requests\Order\UpdateOrderRequest;
-use App\Models\AtRepairCenterOrder;
 use App\Models\OnRoadOrder;
 use App\Models\OrderMechanical;
 
@@ -73,5 +72,11 @@ class OrderController extends Controller
             ->pluck('id')
             ->unique()
             ->toArray();
+    }
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        toast('Order deleted successfuly', 'success');
+        return to_route('user.orders');
     }
 }

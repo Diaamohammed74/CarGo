@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Nafezly\Payments\Classes\PaymobPayment;
 
 class PayMobController extends Controller
 {
-    public function payWithPaymob(Request $request){
-        $payment = new PaymobPayment();
+    public function payWithPaymob(Request $request, Order $order)
+    {
+        $payment  = new PaymobPayment();
         $response = $payment
-        ->setUserFirstName('diaa')
-        ->setUserLastName('diaa')
-        ->setUserEmail('diaa@gmail.com')
-        ->setUserPhone('01027388467')
-        ->setAmount(20)
-        ->pay();
+            ->setUserFirstName($order->customer->user->first_name)
+            ->setUserLastName($order->customer->user->last_name)
+            ->setUserEmail($order->customer->user->email)
+            ->setUserPhone($order->customer->user->phone??'01027388467')
+            ->setAmount($order->total_amount)
+            ->pay();
         return redirect($response['redirect_url']);
     }
     public function verifyWithPaymob(Request $request){

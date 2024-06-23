@@ -147,7 +147,7 @@
                     @foreach ($mechanicals as $mechanical)
                     <div class="swiper-slide mt-4">
                         <div class="card">
-                            <img src="{{asset('assets-front/images/amr.jpeg')}}" class="card-img-top" alt="..." />
+                            <img src="{{$mechanical->image}}" class="card-img-top" alt="..." />
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h3 class="card-title fw-bold">{{$mechanical->first_name}}</h3>
@@ -158,7 +158,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <p class="card-text description_text">{{$mechanical?->specialization?->title??'Tech'}}</p>
+                                <p class="card-text description_text">{{$mechanical?->mechanicalUser->specialization?->title??'Tech'}}</p>
                             </div>
                         </div>
                     </div>
