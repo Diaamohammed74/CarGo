@@ -3,22 +3,16 @@
 {{env('APP_NAME')}} | Login
 @endsection
 @section('content')
-<div class="bg-img-fix overflow-hidden" style="background:#fff url({{asset("images/background/bg6.jpg")}}); height: 100vh;">
+<div class="bg-img-fix overflow-hidden">
 	<div class="row gx-0">
 		<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 vh-100 bg-white ">
 			<div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 653px;" tabindex="0">
 				<div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
 					<div class="login-form style-2">
 
-						<div class="card-body ">
-							<div class="logo-header text-center">
-								<a href="{{ url('')}}" class="logo text-center"><img src="{{asset('images/logo/logo-text.png')}}" alt="" class="width-230 light-logo"></a>
-								<a href="{{ url('')}}" class="logo text-center"><img src="{{asset('images/logo/logo-img.png')}}" alt="" class="width-230 dark-logo"></a>
-							</div>
-
+						<div class="card-body">
 							<nav>
 								<div class="nav nav-tabs border-bottom-0" id="nav-tab" role="tablist">
-
 							<div class="tab-content w-100" id="nav-tabContent">
 								<div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
 								<form action="{{ route('dashboard.loginStore') }}" class=" dz-form pb-3" method="post">

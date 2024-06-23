@@ -43,7 +43,7 @@ class CreateOrderRequest extends FormRequest
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
         $errorMessage = $validator->errors()->all();
-        toast($errorMessage, 'error');
+        toast($errorMessage,'error');
         return back();
     }
 

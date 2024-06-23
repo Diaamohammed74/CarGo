@@ -16,5 +16,8 @@ class CreateCustomerCarRequuest extends FormRequest
             'plate_number' => ['required', 'string', 'min:3', 'max:255', 'unique:customer_cars,plate_number'],
         ];
     }
-    
+    public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator){
+        toast("Validation error!", 'error');
+        return back();
+    }
 }

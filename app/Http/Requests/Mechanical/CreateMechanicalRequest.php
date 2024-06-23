@@ -20,13 +20,13 @@ class CreateMechanicalRequest extends FormRequest
         'password'                 => ['required', 'string', 'min:8'],
         'birth_date'               => ['required', 'date', 'date_format:Y-m-d','before:today'],
         'join_date'                => ['required', 'date', 'date_format:Y-m-d','after:birth_date'],
-        'image'                    => ['nullable', 'image', 'max:2048'],
+        'image'                    => ['nullable', 'image',],
         'status'                   => ['required', 'integer', Rule::in(StatusEnum::getValues())],
         'gender'                   => ['required', 'string', Rule::in(['male', 'female'])],
         'job_type'                 => ['required', 'integer', Rule::in(MechanicalJobType::getValues())],
-        'specialization_id'        => ['required', 'integer', 'exists:specializations,id'],
+        'specialization_id'        => ['required', 'integer',],
         'monthly_salary'           => ['required_if:job_type,'.MechanicalJobType::FullTime->value, 'numeric'],
-        'city_id'                  => ['required_if:job_type,'.MechanicalJobType::ByOrder->value, 'integer','exists:cities,id'],
+        'city_id'                  => ['required_if:job_type,'.MechanicalJobType::ByOrder->value, 'integer',],
         ];
     }
 

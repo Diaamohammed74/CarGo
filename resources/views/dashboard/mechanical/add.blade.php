@@ -167,8 +167,7 @@
                                         <input type  = "date" class = "form-control" placeholder = "Birth Date"
                                             name = "birth_date"
                                             value="{{ old('birth_date') }}>
-                                <x-input-error :messages="$errors->get('join_date')"
-                                        class="mt-2" />
+                                        <x-input-error :messages="$errors->get('birth_date')" class="mt-2" />
                                     </div>
                                     <div class="mb-3 col-md-12">
                                         <button type="submit" class="btn btn-primary">Add</button>
