@@ -19,4 +19,4 @@ Route::name('auth.')->middleware('guest:web')->group(function () {
         Route::get('/login/{provider}/callback', 'handleProviderCallback');
     });
 });
-Route::delete('logout', [AuthenticatedSessionController::class,'destroy'])->middleware('auth')->name('auth.logout');
+Route::delete('logout', [AuthenticatedSessionController::class,'destroy'])->middleware(['auth','isCustomer'])->name('auth.logout');

@@ -8,7 +8,7 @@ use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Front\Order\OrderController;
 use App\Http\Controllers\Front\ServiceController;
 
-Route::prefix('/')->group(function () {
+Route::prefix('/')->middleware(['isCustomer'])->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
