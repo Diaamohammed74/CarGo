@@ -11,14 +11,8 @@ class CreateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'services_ids'         => [
+            'services'         => [
                 'required',
-                'array',
-                'min:1',
-            ],
-            'services_ids.*'       => [
-                'required',
-                'exists:services,id',
             ],
             'customer_car_id'      => [
                 'required',
@@ -28,16 +22,18 @@ class CreateOrderRequest extends FormRequest
                 'required',
                 Rule::in(OrderTypeEnum::getValues()),
             ],
-            'latitude'  => ['required_if:order_type,1', 'numeric'],
-            'longitude' => ['required_if:order_type,1', 'numeric'],
+            'latitude'     => ['required_if:order_type,1', 'numeric'],
+            'longitude'    => ['required_if:order_type,1', 'numeric'],
+            'booking_time' => ['required_if:order_type,2',],
+            'notes'         => ['required_if:order_type,2',],
         ];
     }
     public function validated($key = null, $default = null)
     {
-        $data                 = Parent::validated();
-        $data['customer_id']  = auth()->id();
-        $services             = $this->input('services');
-        $data['services_ids'] = explode(',', $services);
+        $data                = Parent::validated();
+        $data['customer_id'] = auth()->id();
+        $services            = $data['services'];
+        $data['services'] = explode(',', $services);
         return $data;
     }
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Car_Go</title>
+    <title>CarGo | My Orders</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet"
@@ -38,22 +38,6 @@
                                 <p class="status_invoice">{{ $order->order_status->name }}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="row g-2">
-                        @foreach ($order->orderServices as $service)
-                            <div class="col-lg-4 col-md- col-sm-12">
-                                <div class="border rounded p-2 d-flex gap-2">
-                                    <div class="image_invice rounded">
-                                        <img src="{{ $service->image }}" width="80" alt="book invoice"
-                                            class="rounded " />
-                                    </div>
-                                    <div>
-                                        <p class="fw-bold">{{ $service->title }}</p>
-                                        <p class="fw-bold text-main-color">{{ $service->price }} EGP</p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
                     </div>
                     <div class="col-12 mt-4">
                         <div class="header_invoice row text-center">

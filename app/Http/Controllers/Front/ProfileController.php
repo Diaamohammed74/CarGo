@@ -39,7 +39,7 @@ class ProfileController extends Controller
     }
     public function getUserOrders()
     {
-        $orders=Order::where('customer_id',auth()->id())->with(['orderProducts','orderServices'])->get();
+        $orders=Order::where('customer_id',auth()->id())->latest()->with(['orderProducts','orderServices'])->get();
         return view('front.pages.order.show-orders',compact('orders'));
     }
 }

@@ -44,14 +44,14 @@
                                             <td>{{ $mechanical->full_name }}</td>
                                             <td>{{ $mechanical->email }}</td>
                                             <td>{{ $mechanical->phone }}</td>
-                                            <td>{{ $mechanical->mechanicalUser->specialization?->title }}</td>
-                                            <td>{{ $mechanical->mechanicalUser->join_date }}</td>
-                                            <td>{{ $mechanical->mechanicalUser->birth_date }}</td>
-                                            <td>{{ $mechanical->mechanicalUser->job_type['name'] }}</td>
-                                            @if ($mechanical->mechanicalUser->job_type['value'] == 1)
-                                                <td>{{ $mechanical->mechanicalUser->fullTimeJob->monthly_salary }}</td>
+                                            <td>{{ $mechanical?->mechanicalUser?->specialization?->title }}</td>
+                                            <td>{{ $mechanical?->mechanicalUser?->join_date }}</td>
+                                            <td>{{ $mechanical?->mechanicalUser?->birth_date }}</td>
+                                            <td>{{ $mechanical?->mechanicalUser?->job_type['name'] }}</td>
+                                            @if ($mechanical?->mechanicalUser?->job_type['value'] == 1)
+                                                <td>{{ $mechanical?->mechanicalUser->fullTimeJob->monthly_salary }}</td>
                                             @else
-                                                <td>{{ $mechanical->mechanicalUser->byOrderJob->city->city_name_en }}</td>
+                                                <td>{{ $mechanical?->mechanicalUser?->byOrderJob->city->city_name_en }}</td>
                                             @endif
                                             <td>
                                                 <span

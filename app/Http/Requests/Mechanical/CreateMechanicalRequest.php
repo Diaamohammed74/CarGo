@@ -25,7 +25,7 @@ class CreateMechanicalRequest extends FormRequest
         'gender'                   => ['required', 'string', Rule::in(['male', 'female'])],
         'job_type'                 => ['required', 'integer', Rule::in(MechanicalJobType::getValues())],
         'specialization_id'        => ['required', 'integer',],
-        'monthly_salary'           => ['required_if:job_type,'.MechanicalJobType::FullTime->value, 'numeric'],
+        'monthly_salary'           => ['required_if:job_type,'.MechanicalJobType::FullTime->value,],
         'city_id'                  => ['required_if:job_type,'.MechanicalJobType::ByOrder->value, 'integer',],
         ];
     }

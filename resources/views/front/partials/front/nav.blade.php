@@ -2,12 +2,9 @@
 background-color: rgba(0, 124, 238, 1);
 border-bottom: 1px solid #fff;">
     <div class="container">
-        {{-- <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('assets-front/images/logo-text.PNG') }}" class="w-100" alt="CarGo Logo">
-        </a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" style="color: #fff"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 z-1">
@@ -43,6 +40,12 @@ border-bottom: 1px solid #fff;">
                     </div>
                 @endif
             @endauth
+            @if (!auth()->check())
+            <div class="profile d-flex align-items-center gap-3">
+                <button class="login">Login</button>
+                <button class="register">Register</button>
+              </div>
+            @endif
         </div>
     </div>
 </nav>

@@ -33,6 +33,6 @@ Route::prefix('dashboard')
     Route::resource('mechanicals', MechanicalController::class);
     Route::resource('contact-us', ContactUsController::class);
     Route::resource('orders', OrderController::class);
-    Route::resource('mechanical/orders', MechanicalOrderController::class);
+    Route::resource('mechanical/order', MechanicalOrderController::class);
     Route::post('order/add-product/{order}',[OrderController::class,'addProduct'])->name('order.addProduct');
   });

@@ -92,12 +92,16 @@
                     <form action="{{ route('dashboard.order.addProduct',$order->id) }}" method="POST" id="addProductForm">
                         @csrf
                         <div class="mb-3">
-                            <label for="product_ids" class="form-label">Select Products</label>
-                            <select class="form-select" id="product_ids" name="product_id">
+                            <label for="productSelect" class="form-label">Select Products</label>
+                            <select class="form-select" id="productSelect" name="product_id">
                                 @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->title }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantityInput" class="form-label">Quantity</label>
+                            <input type="number" id="quantityInput" name="quantity" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Add Products</button>
                     </form>

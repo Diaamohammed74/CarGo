@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front\Order;
 
+use App\Models\AtRepairCenterOrder;
 use App\Models\Order;
 use App\Models\Service;
 use App\Models\CustomerCar;
@@ -25,10 +26,10 @@ class OrderController extends Controller
 
     public function store(CreateOrderRequest $request)
     {
-        $data                 = $request->validated();
-        $data['total_amount'] = $this->calculateTotalAmount($data['services_ids']);
-        $data['mechanicals_ids']=$this->getAssociatedMechanicalIds($data['services_ids']);
-        $order                = Order::create($data);
+        $data                    = $request->validated();
+        $data['total_amount']    = $this->calculateTotalAmount($data['services']);
+        $data['mechanicals_ids'] = $this->getAssociatedMechanicalIds($data['services']);
+        $order                   = Order::create($data);
         if ($order->order_type == 1) {
             OnRoadOrder::create([
                 'order_id'  => $order->id,
@@ -36,10 +37,17 @@ class OrderController extends Controller
                 'latitude'  => $data['latitude']
             ]);
         }
-        $order->orderServices()->sync($data['services_ids']);
+        if ($order->order_type == 2) {
+            AtRepairCenterOrder::create([
+                'order_id'     => $order->id,
+                'booking_time' => $data['booking_time'],
+                'notes'        => $data['notes']
+            ]);
+        }
+        $order->orderServices()->sync($data['services']);
         if ($data['mechanicals_ids']) {
             foreach ($data['mechanicals_ids'] as $mechId) {
-                OrderMechanical::create(['order_id'=>$order->id,'mechanical_id'=>$mechId]);
+                OrderMechanical::create(['order_id' => $order->id, 'mechanical_id' => $mechId]);
             }
         }
         toast('Order created successfuly', 'success');

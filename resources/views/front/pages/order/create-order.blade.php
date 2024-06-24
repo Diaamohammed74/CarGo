@@ -187,17 +187,13 @@
                         <input type="hidden" name="latitude" id="latitude">
                         <input type="hidden" name="longitude" id="longitude">
                         <div class="form-floating order_date d-none mb-3">
-                            <input type="datetime-local" class="form-control" id="order_date" name="order_date"
-                                value="{{ old('order_date') }}" />
-                            <label for="order_date"> Order Date </label>
-                            @error('order_date')
+                            <input type="datetime-local" class="form-control" id="order_date" name="booking_time"
+                                value="{{ old('booking_time') }}" />
+                            <label for="booking_time"> Order Date </label>
+                            @error('booking_time')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <!-- <div class="d-flex flex-column nots_area d-none">
-                            <label for="nots" class="mb-2 text-primary fw-bold">Notes</label>
-                            
-                        </div> -->
                         <div class="form-floating nots_area">
                             <textarea name="notes" class="form-control" id="nots" placeholder="Notes" style="height: 100px">{{ old('notes') }}</textarea>
                             <label for="order_date"> Notes </label>

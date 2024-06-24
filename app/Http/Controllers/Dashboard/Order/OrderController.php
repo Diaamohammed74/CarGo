@@ -42,21 +42,21 @@ class OrderController extends Controller
     
         if ($orderProduct) {
             // If it exists, increment the quantity
-            $orderProduct->increment('quantity');
+            $orderProduct->increment('quantity',$validatedData['quantity']);
         } else {
             // If it doesn't exist, create a new order-product entry
             OrderProduct::where('order_id',$order->id)->create([
                 'order_id' => $order->id,
                 'product_id' => $productId,
-                'quantity' => 1, 
+                'quantity' => $validatedData['quantity'], 
             ]);
         }
     
         // Increment the total amount of the order by the price of the product
-        $order->increment('total_amount', $product->price);
+        $order->increment('total_amount', $product->price*$validatedData['quantity']);
     
         // Decrement the quantity of the product
-        $product->decrement('quantity');
+        $product->decrement('quantity',$validatedData['quantity']);
     
         $this->UpdatedToaster();
         return back();

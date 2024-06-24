@@ -83,7 +83,7 @@
 
                                     <div class = "mb-3 col-md-6">
                                         <label class = "form-label">Job type</label>
-                                        <select class = "form-select" name = "job_type" id="jobType">
+                                        <select class = "form-select" name="job_type" id="jobType" value="{{old('job_type')}}">
                                             @foreach (App\Enums\MechanicalJobType::cases() as $jobTypes)
                                                 <option value="{{ $jobTypes }}"
                                                     {{ old('job_type') == $jobTypes->value ? 'selected' : '' }}>
@@ -103,7 +103,7 @@
 
                                     <div class = "mb-3 col-md-6" id="cityDiv" style="display:none;">
                                         <label class = "form-label">City</label>
-                                        <select class = "form-select" name = "city_id" {{ old('job_type') == App\Enums\MechanicalJobType::ByOrder->value ? '' : 'disabled' }}>
+                                        <select class = "form-select" name = "city_id">
                                             <option value="0" >
                                                 Choose City
                                             </option>

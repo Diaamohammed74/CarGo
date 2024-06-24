@@ -20,16 +20,14 @@
                 <!-- Content for the "Search" section -->
                 <div class="p-4">
                     <div class=" d-flex justify-content-end">
-                        <div class="search mb-4 w-100">
-                            <div class="input-group d-flex flex-nowrap" >
-                                <button type="button" class="btn" data-mdb-ripple-init>
+                        <form method="get" action="{{ route('services.index') }}" class="search mb-4 w-100">
+                            <div class="input-group flex-nowrap">
+                                <button type="submit" class="btn" data-mdb-ripple-init>
                                     <i class="fas fa-search"></i>
                                 </button>
-                                <div class="form w-100">
-                                    <input type="search" id="form1" class="form-control" placeholder="Search Anything..." />
-                                </div>
+                                <input type="search" name="search" class="form-control" value="{{old('search')}}" placeholder="Search Anything..." />
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="service">
                         <div class="row ">

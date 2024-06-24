@@ -19,7 +19,7 @@ class AtRepairCenterOrder extends Model
      * @var array
      */
     protected $fillable = [
-        
+        'note','booking_time'
     ];
 
 

@@ -13,7 +13,6 @@
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
             <li class="menu-title">Main</li>
-            @if (auth()->user()->type->value == UsersTypes::ADMIN->value)
             <li class="{{ Request::is('dashboard/home') ? 'mm-active' : '' }}">
                 <a href="{{ route('dashboard.home') }}" aria-expanded="false">
                     <div class="menu-icon">
@@ -31,6 +30,7 @@
                     <span class="nav-text">Website</span>
                 </a>
             </li>
+
             <li class="{{ Request::is('dashboard/orders*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -38,12 +38,13 @@
                     </div>
                     <span class="nav-text">Orders</span>
                 </a>
-                <ul aria-expanded="{{ Request::is('dashboard/orders*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/mechanicals*') ? 'mm-show' : '' }}">
+                <ul aria-expanded="{{ Request::is('dashboard/orders*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/orders*') ? 'mm-show' : '' }}">
                     <li class="{{ Route::currentRouteName() == 'dashboard.orders.index' ? 'mm-active' : '' }}">
                         <a href="{{ route('dashboard.orders.index') }}">View</a>
                     </li>
                 </ul>
             </li>
+                
             <li class="{{ Request::is('dashboard/customers*') ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -51,7 +52,7 @@
                     </div>
                     <span class="nav-text">Customers</span>
                 </a>
-                <ul aria-expanded="{{ Request::is('dashboard/customers*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/mechanicals*') ? 'mm-show' : '' }}">
+                <ul aria-expanded="{{ Request::is('dashboard/customers*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/customers*') ? 'mm-show' : '' }}">
                     <li class="{{ Route::currentRouteName() == 'dashboard.customers.index' ? 'mm-active' : '' }}">
                         <a href="{{ route('dashboard.customers.index') }}">View</a>
                     </li>
@@ -217,23 +218,6 @@
                     </li>
                 </ul>
             </li>
-            @else
-            <li class="{{ Request::is('dashboard/mechanical/orders*') ? 'mm-active' : '' }}">
-                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                    <div class="menu-icon">
-                        <i class="fa-solid fa-hashtag fa-spin"></i>
-                    </div>
-                    <span class="nav-text">My orders</span>
-                </a>
-                <ul aria-expanded="{{ Request::is('dashboard/mechanical/orders*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/mechanical/orders') ? 'mm-show' : '' }}">
-                    <li class="{{ Route::currentRouteName() == 'dashboard.mechanical.orders.index' ? 'mm-active' : '' }}">
-                        <a href="{{ route('dashboard.orders.index') }}">View</a>
-                    </li>
-                </ul>
-            </li>
-            @endif
-
-
         </ul>
     </div>
 </div>
