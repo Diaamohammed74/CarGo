@@ -42,9 +42,11 @@ border-bottom: 1px solid #fff;">
             @endauth
             @if (!auth()->check())
             <div class="profile d-flex align-items-center gap-3">
-                <button class="login">Login</button>
-                <button class="register">Register</button>
-              </div>
+               <a href="{{route('auth.login')}}"><button class="login" style="border: 1px solid #007cee; outline: none; padding: 5px 12px; text-align: center; color: #fff; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; background-color: #007cee; border: 1px solid #939393;">Login</button></a> 
+               <a href="{{route('auth.register')}}">
+                <button class="register" style="border: 1px solid #007cee; outline: none; padding: 5px 12px; text-align: center; color: #fff; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; background-color: #007cee; border: 1px solid #939393;">Register</button>
+            </a>
+            </div>
             @endif
         </div>
     </div>
