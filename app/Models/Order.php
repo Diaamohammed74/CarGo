@@ -66,4 +66,8 @@ class Order extends Model
     {
         return $this->hasOne(OnRoadOrder::class, 'order_id');
     }
+    public function atCenter()
+    {
+        return $this->hasOne(AtRepairCenterOrder::class, 'order_id');
+    }
 }

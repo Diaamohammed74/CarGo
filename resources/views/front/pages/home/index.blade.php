@@ -79,7 +79,7 @@
         </div>
     </section>
 
-
+{{-- 
     <section class="popular py-5">
         <div class="container my-5">
             <h1 class="head text-center mb-5">Our POPULAR REELS</h1>
@@ -137,7 +137,7 @@
                 <a href="#" class="main-text text-center see-more">See More <i class="fa-solid fa-arrow-right"></i></a>
             </p>
         </div>
-    </section>
+    </section> --}}
 
     <section class="machiens py-5">
         <div class="container my-5">

@@ -18,14 +18,22 @@ class OrderController extends Controller
     public function __construct()
     {
     }
+    public function indexCenter()
+    {
+        $orders = Order::useFilters()
+            ->latest()
+            ->where('order_type', '=', 2)
+            ->with(['customer', 'onRoad', 'customerCar', 'orderMechanicals', 'orderServices', 'orderProducts'])->get();
+        $products = Product::get();
+        return view('dashboard.orders.OnCenterIndex', compact(['orders', 'products']));
+    }
 
     public function index()
     {
-        
         $orders = Order::useFilters()
-        ->latest()
-        ->where('order_type', '=', 1)
-        ->with(['customer', 'onRoad', 'customerCar', 'orderMechanicals', 'orderServices', 'orderProducts'])->get();
+            ->latest()
+            ->where('order_type', '=', 1)
+            ->with(['customer', 'onRoad', 'customerCar', 'orderMechanicals', 'orderServices', 'orderProducts'])->get();
         $products = Product::get();
         return view('dashboard.orders.OnRoadIndex', compact(['orders', 'products']));
     }

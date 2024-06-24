@@ -10,7 +10,6 @@ use App\Http\Controllers\Dashboard\Service\ServiceController;
 use App\Http\Controllers\Dashboard\Customer\CustomerController;
 use App\Http\Controllers\Dashboard\ContactUs\ContactUsController;
 use App\Http\Controllers\Dashboard\Mechanical\MechanicalController;
-use App\Http\Controllers\Dashboard\Order\MechanicalOrderController;
 use App\Http\Controllers\Dashboard\VideoCategory\VideoCategoryController;
 use App\Http\Controllers\Dashboard\Specialization\SpecializationController;
 use App\Http\Controllers\Dashboard\ProductCategory\ProductCategoryController;
@@ -33,6 +32,7 @@ Route::prefix('dashboard')
     Route::resource('mechanicals', MechanicalController::class);
     Route::resource('contact-us', ContactUsController::class);
     Route::resource('orders', OrderController::class);
-    Route::resource('mechanical/order', MechanicalOrderController::class);
+    Route::get('index-center',[OrderController::class,'indexCenter'])->name('orders.atcenter');
+    // Route::resource('mechanical/order', MechanicalOrderController::class);
     Route::post('order/add-product/{order}',[OrderController::class,'addProduct'])->name('order.addProduct');
   });

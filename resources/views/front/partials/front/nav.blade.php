@@ -14,9 +14,12 @@ border-bottom: 1px solid #fff;">
                 <li class="nav-item">
                     <a class="nav-link text-light" href="{{ route('services.index') }}">Services</a>
                 </li>
+                @if (auth()->check())
+                    
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="index_session.html">Sessions</a>
+                    <a class="nav-link text-light" href="{{route('user.orders')}}">Orders</a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link text-light" href="{{ route('about-us') }}">About Us</a>
                 </li>

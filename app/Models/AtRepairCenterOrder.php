@@ -18,6 +18,7 @@ class AtRepairCenterOrder extends Model
      *
      * @var array
      */
+    protected $table='at_repair_centero_orders';
     protected $fillable = [
         'note','booking_time'
     ];

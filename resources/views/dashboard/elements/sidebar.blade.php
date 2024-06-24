@@ -40,7 +40,8 @@
                 </a>
                 <ul aria-expanded="{{ Request::is('dashboard/orders*') ? 'true' : 'false' }}" class="{{ Request::is('dashboard/orders*') ? 'mm-show' : '' }}">
                     <li class="{{ Route::currentRouteName() == 'dashboard.orders.index' ? 'mm-active' : '' }}">
-                        <a href="{{ route('dashboard.orders.index') }}">View</a>
+                        <a href="{{ route('dashboard.orders.index') }}">On Road</a>
+                        <a href="{{ route('dashboard.orders.atcenter') }}">At center</a>
                     </li>
                 </ul>
             </li>
